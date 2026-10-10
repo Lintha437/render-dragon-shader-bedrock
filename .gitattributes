@@ -1,0 +1,16 @@
+* text=auto eol=lf
+*.py text eol=lf
+*.cpp text eol=lf
+# Preserve recovered source/reference bytes used by provenance and build hashes.
+*.h -text
+*.hlsl -text
+*.hlsli -text
+*.glsl -text
+*.glsli -text
+*.json -text
+*.ps1 text eol=crlf
+*.gz binary
+metadata/** linguist-generated=true
+templates/** linguist-generated=true
+materials/*.json linguist-generated=true
+MATERIALS.md linguist-generated=true
