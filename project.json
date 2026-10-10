@@ -1,0 +1,11 @@
+{
+  "schema_version": 2,
+  "name": "render-dragon-shader-bedrock",
+  "game_build": "1.26.60.30_RC0",
+  "catalog": "metadata/catalog.json",
+  "features": "Shared/features.json",
+  "hlsl_sources": "HLSL/pipelines",
+  "glsl_sources": "GLSL/pipelines",
+  "native_export": "dist/Renderer/materials",
+  "version": "0.1.0"
+}
