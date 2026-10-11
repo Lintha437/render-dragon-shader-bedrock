@@ -1,0 +1,227 @@
+// MeshFallbackPosUVNormalColor / RasterizedTransparent / vertex forward pipeline.
+// Feature macros choose supported code paths; native layouts come from the build recipe.
+#include "../../include/ProjectConfig.h"
+
+#ifndef RD_CONFIGURATION
+#define RD_CONFIGURATION 6
+#endif
+#ifndef RD_PLATFORM
+#define RD_PLATFORM RD_PLATFORM_SM65
+#endif
+#ifndef RD_OPTION_ALPHA_TEST
+#define RD_OPTION_ALPHA_TEST RD_ALPHA_TEST_OFF
+#endif
+#ifndef RD_FEATURE_LIT
+#define RD_FEATURE_LIT RD_OFF
+#endif
+#ifndef RD_FEATURE_MULTI_COLOR_TINT
+#define RD_FEATURE_MULTI_COLOR_TINT RD_OFF
+#endif
+#ifndef RD_FEATURE_USE_TEXTURES
+#define RD_FEATURE_USE_TEXTURES RD_ON
+#endif
+#ifndef RD_BINDING_LAYOUT
+#define RD_BINDING_LAYOUT 4
+#endif
+
+
+#include "../../include/materials/MeshFallbackPosUVNormalColor/VertexBindings.hlsli"
+
+#if RD_PLATFORM == RD_PLATFORM_SM40 || RD_PLATFORM == RD_PLATFORM_SM50
+void main(
+  float4 vertexColor0 : COLOR0,
+  float4 vertexNormal0 : NORMAL0,
+  float3 vertexPosition0 : POSITION0,
+  float2 vertexTexCoord0 : TEXCOORD0,
+  out float4 clipSpacePosition : SV_POSITION0,
+  out float4 varyingColor3 : COLOR3,
+  out float4 varyingColor0 : COLOR0,
+  out float4 varyingColor2 : COLOR2,
+  out float4 varyingColor1 : COLOR1,
+  out float4 varyingTexCoord0 : TEXCOORD0,
+  out float3 varyingTexCoord3 : TEXCOORD3)
+#elif RD_PLATFORM == RD_PLATFORM_SM60 || RD_PLATFORM == RD_PLATFORM_SM65
+void executeVertexStage()
+#endif
+{
+#if (RD_FEATURE_LIT == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM40) || (RD_FEATURE_LIT == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM50)
+  float4 workingVector0,workingVector1;
+  uint4 bitMask, integerResult;
+  float4 floatingPointResult;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_1.xyzw * vertexPosition0.yyyy;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyzw * vertexPosition0.xxxx + workingVector0.xyzw;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyzw * vertexPosition0.zzzz + workingVector0.xyzw;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyzw + workingVector0.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.xyzw * workingVector0.yyyy;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.xyzw * workingVector0.xxxx + workingVector1.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.xyzw * workingVector0.zzzz + workingVector1.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.xyzw * workingVector0.wwww + workingVector1.xyzw;
+  varyingTexCoord3.xyz = workingVector0.xyz;
+  clipSpacePosition.xyw = workingVector1.xyw;
+  workingVector0.x = RD_UNIFORM_Z_SHIFT_VALUE.x + workingVector1.z;
+  varyingColor3.xyzw = workingVector1.xyzw;
+  clipSpacePosition.z = workingVector0.x;
+  workingVector0.x = workingVector0.x / RD_UNIFORM_FOG_CONTROL.z;
+  workingVector0.x = -RD_UNIFORM_FOG_CONTROL.x + workingVector0.x;
+  varyingColor0.xyzw = vertexColor0.xyzw;
+  workingVector0.y = RD_UNIFORM_FOG_CONTROL.y + -RD_UNIFORM_FOG_CONTROL.x;
+  varyingColor2.w = saturate(workingVector0.x / workingVector0.y);
+  varyingColor2.xyz = RD_UNIFORM_FOG_COLOR.xyz;
+  varyingColor1.xyzw = float4(0,0,0,0);
+  varyingTexCoord0.xy = vertexTexCoord0.xy * RD_UNIFORM_UV_ANIMATION.zw + RD_UNIFORM_UV_ANIMATION.xy;
+  return;
+#elif (RD_FEATURE_LIT == RD_ON && RD_PLATFORM == RD_PLATFORM_SM40) || (RD_FEATURE_LIT == RD_ON && RD_PLATFORM == RD_PLATFORM_SM50)
+  float4 workingVector0,workingVector1;
+  uint4 bitMask, integerResult;
+  float4 floatingPointResult;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_1.xyzw * vertexPosition0.yyyy;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyzw * vertexPosition0.xxxx + workingVector0.xyzw;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyzw * vertexPosition0.zzzz + workingVector0.xyzw;
+  workingVector0.xyzw = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyzw + workingVector0.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.xyzw * workingVector0.yyyy;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.xyzw * workingVector0.xxxx + workingVector1.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.xyzw * workingVector0.zzzz + workingVector1.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.xyzw * workingVector0.wwww + workingVector1.xyzw;
+  varyingTexCoord3.xyz = workingVector0.xyz;
+  clipSpacePosition.xyw = workingVector1.xyw;
+  workingVector0.x = RD_UNIFORM_Z_SHIFT_VALUE.x + workingVector1.z;
+  varyingColor3.xyzw = workingVector1.xyzw;
+  clipSpacePosition.z = workingVector0.x;
+  workingVector0.x = workingVector0.x / RD_UNIFORM_FOG_CONTROL.z;
+  workingVector0.x = -RD_UNIFORM_FOG_CONTROL.x + workingVector0.x;
+  varyingColor0.xyzw = vertexColor0.xyzw;
+  workingVector0.y = RD_UNIFORM_FOG_CONTROL.y + -RD_UNIFORM_FOG_CONTROL.x;
+  varyingColor2.w = saturate(workingVector0.x / workingVector0.y);
+  varyingColor2.xyz = RD_UNIFORM_FOG_COLOR.xyz;
+  workingVector0.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz * vertexNormal0.yyy;
+  workingVector0.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexNormal0.xxx + workingVector0.xyz;
+  workingVector0.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexNormal0.zzz + workingVector0.xyz;
+  workingVector0.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexNormal0.www + workingVector0.xyz;
+  workingVector0.w = dot(workingVector0.xyz, workingVector0.xyz);
+  workingVector0.w = rsqrt(workingVector0.w);
+  workingVector0.xyz = workingVector0.xyz * workingVector0.www;
+  workingVector0.y = workingVector0.y * RD_UNIFORM_TILE_LIGHT_COLOR.w + 1;
+  workingVector0.xz = workingVector0.xz * workingVector0.xz;
+  workingVector0.x = -0.100000001 * workingVector0.x;
+  workingVector0.x = workingVector0.y * 0.275000006 + workingVector0.x;
+  workingVector0.x = workingVector0.z * 0.100000001 + workingVector0.x;
+  workingVector0.x = 0.449999988 + workingVector0.x;
+  workingVector0.xyz = RD_UNIFORM_TILE_LIGHT_COLOR.xyz * workingVector0.xxx;
+  workingVector0.w = 1;
+  varyingColor1.xyzw = RD_UNIFORM_OVERLAY_COLOR.wwww * float4(0.349999994,0.349999994,0.349999994,0.349999994) + workingVector0.xyzw;
+  varyingTexCoord0.xy = vertexTexCoord0.xy * RD_UNIFORM_UV_ANIMATION.zw + RD_UNIFORM_UV_ANIMATION.xy;
+  return;
+#elif (RD_FEATURE_LIT == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_LIT == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM65)
+    float multiplyAddValue = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.x * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.x;
+    float multiplyAddValue1 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.y * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.y;
+    float multiplyAddValue2 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.z * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.z;
+    float multiplyAddValue3 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.w, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.w, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.w * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.w;
+    float multiplyAddValue4 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.x, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.x, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.x, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.x)));
+    float multiplyAddValue5 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.y, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.y, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.y, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.y)));
+    float multiplyAddValue6 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.z, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.z, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.z, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.z)));
+    float multiplyAddValue7 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.w, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.w, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.w, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.w)));
+    float sumValue = RD_UNIFORM_Z_SHIFT_VALUE.x + multiplyAddValue6;
+    clipSpacePosition.x = multiplyAddValue4;
+    clipSpacePosition.y = multiplyAddValue5;
+    clipSpacePosition.z = sumValue;
+    clipSpacePosition.w = multiplyAddValue7;
+    varyingColor3.x = multiplyAddValue4;
+    varyingColor3.y = multiplyAddValue5;
+    varyingColor3.z = multiplyAddValue6;
+    varyingColor3.w = multiplyAddValue7;
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    varyingColor2.x = RD_UNIFORM_FOG_COLOR.x;
+    varyingColor2.y = RD_UNIFORM_FOG_COLOR.y;
+    varyingColor2.z = RD_UNIFORM_FOG_COLOR.z;
+    varyingColor2.w = clamp(((sumValue / RD_UNIFORM_FOG_CONTROL.z) - RD_UNIFORM_FOG_CONTROL.x) / (RD_UNIFORM_FOG_CONTROL.y - RD_UNIFORM_FOG_CONTROL.x), 0.0f, 1.0f);
+    varyingColor1.x = 0.0f;
+    varyingColor1.y = 0.0f;
+    varyingColor1.z = 0.0f;
+    varyingColor1.w = 0.0f;
+    varyingTexCoord0.x = (RD_UNIFORM_UV_ANIMATION.z * vertexTexCoord0.x) + RD_UNIFORM_UV_ANIMATION.x;
+    varyingTexCoord0.y = (RD_UNIFORM_UV_ANIMATION.w * vertexTexCoord0.y) + RD_UNIFORM_UV_ANIMATION.y;
+    varyingTexCoord3.x = multiplyAddValue;
+    varyingTexCoord3.y = multiplyAddValue1;
+    varyingTexCoord3.z = multiplyAddValue2;
+}
+VertexStageOutput main(VertexStageInput stage_input)
+{
+    vertexColor0 = stage_input.vertexColor0;
+    vertexNormal0 = stage_input.vertexNormal0;
+    vertexPosition0 = stage_input.vertexPosition0;
+    vertexTexCoord0 = stage_input.vertexTexCoord0;
+    executeVertexStage();
+    VertexStageOutput stage_output;
+    stage_output.clipSpacePosition = clipSpacePosition;
+    stage_output.varyingColor3 = varyingColor3;
+    stage_output.varyingColor0 = varyingColor0;
+    stage_output.varyingColor2 = varyingColor2;
+    stage_output.varyingColor1 = varyingColor1;
+    stage_output.varyingTexCoord0 = varyingTexCoord0;
+    stage_output.varyingTexCoord3 = varyingTexCoord3;
+    return stage_output;
+#elif (RD_FEATURE_LIT == RD_ON && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_LIT == RD_ON && RD_PLATFORM == RD_PLATFORM_SM65)
+    float multiplyAddValue = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.x * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.x;
+    float multiplyAddValue1 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.y * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.y;
+    float multiplyAddValue2 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.z * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.z;
+    float multiplyAddValue3 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.w, vertexPosition0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.w, vertexPosition0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.w * vertexPosition0.x)) + RD_UNIFORM_MODEL_MATRICES_ROW_3.w;
+    float multiplyAddValue4 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.x, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.x, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.x, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.x)));
+    float multiplyAddValue5 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.y, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.y, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.y, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.y)));
+    float multiplyAddValue6 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.z, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.z, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.z, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.z)));
+    float multiplyAddValue7 = mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_3.w, multiplyAddValue3, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_2.w, multiplyAddValue2, mad(RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_1.w, multiplyAddValue1, multiplyAddValue * RD_UNIFORM_VIEW_PROJECTION_MATRIX_ROW_0.w)));
+    float sumValue = RD_UNIFORM_Z_SHIFT_VALUE.x + multiplyAddValue6;
+    float multiplyAddValue8 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexNormal0.w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexNormal0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexNormal0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.x * vertexNormal0.x)));
+    float multiplyAddValue9 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexNormal0.w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexNormal0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexNormal0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.y * vertexNormal0.x)));
+    float multiplyAddValue10 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexNormal0.w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexNormal0.z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexNormal0.y, RD_UNIFORM_MODEL_MATRICES_ROW_0.z * vertexNormal0.x)));
+    float inverseLengthValue = rsqrt(dot(float3(multiplyAddValue8, multiplyAddValue9, multiplyAddValue10), float3(multiplyAddValue8, multiplyAddValue9, multiplyAddValue10)));
+    float productValue = inverseLengthValue * multiplyAddValue8;
+    float productValue1 = inverseLengthValue * multiplyAddValue10;
+    float productValue2 = ((0.449999988079071044921875f - ((productValue * productValue) * 0.100000001490116119384765625f)) + ((productValue1 * productValue1) * 0.100000001490116119384765625f)) + ((((inverseLengthValue * multiplyAddValue9) * RD_UNIFORM_TILE_LIGHT_COLOR.w) + 1.0f) * 0.2750000059604644775390625f);
+    float productValue3 = RD_UNIFORM_OVERLAY_COLOR.w * 0.3499999940395355224609375f;
+    clipSpacePosition.x = multiplyAddValue4;
+    clipSpacePosition.y = multiplyAddValue5;
+    clipSpacePosition.z = sumValue;
+    clipSpacePosition.w = multiplyAddValue7;
+    varyingColor3.x = multiplyAddValue4;
+    varyingColor3.y = multiplyAddValue5;
+    varyingColor3.z = multiplyAddValue6;
+    varyingColor3.w = multiplyAddValue7;
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    varyingColor2.x = RD_UNIFORM_FOG_COLOR.x;
+    varyingColor2.y = RD_UNIFORM_FOG_COLOR.y;
+    varyingColor2.z = RD_UNIFORM_FOG_COLOR.z;
+    varyingColor2.w = clamp(((sumValue / RD_UNIFORM_FOG_CONTROL.z) - RD_UNIFORM_FOG_CONTROL.x) / (RD_UNIFORM_FOG_CONTROL.y - RD_UNIFORM_FOG_CONTROL.x), 0.0f, 1.0f);
+    varyingColor1.x = (productValue2 * RD_UNIFORM_TILE_LIGHT_COLOR.x) + productValue3;
+    varyingColor1.y = (productValue2 * RD_UNIFORM_TILE_LIGHT_COLOR.y) + productValue3;
+    varyingColor1.z = (productValue2 * RD_UNIFORM_TILE_LIGHT_COLOR.z) + productValue3;
+    varyingColor1.w = productValue3 + 1.0f;
+    varyingTexCoord0.x = (RD_UNIFORM_UV_ANIMATION.z * vertexTexCoord0.x) + RD_UNIFORM_UV_ANIMATION.x;
+    varyingTexCoord0.y = (RD_UNIFORM_UV_ANIMATION.w * vertexTexCoord0.y) + RD_UNIFORM_UV_ANIMATION.y;
+    varyingTexCoord3.x = multiplyAddValue;
+    varyingTexCoord3.y = multiplyAddValue1;
+    varyingTexCoord3.z = multiplyAddValue2;
+}
+VertexStageOutput main(VertexStageInput stage_input)
+{
+    vertexColor0 = stage_input.vertexColor0;
+    vertexNormal0 = stage_input.vertexNormal0;
+    vertexPosition0 = stage_input.vertexPosition0;
+    vertexTexCoord0 = stage_input.vertexTexCoord0;
+    executeVertexStage();
+    VertexStageOutput stage_output;
+    stage_output.clipSpacePosition = clipSpacePosition;
+    stage_output.varyingColor3 = varyingColor3;
+    stage_output.varyingColor0 = varyingColor0;
+    stage_output.varyingColor2 = varyingColor2;
+    stage_output.varyingColor1 = varyingColor1;
+    stage_output.varyingTexCoord0 = varyingTexCoord0;
+    stage_output.varyingTexCoord3 = varyingTexCoord3;
+    return stage_output;
+#endif
+}

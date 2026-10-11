@@ -1,0 +1,16 @@
+// Native resource and stage-interface layouts for EditorHighlight / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+static float4 clipSpacePosition;
+static float3 vertexPosition0;
+static float2 vertexTexCoord0;
+static float2 varyingTexCoord0;
+struct VertexStageInput
+{
+    float3 vertexPosition0 : POSITION0;
+    float2 vertexTexCoord0 : TEXCOORD0;
+};
+struct VertexStageOutput
+{
+    float2 varyingTexCoord0 : TEXCOORD0;
+    float4 clipSpacePosition : SV_Position;
+};
