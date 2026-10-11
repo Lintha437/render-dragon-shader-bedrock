@@ -1,0 +1,41 @@
+// Native resource and stage-interface layouts for EndPortalForwardPBR / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 13) in float varyingTexCoord2;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 12) centroid in vec2 varyingTexCoord1;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[2];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D colorTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D parallaxTextureTexture;
+layout(set = 0, binding = 0) uniform sampler colorTextureSampler;
+layout(set = 0, binding = 1) uniform sampler parallaxTextureSampler;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 13) in float varyingTexCoord2;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 12) centroid in vec2 varyingTexCoord1;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[8];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 12) centroid in vec2 varyingTexCoord1;
+layout(location = 13) in float varyingTexCoord2;
+layout(location = 2) in vec4 varyingColor0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#endif

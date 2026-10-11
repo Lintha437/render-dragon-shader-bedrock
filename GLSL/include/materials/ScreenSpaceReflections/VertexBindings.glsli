@@ -1,0 +1,14 @@
+// Native resource and stage-interface layouts for ScreenSpaceReflections / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+    vec4 packedValues[1];
+} vertexVectorConstants0;
+#if RD_BINDING_LAYOUT == 0
+layout(location = 9) in vec4 vertexPosition0;
+#elif RD_BINDING_LAYOUT == 1
+layout(location = 9) in vec2 vertexPosition0;
+#endif
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 12) out vec4 varyingTexCoord1;
+layout(location = 11) out vec4 varyingTexCoord0;

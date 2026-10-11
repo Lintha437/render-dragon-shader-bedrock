@@ -1,0 +1,21 @@
+// Native resource and stage-interface layouts for BlitHDR / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D averageLuminanceTexture;
+layout(set = 0, binding = 1) uniform texture2D blitTextureTexture;
+layout(set = 0, binding = 0) uniform sampler averageLuminanceSampler;
+layout(set = 0, binding = 1) uniform sampler blitTextureSampler;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 1) uniform texture2D blitTextureTexture;
+layout(set = 0, binding = 1) uniform sampler blitTextureSampler;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;

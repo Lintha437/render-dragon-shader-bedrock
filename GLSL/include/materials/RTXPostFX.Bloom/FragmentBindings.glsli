@@ -1,0 +1,50 @@
+// Native resource and stage-interface layouts for RTXPostFX.Bloom / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[1];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+#elif RD_BINDING_LAYOUT == 1
+const float intermediateValue[4] = float[](0.16339969635009765625, 0.0387139283120632171630859375, 0.0387139283120632171630859375, 0.009172405116260051727294921875);
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[1];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D rasterColorTexture;
+layout(set = 0, binding = 0) uniform sampler rasterColorSampler;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 0) uniform texture2D rasterColorTexture;
+layout(set = 0, binding = 0) uniform sampler rasterColorSampler;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+#elif RD_BINDING_LAYOUT == 4
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[1];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D rasterColorTexture;
+layout(set = 0, binding = 1) uniform texture2D gBloomOriginalInputTexture;
+layout(set = 0, binding = 0) uniform sampler rasterColorSampler;
+layout(set = 0, binding = 1) uniform sampler gBloomOriginalInputSampler;
+#elif RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[4];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 5
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#endif

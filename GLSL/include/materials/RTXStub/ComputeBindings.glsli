@@ -1,0 +1,1796 @@
+// Native resource and stage-interface layouts for RTXStub / compute.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 60) uniform writeonly image3D volumetricResolvedInscatterRW;
+layout(set = 0, binding = 61) uniform writeonly image3D volumetricResolvedTransmissionRW;
+layout(set = 0, binding = 62, r32f) uniform readonly image3D volumetricInscatterRW;
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 1
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 63) uniform writeonly image3D volumetricGIResolvedInscatterRW;
+layout(set = 0, binding = 64, r32f) uniform readonly image3D volumetricGIInscatterRW[2];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 2
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D outputBufferHistoryLength;
+layout(set = 0, binding = 40, r32f) uniform image2D outputDenoisingMoments[4];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 3
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+#elif RD_BINDING_LAYOUT == 4
+layout(local_size_x = 16, local_size_y = 8, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D outputBufferHistoryLength;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 5
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D outputBufferHistoryLength;
+layout(set = 0, binding = 40, r32f) uniform image2D outputDenoisingMoments[4];
+#elif RD_BINDING_LAYOUT == 6
+layout(local_size_x = 16, local_size_y = 8, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+layout(set = 3, binding = 8, r32f) uniform image2D denoisingChromaAndVarianceOutputs[4];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 7
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 19) uniform usamplerBuffer inputIncidentLight;
+layout(set = 0, binding = 41) uniform texture2D inputThisFrameTAAHistory;
+layout(set = 0, binding = 12) uniform writeonly image2D outputBufferFinal;
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 8
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue107;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint packedValues[];
+} vertexBuffers[4096];
+layout(set = 13, binding = 2, std430) restrict readonly buffer inputTemporallyStableLightsSSBO
+{
+    uint packedValues[];
+} inputTemporallyStableLights;
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 38) uniform writeonly image2D outputAdaptiveDenoiserReference;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+rayQueryEXT intermediateValue18;
+rayQueryEXT intermediateValue30;
+rayQueryEXT intermediateValue67;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 9
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+layout(set = 3, binding = 8, r32f) uniform image2D denoisingChromaAndVarianceOutputs[4];
+#elif RD_BINDING_LAYOUT == 10
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue106;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint packedValues[];
+} vertexBuffers[4096];
+layout(set = 13, binding = 2, std430) restrict readonly buffer inputTemporallyStableLightsSSBO
+{
+    uint packedValues[];
+} inputTemporallyStableLights;
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 5) uniform texture2D previousPrimaryNormalBuffer;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 17) uniform texture2D inputBufferSurfaceOpacityAndObjectCategory;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 49) uniform texture2D inputPreviousGeometryNormal;
+layout(set = 0, binding = 53) uniform texture2D inputAdaptiveDenoiserReference;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 36) uniform writeonly image2D outputAdaptiveDenoiserGradients[2];
+layout(set = 0, binding = 39) uniform writeonly iimage2D outputAdaptiveDenoiserPlaneIdentifier;
+layout(set = 3, binding = 0, r32f) uniform readonly image2D denoisingOutputs[8];
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+rayQueryEXT intermediateValue16;
+rayQueryEXT intermediateValue30;
+rayQueryEXT intermediateValue66;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 11
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 4, binding = 0, r32f) uniform image2D shadowDenoisingOutputs[2];
+#elif RD_BINDING_LAYOUT == 12
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 64, r32f) uniform image3D volumetricGIInscatterRW[2];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 13
+layout(primitive_culling);
+layout(local_size_x = 32, local_size_y = 1, local_size_z = 1) in;
+float intermediateValue13;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 2, std430) restrict readonly buffer vertexIrradianceCacheUpdateChunksSSBO
+{
+    uint packedValues[];
+} vertexIrradianceCacheUpdateChunks;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 13, binding = 0, scalar) restrict readonly buffer inputLightsBufferSSBO
+{
+    u16vec3 packedValues[];
+} inputLightsBuffer;
+layout(set = 13, binding = 0, std430) restrict readonly buffer inputLightsBuffer_1
+{
+    uint packedValues[];
+} inputLightsBuffer_2;
+layout(set = 1, binding = 0, std430) buffer vertexIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 1, binding = 0, std430) buffer vertexIrradianceCache_1
+{
+    u16vec4 packedValues[];
+} vertexIrradianceCache_2[4096];
+layout(set = 2, binding = 0, std430) readonly buffer faceIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} faceIrradianceCache[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue55;
+rayQueryEXT intermediateValue83;
+rayQueryEXT intermediateValue247;
+rayQueryEXT intermediateValue262;
+rayQueryEXT intermediateValue299;
+rayQueryEXT intermediateValue301;
+rayQueryEXT intermediateValue332;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 14
+layout(local_size_x = 128, local_size_y = 1, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 54) uniform itexture2D inputAdaptiveDenoiserPlaneIdentifier;
+layout(set = 0, binding = 36, r32f) uniform image2D outputAdaptiveDenoiserGradients[2];
+shared uint intermediateValue[138];
+shared float intermediateValue1[276];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 15
+layout(local_size_x = 64, local_size_y = 1, local_size_z = 1) in;
+layout(set = 15, binding = 0, std140) uniform PreBlasSkinningCBUBO
+{
+    vec4 packedValues[35];
+} PreBlasSkinningCB;
+layout(set = 9, binding = 0, r32ui) uniform uimageBuffer vertexBuffersRW[4096];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 16
+layout(local_size_x = 128, local_size_y = 1, local_size_z = 1) in;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 10, binding = 0, std430) writeonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 10, binding = 0, std430) writeonly buffer faceDataBuffersRW_1
+{
+    uint packedValues[];
+} faceDataBuffersRW_2[4096];
+layout(set = 11, binding = 0, std430) writeonly buffer faceUvBuffersRWSSBO
+{
+    uint packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 17
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+#elif RD_BINDING_LAYOUT == 18
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 4, binding = 0) uniform texture2D shadowDenoisingInputs[2];
+layout(set = 0, binding = 44) uniform writeonly iimage2D outputTileClassification;
+shared uint intermediateValue[16];
+shared uint intermediateValue1[16];
+#elif RD_BINDING_LAYOUT == 19
+layout(local_size_x = 128, local_size_y = 1, local_size_z = 1) in;
+layout(set = 1, binding = 0, std430) writeonly buffer vertexIrradianceCacheSSBO
+{
+    u16vec4 packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+#elif RD_BINDING_LAYOUT == 20
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 18) uniform texture2D inputBufferIncomingIrradianceCache;
+layout(set = 0, binding = 22) uniform texture2D inputBufferReflectionMotionVectors;
+layout(set = 0, binding = 25) uniform texture2D inputBufferPreInterleaveCurrent;
+layout(set = 0, binding = 26) uniform texture2D inputBufferPreInterleavePrevious;
+layout(set = 0, binding = 10) uniform writeonly image2D outputBufferMotionVectors;
+layout(set = 0, binding = 12) uniform writeonly image2D outputBufferFinal;
+layout(set = 0, binding = 20) uniform writeonly image2D outputBufferReprojectedPathLength;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 21
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 21) uniform texture2D inputBufferMotionVectors;
+layout(set = 0, binding = 40) uniform texture2D inputTAAHistory;
+layout(set = 0, binding = 42) uniform texture2D inputFinalColour;
+layout(set = 0, binding = 30) uniform writeonly image2D outputBufferTAAHistory;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 22
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 4, local_size_z = 2) in;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 2, binding = 0, std430) readonly buffer faceIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} faceIrradianceCache[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 39) uniform texture3D volumetricGIInscatterPrevious;
+layout(set = 0, binding = 64) uniform writeonly image3D volumetricGIInscatterRW[2];
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+rayQueryEXT intermediateValue22;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 23
+layout(local_size_x = 128, local_size_y = 1, local_size_z = 1) in;
+layout(set = 2, binding = 0, std430) writeonly buffer faceIrradianceCacheSSBO
+{
+    u16vec4 packedValues[];
+} faceIrradianceCache[4096];
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+#elif RD_BINDING_LAYOUT == 24
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 4, local_size_z = 2) in;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 13) uniform texture3D volumetricInscatterPrevious;
+layout(set = 0, binding = 62) uniform writeonly image3D volumetricInscatterRW;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue14;
+rayQueryEXT intermediateValue34;
+rayQueryEXT intermediateValue43;
+rayQueryEXT intermediateValue54;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 25
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+uint intermediateValue63;
+uint intermediateValue64;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 16) uniform texture2D inputBufferColourAndMetallic;
+layout(set = 0, binding = 17) uniform texture2D inputBufferSurfaceOpacityAndObjectCategory;
+layout(set = 0, binding = 19) uniform usamplerBuffer inputIncidentLight;
+layout(set = 0, binding = 21) uniform texture2D inputBufferMotionVectors;
+layout(set = 0, binding = 44) uniform texture2D inputEmissiveAndLinearRoughness;
+layout(set = 0, binding = 46) uniform texture2D inputPrimaryViewDirection;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 50) uniform texture2D inputPrimaryPosLowPrecision;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 11) uniform texture3D volumetricResolvedInscatter;
+layout(set = 0, binding = 12) uniform texture3D volumetricResolvedTransmission;
+layout(set = 0, binding = 38) uniform texture3D volumetricGIResolvedInscatter;
+layout(set = 4, binding = 0) uniform texture2D shadowDenoisingInputs[2];
+layout(set = 0, binding = 12) uniform writeonly image2D outputBufferFinal;
+layout(set = 0, binding = 14, r32f) uniform readonly image2D outputBufferDebug;
+layout(set = 0, binding = 16) uniform writeonly image2D outputBufferReflectionMotionVectors;
+layout(set = 0, binding = 17) uniform writeonly image2D outputBufferPreviousLinearRoughness;
+layout(set = 0, binding = 18) uniform writeonly image2D outputBufferPreInterleave;
+layout(set = 0, binding = 23, r32f) uniform image2D outputBufferReferencePathTracer;
+layout(set = 3, binding = 0, r32f) uniform readonly image2D denoisingOutputs[8];
+layout(set = 3, binding = 8, r32f) uniform readonly image2D denoisingChromaAndVarianceOutputs[4];
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 26
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 57) uniform itexture2D inputTileClassification;
+layout(set = 4, binding = 0, r32f) uniform image2D shadowDenoisingOutputs[2];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 27
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D outputBufferHistoryLength;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 28
+layout(local_size_x = 4, local_size_y = 4, local_size_z = 2) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 4) uniform texture2D previousPrimaryPathLengthBuffer;
+layout(set = 0, binding = 7) uniform texture2D previousDiffuseBuffer;
+layout(set = 0, binding = 30) uniform texture2D previousSunLightShadowBuffer;
+layout(set = 0, binding = 48) uniform texture2D previousDiffuseChromaBuffer;
+layout(set = 0, binding = 49) uniform texture2D inputPreviousGeometryNormal;
+layout(set = 14, binding = 0, r32ui) uniform uimageBuffer bufferIncidentLight;
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 29
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D outputBufferHistoryLength;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+layout(set = 3, binding = 8, r32f) uniform image2D denoisingChromaAndVarianceOutputs[4];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 30
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 13, binding = 0, scalar) restrict readonly buffer inputLightsBufferSSBO
+{
+    u16vec3 packedValues[];
+} inputLightsBuffer;
+layout(set = 13, binding = 0, std430) restrict readonly buffer inputLightsBuffer_1
+{
+    uint packedValues[];
+} inputLightsBuffer_2;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 12) uniform writeonly image2D outputBufferFinal;
+#elif RD_BINDING_LAYOUT == 31
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue13;
+bool intermediateValue362;
+float intermediateValue363;
+uint intermediateValue364;
+uint intermediateValue365;
+uint intermediateValue366;
+float16_t intermediateValue367;
+float16_t intermediateValue368;
+float16_t intermediateValue369;
+float16_t intermediateValue370;
+float16_t intermediateValue371;
+float16_t intermediateValue372;
+float intermediateValue373;
+uint intermediateValue374;
+float intermediateValue375;
+float intermediateValue376;
+float intermediateValue377;
+float intermediateValue378;
+float intermediateValue379;
+float intermediateValue380;
+float intermediateValue381;
+float intermediateValue382;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 0, binding = 55, std430) restrict readonly buffer checkerboardActionsBufferSSBO
+{
+    uint16_t packedValues[];
+} checkerboardActionsBuffer;
+layout(set = 0, binding = 55, std430) restrict readonly buffer checkerboardActionsBuffer_1
+{
+    uint packedValues[];
+} checkerboardActionsBuffer_2;
+layout(set = 0, binding = 56, std430) restrict readonly buffer refractionIndicesBufferSSBO
+{
+    uint packedValues[];
+} refractionIndicesBuffer;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 0, binding = 32, std430) writeonly buffer outputVisibleBLASsSSBO
+{
+    uint packedValues[];
+} outputVisibleBLASs;
+layout(set = 1, binding = 0, std430) readonly buffer vertexIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRW_1
+{
+    uint packedValues[];
+} faceDataBuffersRW_2[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 62) uniform texture2D waterNormalsTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 0) uniform writeonly image2D outputBufferPrimaryPathLength;
+layout(set = 0, binding = 1) uniform writeonly image2D outputBufferNormal;
+layout(set = 0, binding = 3) uniform writeonly image2D outputBufferColourAndMetallic;
+layout(set = 0, binding = 4) uniform writeonly image2D outputBufferEmissiveAndLinearRoughness;
+layout(set = 0, binding = 7) uniform writeonly image2D outputBufferSurfaceOpacityAndObjectCategory;
+layout(set = 0, binding = 10) uniform writeonly image2D outputBufferMotionVectors;
+layout(set = 0, binding = 11) uniform writeonly image2D outputBufferIncomingIrradianceCache;
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 19) uniform writeonly iimage2D outputPlaneIdentifier;
+layout(set = 0, binding = 20) uniform writeonly image2D outputBufferReprojectedPathLength;
+layout(set = 0, binding = 29) uniform writeonly image2D outputBufferPrimaryPosLowPrecision;
+layout(set = 0, binding = 31) uniform writeonly image2D outputGeometryNormal;
+layout(set = 0, binding = 33) uniform writeonly image2D outputPrimaryWorldPosition;
+layout(set = 0, binding = 34) uniform writeonly image2D outputPrimaryViewDirection;
+layout(set = 0, binding = 35) uniform writeonly image2D outputPrimaryThroughput;
+layout(set = 0, binding = 45) uniform writeonly iimage2D outputBufferPreviousMedium;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue74;
+rayQueryEXT intermediateValue95;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 32
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 22) uniform writeonly image2D outputBufferPreviousSunLightShadow;
+layout(set = 4, binding = 0, r32f) uniform image2D shadowDenoisingOutputs[2];
+#elif RD_BINDING_LAYOUT == 33
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue77;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 13, binding = 1, scalar) restrict readonly buffer inputReducedLightsBufferSSBO
+{
+    u16vec3 packedValues[];
+} inputReducedLightsBuffer;
+layout(set = 13, binding = 1, std430) restrict readonly buffer inputReducedLightsBuffer_1
+{
+    uint packedValues[];
+} inputReducedLightsBuffer_2;
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 16) uniform texture2D inputBufferColourAndMetallic;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 44) uniform texture2D inputEmissiveAndLinearRoughness;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 46) uniform texture2D inputPrimaryViewDirection;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 5, r32f) uniform image2D outputBufferIndirectDiffuse;
+layout(set = 0, binding = 6) uniform writeonly image2D outputBufferIndirectSpecular;
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 28, r32f) uniform image2D outputBufferIndirectDiffuseChroma;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+rayQueryEXT intermediateValue87;
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 34
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 4) uniform texture2D previousPrimaryPathLengthBuffer;
+layout(set = 0, binding = 5) uniform texture2D previousPrimaryNormalBuffer;
+layout(set = 0, binding = 6) uniform texture2D previousHistoryLengthBuffer;
+layout(set = 0, binding = 7) uniform texture2D previousDiffuseBuffer;
+layout(set = 0, binding = 8) uniform texture2D previousSpecularBuffer;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 19) uniform usamplerBuffer inputIncidentLight;
+layout(set = 0, binding = 21) uniform texture2D inputBufferMotionVectors;
+layout(set = 0, binding = 23) uniform texture2D previousReflectionDistanceBuffer;
+layout(set = 0, binding = 24) uniform texture2D previousLinearRoughnessBuffer;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 29) uniform texture2D inputBufferReprojectedPathLength;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 44) uniform texture2D inputEmissiveAndLinearRoughness;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 51) uniform texture2D inputAdaptiveDenoiserGradients[2];
+layout(set = 0, binding = 54) uniform itexture2D inputAdaptiveDenoiserPlaneIdentifier;
+layout(set = 9, binding = 1) uniform texture2D inputFinalDiffuseMoments;
+layout(set = 9, binding = 3) uniform texture2D inputFinalSpecularMoments;
+layout(set = 0, binding = 2) uniform writeonly image2D outputBufferHistoryLength;
+layout(set = 0, binding = 5, r32f) uniform readonly image2D outputBufferIndirectDiffuse;
+layout(set = 0, binding = 6, r32f) uniform readonly image2D outputBufferIndirectSpecular;
+layout(set = 0, binding = 15, r32f) uniform image2D outputBufferReflectionDistance;
+layout(set = 0, binding = 40) uniform writeonly image2D outputBufferDiffuseMoments;
+layout(set = 0, binding = 42) uniform writeonly image2D outputBufferSpecularMoments;
+layout(set = 3, binding = 0) uniform writeonly image2D denoisingOutputs[8];
+shared uint intermediateValue[25];
+shared float intermediateValue1[25];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 35
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue268;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 1, binding = 0, std430) readonly buffer vertexIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 2, binding = 0, std430) readonly buffer faceIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} faceIrradianceCache[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRW_1
+{
+    uint packedValues[];
+} faceDataBuffersRW_2[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 4, r32f) uniform image2D outputBufferEmissiveAndLinearRoughness;
+layout(set = 0, binding = 5) uniform writeonly image2D outputBufferIndirectDiffuse;
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 28) uniform writeonly image2D outputBufferIndirectDiffuseChroma;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue28;
+rayQueryEXT intermediateValue30;
+rayQueryEXT intermediateValue44;
+rayQueryEXT intermediateValue55;
+rayQueryEXT intermediateValue292;
+rayQueryEXT intermediateValue300;
+rayQueryEXT intermediateValue324;
+rayQueryEXT intermediateValue326;
+rayQueryEXT intermediateValue338;
+rayQueryEXT intermediateValue340;
+rayQueryEXT intermediateValue376;
+rayQueryEXT intermediateValue388;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 36
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 4) uniform texture2D previousPrimaryPathLengthBuffer;
+layout(set = 0, binding = 5) uniform texture2D previousPrimaryNormalBuffer;
+layout(set = 0, binding = 6) uniform texture2D previousHistoryLengthBuffer;
+layout(set = 0, binding = 7) uniform texture2D previousDiffuseBuffer;
+layout(set = 0, binding = 8) uniform texture2D previousSpecularBuffer;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 19) uniform usamplerBuffer inputIncidentLight;
+layout(set = 0, binding = 21) uniform texture2D inputBufferMotionVectors;
+layout(set = 0, binding = 23) uniform texture2D previousReflectionDistanceBuffer;
+layout(set = 0, binding = 24) uniform texture2D previousLinearRoughnessBuffer;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 29) uniform texture2D inputBufferReprojectedPathLength;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 44) uniform texture2D inputEmissiveAndLinearRoughness;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 48) uniform texture2D previousDiffuseChromaBuffer;
+layout(set = 0, binding = 49) uniform texture2D inputPreviousGeometryNormal;
+layout(set = 0, binding = 51) uniform texture2D inputAdaptiveDenoiserGradients[2];
+layout(set = 0, binding = 54) uniform itexture2D inputAdaptiveDenoiserPlaneIdentifier;
+layout(set = 9, binding = 1) uniform texture2D inputFinalDiffuseMoments;
+layout(set = 9, binding = 3) uniform texture2D inputFinalSpecularMoments;
+layout(set = 0, binding = 2) uniform writeonly image2D outputBufferHistoryLength;
+layout(set = 0, binding = 5, r32f) uniform readonly image2D outputBufferIndirectDiffuse;
+layout(set = 0, binding = 6, r32f) uniform readonly image2D outputBufferIndirectSpecular;
+layout(set = 0, binding = 15, r32f) uniform image2D outputBufferReflectionDistance;
+layout(set = 0, binding = 28, r32f) uniform readonly image2D outputBufferIndirectDiffuseChroma;
+layout(set = 0, binding = 40) uniform writeonly image2D outputBufferDiffuseMoments;
+layout(set = 0, binding = 42) uniform writeonly image2D outputBufferSpecularMoments;
+layout(set = 3, binding = 0) uniform writeonly image2D denoisingOutputs[8];
+layout(set = 3, binding = 8) uniform writeonly image2D denoisingChromaAndVarianceOutputs[4];
+shared uint intermediateValue[25];
+shared float intermediateValue1[25];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 37
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue53;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 0, binding = 32, std430) writeonly buffer outputVisibleBLASsSSBO
+{
+    uint packedValues[];
+} outputVisibleBLASs;
+layout(set = 1, binding = 0, std430) readonly buffer vertexIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRW_1
+{
+    uint packedValues[];
+} faceDataBuffersRW_2[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 16) uniform texture2D inputBufferColourAndMetallic;
+layout(set = 0, binding = 17) uniform texture2D inputBufferSurfaceOpacityAndObjectCategory;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 46) uniform texture2D inputPrimaryViewDirection;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 4, r32f) uniform image2D outputBufferEmissiveAndLinearRoughness;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue86;
+rayQueryEXT intermediateValue95;
+rayQueryEXT intermediateValue131;
+rayQueryEXT intermediateValue262;
+rayQueryEXT intermediateValue288;
+rayQueryEXT intermediateValue290;
+rayQueryEXT intermediateValue319;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 38
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 4) uniform texture2D previousPrimaryPathLengthBuffer;
+layout(set = 0, binding = 5) uniform texture2D previousPrimaryNormalBuffer;
+layout(set = 0, binding = 6) uniform texture2D previousHistoryLengthBuffer;
+layout(set = 0, binding = 8) uniform texture2D previousSpecularBuffer;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 19) uniform usamplerBuffer inputIncidentLight;
+layout(set = 0, binding = 21) uniform texture2D inputBufferMotionVectors;
+layout(set = 0, binding = 23) uniform texture2D previousReflectionDistanceBuffer;
+layout(set = 0, binding = 24) uniform texture2D previousLinearRoughnessBuffer;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 29) uniform texture2D inputBufferReprojectedPathLength;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 44) uniform texture2D inputEmissiveAndLinearRoughness;
+layout(set = 0, binding = 47) uniform texture2D inputPrimaryThroughput;
+layout(set = 0, binding = 51) uniform texture2D inputAdaptiveDenoiserGradients[2];
+layout(set = 0, binding = 54) uniform itexture2D inputAdaptiveDenoiserPlaneIdentifier;
+layout(set = 9, binding = 3) uniform texture2D inputFinalSpecularMoments;
+layout(set = 0, binding = 2) uniform writeonly image2D outputBufferHistoryLength;
+layout(set = 0, binding = 6, r32f) uniform readonly image2D outputBufferIndirectSpecular;
+layout(set = 0, binding = 15, r32f) uniform image2D outputBufferReflectionDistance;
+layout(set = 0, binding = 42) uniform writeonly image2D outputBufferSpecularMoments;
+layout(set = 3, binding = 0) uniform writeonly image2D denoisingOutputs[8];
+shared uint intermediateValue[25];
+shared float intermediateValue1[25];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 39
+layout(local_size_x = 1, local_size_y = 1, local_size_z = 1) in;
+layout(set = 0, binding = 3, std140) uniform LightMeterDataCBUBO
+{
+    vec4 packedValues[2];
+} LightMeterDataCB;
+layout(set = 14, binding = 0, r32ui) uniform uimageBuffer bufferIncidentLight;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 40
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue45;
+float intermediateValue683;
+float intermediateValue684;
+float intermediateValue685;
+float intermediateValue686;
+float intermediateValue687;
+float intermediateValue688;
+float intermediateValue689;
+float intermediateValue690;
+float intermediateValue691;
+float intermediateValue692;
+float intermediateValue693;
+float intermediateValue694;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 13, binding = 0, scalar) restrict readonly buffer inputLightsBufferSSBO
+{
+    u16vec3 packedValues[];
+} inputLightsBuffer;
+layout(set = 13, binding = 0, std430) restrict readonly buffer inputLightsBuffer_1
+{
+    uint packedValues[];
+} inputLightsBuffer_2;
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRW_1
+{
+    uint packedValues[];
+} faceDataBuffersRW_2[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 0, binding = 62) uniform texture2D waterNormalsTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 0, r32f) uniform image2D outputBufferPrimaryPathLength;
+layout(set = 0, binding = 4) uniform writeonly image2D outputBufferEmissiveAndLinearRoughness;
+layout(set = 0, binding = 29) uniform writeonly image2D outputBufferPrimaryPosLowPrecision;
+layout(set = 0, binding = 33) uniform writeonly image2D outputPrimaryWorldPosition;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue14;
+rayQueryEXT intermediateValue256;
+rayQueryEXT intermediateValue310;
+rayQueryEXT intermediateValue312;
+rayQueryEXT intermediateValue347;
+rayQueryEXT intermediateValue357;
+rayQueryEXT intermediateValue415;
+rayQueryEXT intermediateValue461;
+rayQueryEXT intermediateValue518;
+rayQueryEXT intermediateValue654;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 41
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 27) uniform itexture2D inputPlaneIdentifier;
+layout(set = 0, binding = 2, r32f) uniform readonly image2D outputBufferHistoryLength;
+layout(set = 3, binding = 0, r32f) uniform image2D denoisingOutputs[8];
+shared uint intermediateValue[324];
+shared float intermediateValue1[972];
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 42
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 4) uniform texture2D previousPrimaryPathLengthBuffer;
+layout(set = 0, binding = 5) uniform texture2D previousPrimaryNormalBuffer;
+layout(set = 0, binding = 21) uniform texture2D inputBufferMotionVectors;
+layout(set = 0, binding = 29) uniform texture2D inputBufferReprojectedPathLength;
+layout(set = 0, binding = 30) uniform texture2D previousSunLightShadowBuffer;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 57) uniform itexture2D inputTileClassification;
+layout(set = 4, binding = 0, r32f) uniform image2D shadowDenoisingOutputs[2];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 43
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 0, binding = 63) uniform itexture2D inputBufferPreviousMedium;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 21) uniform writeonly image2D outputBufferSunLightShadow;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue29;
+rayQueryEXT intermediateValue46;
+rayQueryEXT intermediateValue55;
+rayQueryEXT intermediateValue79;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 44
+layout(primitive_culling);
+layout(local_size_x = 4, local_size_y = 8, local_size_z = 1) in;
+float intermediateValue132;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 19, std430) restrict readonly buffer inputIncidentLightSSBO
+{
+    uint packedValues[];
+} inputIncidentLight;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 1, binding = 0, std430) readonly buffer vertexIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 2, binding = 0, std430) readonly buffer faceIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} faceIrradianceCache[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint16_t packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRW_1
+{
+    uint packedValues[];
+} faceDataBuffersRW_2[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 2, std140) uniform RootConstantsUBO
+{
+    vec4 packedValues[1];
+} RootConstants;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 14) uniform texture2D inputBufferPrimaryPathLength;
+layout(set = 0, binding = 15) uniform texture2D inputBufferNormal;
+layout(set = 0, binding = 43) uniform texture2D inputGeometryNormal;
+layout(set = 0, binding = 45) uniform texture2D inputPrimaryWorldPosition;
+layout(set = 0, binding = 46) uniform texture2D inputPrimaryViewDirection;
+layout(set = 0, binding = 58) uniform texture2DArray blueNoiseTexture;
+layout(set = 0, binding = 59) uniform texture2DArray skyTexture;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 4, r32f) uniform image2D outputBufferEmissiveAndLinearRoughness;
+layout(set = 0, binding = 6, r32f) uniform image2D outputBufferIndirectSpecular;
+layout(set = 0, binding = 14, r32f) uniform image2D outputBufferDebug;
+layout(set = 0, binding = 15) uniform writeonly image2D outputBufferReflectionDistance;
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 1) uniform sampler linearSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue45;
+rayQueryEXT intermediateValue158;
+rayQueryEXT intermediateValue174;
+rayQueryEXT intermediateValue176;
+rayQueryEXT intermediateValue198;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 45
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+float intermediateValue6;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 12) uniform writeonly image2D outputBufferFinal;
+layout(set = 0, binding = 23, r32f) uniform image2D outputBufferReferencePathTracer;
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 46
+layout(local_size_x = 256, local_size_y = 1, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 26, r32ui) uniform uimage2D outputBufferToneMappingHistogram;
+layout(set = 0, binding = 27, r32f) uniform image2D outputBufferToneCurve;
+shared float intermediateValue[256];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 47
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 42) uniform texture2D inputFinalColour;
+layout(set = 0, binding = 26, r32ui) uniform uimage2D outputBufferToneMappingHistogram;
+shared uint intermediateValue[256];
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 48
+layout(primitive_culling);
+layout(local_size_x = 32, local_size_y = 1, local_size_z = 1) in;
+float intermediateValue34;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstancesSSBO
+{
+    uint16_t packedValues[];
+} objectInstances;
+layout(set = 0, binding = 1, std430) restrict readonly buffer objectInstances_1
+{
+    uint packedValues[];
+} objectInstances_2;
+layout(set = 0, binding = 3, std430) restrict readonly buffer faceIrradianceCacheUpdateChunksSSBO
+{
+    uint packedValues[];
+} faceIrradianceCacheUpdateChunks;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBufferSSBO
+{
+    uint packedValues[];
+} pbrTextureDataBuffer;
+layout(set = 0, binding = 35, std430) restrict readonly buffer pbrTextureDataBuffer_1
+{
+    uvec2 packedValues[];
+} pbrTextureDataBuffer_2;
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffersSSBO
+{
+    uint16_t packedValues[];
+} vertexBuffers[4096];
+layout(set = 2, binding = 0, std430) restrict readonly buffer vertexBuffers_1
+{
+    uint packedValues[];
+} vertexBuffers_2[4096];
+layout(set = 1, binding = 0, std430) readonly buffer vertexIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} vertexIrradianceCache[4096];
+layout(set = 2, binding = 0, std430) buffer faceIrradianceCacheSSBO
+{
+    uint16_t packedValues[];
+} faceIrradianceCache[4096];
+layout(set = 2, binding = 0, std430) buffer faceIrradianceCache_1
+{
+    u16vec4 packedValues[];
+} faceIrradianceCache_2[4096];
+layout(set = 10, binding = 0, std430) readonly buffer faceDataBuffersRWSSBO
+{
+    uint packedValues[];
+} faceDataBuffersRW[4096];
+layout(set = 11, binding = 0, std430) readonly buffer faceUvBuffersRWSSBO
+{
+    uvec4 packedValues[];
+} faceUvBuffersRW[4096];
+layout(set = 0, binding = 0, std140) uniform ViewCBUBO
+{
+    vec4 packedValues[100];
+} ViewCB;
+layout(set = 0, binding = 0) uniform accelerationStructureEXT SceneBVH;
+layout(set = 0, binding = 60) uniform texture2DArray causticsTexture;
+layout(set = 0, binding = 61) uniform texture2D wibblyTexture;
+layout(set = 6, binding = 0) uniform texture2D textures[4096];
+layout(set = 0, binding = 0) uniform sampler defaultSampler;
+layout(set = 0, binding = 2) uniform sampler linearWrapSampler;
+rayQueryEXT intermediateValue35;
+rayQueryEXT intermediateValue59;
+rayQueryEXT intermediateValue61;
+rayQueryEXT intermediateValue83;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#endif

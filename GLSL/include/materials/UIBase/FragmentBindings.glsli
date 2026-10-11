@@ -1,0 +1,13 @@
+// Native resource and stage-interface layouts for UIBase / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[8];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[2];
+} fragmentVectorConstants1;
+layout(location = 0) out vec4 fragmentColor0;

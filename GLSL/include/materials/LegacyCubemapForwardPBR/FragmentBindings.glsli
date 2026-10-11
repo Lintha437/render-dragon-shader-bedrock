@@ -1,0 +1,73 @@
+// Native resource and stage-interface layouts for LegacyCubemapForwardPBR / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[128];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[132];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+    vec4 packedValues[32];
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[33];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 3) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 5) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(set = 0, binding = 1) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 3) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 5) uniform sampler skyAmbientSamplesSampler;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 3) uniform texture2DArray materialTexture3;
+layout(set = 0, binding = 5) uniform texture3D materialTexture5;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 3) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 5) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(set = 0, binding = 3) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 5) uniform sampler skyAmbientSamplesSampler;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 3) uniform texture2DArray materialTexture3;
+layout(set = 0, binding = 5) uniform texture3D materialTexture5;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+#endif
+layout(location = 12) in vec4 varyingTexCoord1;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(location = 2) in vec4 varyingColor0;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

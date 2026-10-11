@@ -1,0 +1,79 @@
+// Native resource and stage-interface layouts for ActorForwardPBR / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 9
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[16384];
+} vertexScalarConstants0;
+#elif RD_BINDING_LAYOUT == 7
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[40];
+} vertexScalarConstants0;
+#elif RD_BINDING_LAYOUT == 10
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[36];
+} vertexScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+    vec4 packedValues[94];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 9
+    vec4 packedValues[4096];
+#elif RD_BINDING_LAYOUT == 5
+    vec4 packedValues[58];
+#elif RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7
+    vec4 packedValues[10];
+#elif RD_BINDING_LAYOUT == 8
+    vec4 packedValues[57];
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11
+    vec4 packedValues[9];
+#endif
+} vertexVectorConstants0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 8
+layout(location = 2) in vec4 vertexColor0;
+layout(location = 1) in int vertexBlendIndices0;
+layout(location = 8) in vec4 vertexNormal0;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+layout(location = 2) in vec4 vertexColor0;
+layout(location = 1) in int vertexBlendIndices0;
+layout(location = 8) in vec3 vertexNormal0;
+#elif RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 9
+layout(location = 1) in int vertexBlendIndices0;
+#endif
+layout(location = 9) in vec3 vertexPosition0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 8
+layout(location = 10) in vec4 vertexTangent0;
+layout(location = 11) in vec2 vertexTexCoord0;
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 6
+layout(location = 10) in vec4 vertexTangent0;
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 18) in vec4 vertexTexCoord7;
+layout(location = 17) in vec4 vertexTexCoord6;
+layout(location = 16) in vec4 vertexTexCoord5;
+#elif RD_BINDING_LAYOUT == 4
+layout(location = 11) in vec2 vertexTexCoord0;
+#elif RD_BINDING_LAYOUT == 7
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 18) in vec4 vertexTexCoord7;
+layout(location = 17) in vec4 vertexTexCoord6;
+layout(location = 16) in vec4 vertexTexCoord5;
+#elif RD_BINDING_LAYOUT == 10
+layout(location = 18) in vec4 vertexTexCoord7;
+layout(location = 17) in vec4 vertexTexCoord6;
+layout(location = 16) in vec4 vertexTexCoord5;
+#endif
+layout(location = 0) out vec3 varyingBitangent0;
+layout(location = 3) out vec4 varyingColor1;
+layout(location = 2) out vec4 varyingColor0;
+layout(location = 8) out vec3 varyingNormal0;
+layout(location = 15) out vec3 varyingTexCoord4;
+layout(location = 10) out vec3 varyingTangent0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 8
+layout(location = 11) centroid out vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+layout(location = 11) out vec2 varyingTexCoord0;
+#endif
+layout(location = 14) out vec3 varyingTexCoord3;

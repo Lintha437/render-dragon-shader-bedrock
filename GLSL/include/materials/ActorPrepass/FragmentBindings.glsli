@@ -1,0 +1,280 @@
+// Native resource and stage-interface layouts for ActorPrepass / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue32;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[76];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 3
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue37;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[76];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 5
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue32;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[80];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 7
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue38;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[80];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 9
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue33;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[84];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 12
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue37;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[84];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 13
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue41;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[132];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 15
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue47;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[132];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 18
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue43;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[136];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 19
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue49;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[136];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 20
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue41;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[136];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 22
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue47;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[136];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 25
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[140];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 28
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue42;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[144];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 29
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue47;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[144];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 30
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue44;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[144];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 31
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+float intermediateValue50;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[144];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[19];
+#elif RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7
+    vec4 packedValues[20];
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 9
+    vec4 packedValues[21];
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 15
+    vec4 packedValues[33];
+#elif RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 22
+    vec4 packedValues[34];
+#elif RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 25
+    vec4 packedValues[35];
+#elif RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 31
+    vec4 packedValues[36];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 8
+layout(set = 0, binding = 0) uniform texture2D mersTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 3) uniform texture2D normalTextureTexture;
+layout(set = 0, binding = 0) uniform sampler mersTextureSampler;
+layout(set = 0, binding = 1) uniform sampler matTextureSampler;
+layout(set = 0, binding = 3) uniform sampler normalTextureSampler;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 9
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 6
+layout(set = 0, binding = 0) uniform texture2D mersTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 2) uniform texture2D matTexture1Texture;
+layout(set = 0, binding = 3) uniform texture2D normalTextureTexture;
+layout(set = 0, binding = 0) uniform sampler mersTextureSampler;
+layout(set = 0, binding = 1) uniform sampler matTextureSampler;
+layout(set = 0, binding = 2) uniform sampler matTexture1Sampler;
+layout(set = 0, binding = 3) uniform sampler normalTextureSampler;
+#elif RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 31 || RD_BINDING_LAYOUT == 7
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+#endif
+layout(location = 0) in vec3 varyingBitangent0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 8
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+layout(location = 2) in vec3 varyingColor0;
+#elif RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 31
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec3 varyingColor0;
+#endif
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) in vec3 varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 27
+#include "../../FragmentControl.glsli"
+#elif RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 31
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#endif
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

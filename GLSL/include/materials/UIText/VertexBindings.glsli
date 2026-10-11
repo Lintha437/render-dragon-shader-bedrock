@@ -1,0 +1,33 @@
+// Native resource and stage-interface layouts for UIText / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[24];
+} vertexScalarConstants0;
+#elif RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[28];
+} vertexScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+    vec4 packedValues[6];
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[4];
+#elif RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 5
+    vec4 packedValues[7];
+#endif
+} vertexVectorConstants0;
+layout(location = 2) in vec4 vertexColor0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 5
+layout(location = 9) in vec3 vertexPosition0;
+#elif RD_BINDING_LAYOUT == 3
+layout(location = 9) in vec2 vertexPosition0;
+#endif
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 2) out vec4 varyingColor0;
+layout(location = 12) out vec4 varyingTexCoord1;
+layout(location = 11) out vec2 varyingTexCoord0;

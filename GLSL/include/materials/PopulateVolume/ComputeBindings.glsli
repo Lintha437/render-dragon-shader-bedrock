@@ -1,0 +1,318 @@
+// Native resource and stage-interface layouts for PopulateVolume / compute.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+#elif RD_BINDING_LAYOUT == 1
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+#elif RD_BINDING_LAYOUT == 2
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[132];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 3
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[132];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 4
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[132];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 5
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+#elif RD_BINDING_LAYOUT == 6
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+uint intermediateValue12;
+#elif RD_BINDING_LAYOUT == 7
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+uint intermediateValue12;
+#elif RD_BINDING_LAYOUT == 8
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[188];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 9
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+uint intermediateValue12;
+#elif RD_BINDING_LAYOUT == 10
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[188];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 11
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[188];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 12
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+float intermediateValue63;
+float intermediateValue64;
+float intermediateValue65;
+float intermediateValue66;
+float intermediateValue67;
+float intermediateValue68;
+#elif RD_BINDING_LAYOUT == 13
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+const uvec3 intermediateValue12[73] = uvec3[](uvec3(0u, 0u, 1u), uvec3(0u, 0u, 1u), uvec3(0u, 1u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 4294967295u), uvec3(0u, 1u, 2u), uvec3(0u, 1u, 3u), uvec3(1u, 1u, 4294967295u), uvec3(1u, 1u, 0u), uvec3(0u, 0u, 6u), uvec3(0u, 0u, 7u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 1u), uvec3(0u, 0u, 10u), uvec3(0u, 0u, 11u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4u), uvec3(0u, 0u, 14u), uvec3(0u, 0u, 16u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 8u), uvec3(0u, 0u, 18u), uvec3(0u, 0u, 20u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 12u), uvec3(0u, 0u, 22u), uvec3(0u, 0u, 24u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 5u), uvec3(0u, 0u, 15u), uvec3(0u, 0u, 17u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 9u), uvec3(0u, 0u, 19u), uvec3(0u, 0u, 21u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 13u), uvec3(0u, 0u, 23u), uvec3(0u, 0u, 25u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u));
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[144];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 14
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+float intermediateValue63;
+float intermediateValue64;
+float intermediateValue65;
+float intermediateValue66;
+float intermediateValue67;
+float intermediateValue68;
+#elif RD_BINDING_LAYOUT == 15
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+const uvec3 intermediateValue12[73] = uvec3[](uvec3(0u, 0u, 1u), uvec3(0u, 0u, 1u), uvec3(0u, 1u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 4294967295u), uvec3(0u, 1u, 2u), uvec3(0u, 1u, 3u), uvec3(1u, 1u, 4294967295u), uvec3(1u, 1u, 0u), uvec3(0u, 0u, 6u), uvec3(0u, 0u, 7u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 1u), uvec3(0u, 0u, 10u), uvec3(0u, 0u, 11u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4u), uvec3(0u, 0u, 14u), uvec3(0u, 0u, 16u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 8u), uvec3(0u, 0u, 18u), uvec3(0u, 0u, 20u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 12u), uvec3(0u, 0u, 22u), uvec3(0u, 0u, 24u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 5u), uvec3(0u, 0u, 15u), uvec3(0u, 0u, 17u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 9u), uvec3(0u, 0u, 19u), uvec3(0u, 0u, 21u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 13u), uvec3(0u, 0u, 23u), uvec3(0u, 0u, 25u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u));
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[144];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 16
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+float intermediateValue63;
+float intermediateValue64;
+float intermediateValue65;
+float intermediateValue66;
+float intermediateValue67;
+float intermediateValue68;
+#elif RD_BINDING_LAYOUT == 17
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+const uvec3 intermediateValue12[73] = uvec3[](uvec3(0u, 0u, 1u), uvec3(0u, 0u, 1u), uvec3(0u, 1u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 4294967295u), uvec3(0u, 1u, 2u), uvec3(0u, 1u, 3u), uvec3(1u, 1u, 4294967295u), uvec3(1u, 1u, 0u), uvec3(0u, 0u, 6u), uvec3(0u, 0u, 7u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 1u), uvec3(0u, 0u, 10u), uvec3(0u, 0u, 11u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4u), uvec3(0u, 0u, 14u), uvec3(0u, 0u, 16u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 8u), uvec3(0u, 0u, 18u), uvec3(0u, 0u, 20u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 12u), uvec3(0u, 0u, 22u), uvec3(0u, 0u, 24u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 5u), uvec3(0u, 0u, 15u), uvec3(0u, 0u, 17u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 9u), uvec3(0u, 0u, 19u), uvec3(0u, 0u, 21u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 13u), uvec3(0u, 0u, 23u), uvec3(0u, 0u, 25u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u));
+float intermediateValue24;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[144];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 18
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+uint intermediateValue31;
+float intermediateValue97;
+float intermediateValue98;
+float intermediateValue99;
+float intermediateValue100;
+float intermediateValue101;
+float intermediateValue102;
+#elif RD_BINDING_LAYOUT == 19
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+const uvec3 intermediateValue16[73] = uvec3[](uvec3(0u, 0u, 1u), uvec3(0u, 0u, 1u), uvec3(0u, 1u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 4294967295u), uvec3(0u, 1u, 2u), uvec3(0u, 1u, 3u), uvec3(1u, 1u, 4294967295u), uvec3(1u, 1u, 0u), uvec3(0u, 0u, 6u), uvec3(0u, 0u, 7u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 1u), uvec3(0u, 0u, 10u), uvec3(0u, 0u, 11u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4u), uvec3(0u, 0u, 14u), uvec3(0u, 0u, 16u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 8u), uvec3(0u, 0u, 18u), uvec3(0u, 0u, 20u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 12u), uvec3(0u, 0u, 22u), uvec3(0u, 0u, 24u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 5u), uvec3(0u, 0u, 15u), uvec3(0u, 0u, 17u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 9u), uvec3(0u, 0u, 19u), uvec3(0u, 0u, 21u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 13u), uvec3(0u, 0u, 23u), uvec3(0u, 0u, 25u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u));
+float intermediateValue27;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[200];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 20
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+uint intermediateValue31;
+float intermediateValue97;
+float intermediateValue98;
+float intermediateValue99;
+float intermediateValue100;
+float intermediateValue101;
+float intermediateValue102;
+#elif RD_BINDING_LAYOUT == 21
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+const uvec3 intermediateValue16[73] = uvec3[](uvec3(0u, 0u, 1u), uvec3(0u, 0u, 1u), uvec3(0u, 1u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 4294967295u), uvec3(0u, 1u, 2u), uvec3(0u, 1u, 3u), uvec3(1u, 1u, 4294967295u), uvec3(1u, 1u, 0u), uvec3(0u, 0u, 6u), uvec3(0u, 0u, 7u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 1u), uvec3(0u, 0u, 10u), uvec3(0u, 0u, 11u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4u), uvec3(0u, 0u, 14u), uvec3(0u, 0u, 16u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 8u), uvec3(0u, 0u, 18u), uvec3(0u, 0u, 20u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 12u), uvec3(0u, 0u, 22u), uvec3(0u, 0u, 24u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 5u), uvec3(0u, 0u, 15u), uvec3(0u, 0u, 17u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 9u), uvec3(0u, 0u, 19u), uvec3(0u, 0u, 21u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 13u), uvec3(0u, 0u, 23u), uvec3(0u, 0u, 25u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u));
+float intermediateValue27;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[200];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 22
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+uint intermediateValue31;
+float intermediateValue97;
+float intermediateValue98;
+float intermediateValue99;
+float intermediateValue100;
+float intermediateValue101;
+float intermediateValue102;
+#elif RD_BINDING_LAYOUT == 23
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+const uvec3 intermediateValue16[73] = uvec3[](uvec3(0u, 0u, 1u), uvec3(0u, 0u, 1u), uvec3(0u, 1u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 0u), uvec3(0u, 1u, 0u), uvec3(1u, 0u, 0u), uvec3(1u, 0u, 4294967295u), uvec3(0u, 1u, 2u), uvec3(0u, 1u, 3u), uvec3(1u, 1u, 4294967295u), uvec3(1u, 1u, 0u), uvec3(0u, 0u, 6u), uvec3(0u, 0u, 7u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 1u), uvec3(0u, 0u, 10u), uvec3(0u, 0u, 11u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4u), uvec3(0u, 0u, 14u), uvec3(0u, 0u, 16u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 8u), uvec3(0u, 0u, 18u), uvec3(0u, 0u, 20u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 12u), uvec3(0u, 0u, 22u), uvec3(0u, 0u, 24u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 5u), uvec3(0u, 0u, 15u), uvec3(0u, 0u, 17u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 9u), uvec3(0u, 0u, 19u), uvec3(0u, 0u, 21u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 13u), uvec3(0u, 0u, 23u), uvec3(0u, 0u, 25u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u, 0u, 4294967295u), uvec3(0u));
+float intermediateValue27;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[200];
+} computeScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform ComputeVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 5
+    vec4 packedValues[33];
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 9
+    vec4 packedValues[47];
+#elif RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 17
+    vec4 packedValues[36];
+#elif RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23
+    vec4 packedValues[50];
+#endif
+} computeVectorConstants0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 0) uniform texture2D biomeBlendingMapTexture;
+layout(set = 0, binding = 4) uniform texture2D screenSpaceWaterBackFaceDepthAndNormalTexture;
+layout(set = 0, binding = 5) uniform texture2D screenSpaceWaterFrontFaceDepthAndNormalTexture;
+layout(set = 0, binding = 7) uniform texture2DArray cascadedShadowBufferTexture;
+layout(set = 0, binding = 9) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 13) uniform usamplerBuffer zBiomeInfoBuffer;
+layout(set = 0, binding = 8) uniform writeonly image2DArray scatteringBufferOutTexture;
+layout(set = 0, binding = 9) uniform sampler skyAmbientSamplesSampler;
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 9) uniform texture3D materialTexture9;
+layout(set = 0, binding = 13) uniform usamplerBuffer intermediateValue5;
+layout(set = 0, binding = 8) uniform writeonly image2DArray intermediateValue6;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+#elif RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+layout(set = 0, binding = 0) uniform texture2D biomeBlendingMapTexture;
+layout(set = 0, binding = 2) uniform texture2D pointLightShadowTextureAtlasTexture;
+layout(set = 0, binding = 4) uniform texture2D screenSpaceWaterBackFaceDepthAndNormalTexture;
+layout(set = 0, binding = 5) uniform texture2D screenSpaceWaterFrontFaceDepthAndNormalTexture;
+layout(set = 0, binding = 7) uniform texture2DArray cascadedShadowBufferTexture;
+layout(set = 0, binding = 9) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 13) uniform usamplerBuffer zBiomeInfoBuffer;
+layout(set = 0, binding = 14) uniform usamplerBuffer zLightLookupArray;
+layout(set = 0, binding = 15) uniform usamplerBuffer zLights;
+layout(set = 0, binding = 8) uniform writeonly image2DArray scatteringBufferOutTexture;
+layout(set = 0, binding = 2) uniform sampler pointLightShadowTextureAtlasSampler;
+layout(set = 0, binding = 9) uniform sampler skyAmbientSamplesSampler;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 8
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 9) uniform texture3D materialTexture9;
+layout(set = 0, binding = 13) uniform usamplerBuffer intermediateValue6;
+layout(set = 0, binding = 14) uniform usamplerBuffer intermediateValue7;
+layout(set = 0, binding = 15) uniform usamplerBuffer intermediateValue8;
+layout(set = 0, binding = 8) uniform writeonly image2DArray intermediateValue9;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 16
+layout(set = 0, binding = 0) uniform texture2D biomeBlendingMapTexture;
+layout(set = 0, binding = 4) uniform texture2D screenSpaceWaterBackFaceDepthAndNormalTexture;
+layout(set = 0, binding = 5) uniform texture2D screenSpaceWaterFrontFaceDepthAndNormalTexture;
+layout(set = 0, binding = 7) uniform texture2DArray cascadedShadowBufferTexture;
+layout(set = 0, binding = 9) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 11) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 13) uniform usamplerBuffer zBiomeInfoBuffer;
+layout(set = 0, binding = 8) uniform writeonly image2DArray scatteringBufferOutTexture;
+layout(set = 0, binding = 9) uniform sampler skyAmbientSamplesSampler;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 17
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 9) uniform texture3D materialTexture9;
+layout(set = 0, binding = 11) uniform usamplerBuffer intermediateValue5;
+layout(set = 0, binding = 12) uniform usamplerBuffer intermediateValue6;
+layout(set = 0, binding = 13) uniform usamplerBuffer intermediateValue7;
+layout(set = 0, binding = 8) uniform writeonly image2DArray intermediateValue8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 22
+layout(set = 0, binding = 0) uniform texture2D biomeBlendingMapTexture;
+layout(set = 0, binding = 2) uniform texture2D pointLightShadowTextureAtlasTexture;
+layout(set = 0, binding = 4) uniform texture2D screenSpaceWaterBackFaceDepthAndNormalTexture;
+layout(set = 0, binding = 5) uniform texture2D screenSpaceWaterFrontFaceDepthAndNormalTexture;
+layout(set = 0, binding = 7) uniform texture2DArray cascadedShadowBufferTexture;
+layout(set = 0, binding = 9) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 11) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 13) uniform usamplerBuffer zBiomeInfoBuffer;
+layout(set = 0, binding = 14) uniform usamplerBuffer zLightLookupArray;
+layout(set = 0, binding = 15) uniform usamplerBuffer zLights;
+layout(set = 0, binding = 8) uniform writeonly image2DArray scatteringBufferOutTexture;
+layout(set = 0, binding = 2) uniform sampler pointLightShadowTextureAtlasSampler;
+layout(set = 0, binding = 9) uniform sampler skyAmbientSamplesSampler;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 23
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 9) uniform texture3D materialTexture9;
+layout(set = 0, binding = 11) uniform usamplerBuffer intermediateValue6;
+layout(set = 0, binding = 12) uniform usamplerBuffer intermediateValue7;
+layout(set = 0, binding = 13) uniform usamplerBuffer intermediateValue8;
+layout(set = 0, binding = 14) uniform usamplerBuffer intermediateValue9;
+layout(set = 0, binding = 15) uniform usamplerBuffer intermediateValue10;
+layout(set = 0, binding = 8) uniform writeonly image2DArray intermediateValue11;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#endif
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

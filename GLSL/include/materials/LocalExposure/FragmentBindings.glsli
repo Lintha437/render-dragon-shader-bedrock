@@ -1,0 +1,61 @@
+// Native resource and stage-interface layouts for LocalExposure / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#endif
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[3];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D averageLuminanceTexture;
+layout(set = 0, binding = 1) uniform texture2D downsampledLogLuminanceTexture;
+layout(set = 0, binding = 2) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 3) uniform texture2D sceneColorTexture;
+layout(set = 0, binding = 4) uniform texture3D filteredBilateralGridTexture;
+layout(set = 0, binding = 0) uniform sampler averageLuminanceSampler;
+layout(set = 0, binding = 1) uniform sampler downsampledLogLuminanceSampler;
+layout(set = 0, binding = 2) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 3) uniform sampler sceneColorSampler;
+layout(set = 0, binding = 4) uniform sampler filteredBilateralGridSampler;
+#elif RD_BINDING_LAYOUT == 1
+    float packedValues[12];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture3D materialTexture4;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+#elif RD_BINDING_LAYOUT == 2
+    vec4 packedValues[4];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 3) uniform texture2D sceneColorTexture;
+layout(set = 0, binding = 3) uniform sampler sceneColorSampler;
+#elif RD_BINDING_LAYOUT == 3
+    vec4 packedValues[4];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);

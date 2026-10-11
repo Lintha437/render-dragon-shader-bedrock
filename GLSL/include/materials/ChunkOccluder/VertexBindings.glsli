@@ -1,0 +1,11 @@
+// Native resource and stage-interface layouts for ChunkOccluder / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+    vec4 packedValues[4];
+} vertexVectorConstants0;
+layout(location = 9) in vec3 vertexPosition0;
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);

@@ -1,0 +1,35 @@
+// Native resource and stage-interface layouts for PostFX.Debug.VoxelBuffer / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 6, std430) restrict readonly buffer SSBO
+{
+    uvec4 packedValues[];
+} intermediateValue2;
+layout(set = 0, binding = 7, std430) restrict readonly buffer intermediateValue25
+{
+    uint packedValues[];
+} intermediateValue3;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[44];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[11];
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D normalTexture;
+layout(set = 0, binding = 2) uniform texture2D rasterColorTexture;
+layout(set = 0, binding = 6) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 7) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 0) uniform sampler normalSampler;
+layout(set = 0, binding = 2) uniform sampler rasterColorSampler;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;

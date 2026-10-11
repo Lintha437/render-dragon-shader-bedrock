@@ -1,0 +1,9 @@
+// Native resource and stage-interface layouts for CubemapTransfer / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(location = 9) in vec2 vertexPosition0;
+#elif RD_BINDING_LAYOUT == 1
+layout(location = 9) in vec4 vertexPosition0;
+#endif
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 11) out vec2 varyingTexCoord0;

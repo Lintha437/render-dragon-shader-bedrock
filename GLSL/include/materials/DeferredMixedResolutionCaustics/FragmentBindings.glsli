@@ -1,0 +1,36 @@
+// Native resource and stage-interface layouts for DeferredMixedResolutionCaustics / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+#endif
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[11];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 2) uniform texture2D normalTexture;
+layout(set = 0, binding = 5) uniform texture2D sceneDepthTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 2) uniform sampler normalSampler;
+layout(set = 0, binding = 5) uniform sampler sceneDepthSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(location = 3) in vec3 varyingColor1;
+layout(location = 11) in vec4 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+    float packedValues[44];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(location = 3) in vec2 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
