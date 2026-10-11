@@ -1,0 +1,159 @@
+{
+  "material": "TextureShiftRenderChunkPrepass",
+  "parent": "",
+  "passes": {
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off"
+        ],
+        "Seasons": [
+          "Off"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/TextureShiftRenderChunkPrepass/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/TextureShiftRenderChunkPrepass/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/TextureShiftRenderChunkPrepass/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/TextureShiftRenderChunkPrepass/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 4
+    },
+    "GeometryPrepass": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off"
+        ],
+        "Seasons": [
+          "Off"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepass.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepass.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepass.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepass.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 4
+    },
+    "GeometryPrepassAlphaTest": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off"
+        ],
+        "Seasons": [
+          "Off"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepassAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepassAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepassAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/TextureShiftRenderChunkPrepass/GeometryPrepassAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 4
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "material": "SingleBlock",
+  "parent": "",
+  "passes": {
+    "AlphaTest": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPosUVNormalColor/AlphaTest.fragment.glsl",
+            "GLSL/pipelines/SingleBlock/AlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPosUVNormalColor/AlphaTest.fragment.hlsl",
+            "HLSL/pipelines/SingleBlock/AlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlock/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlock/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlock/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlock/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlock/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlock/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "Opaque": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPosUVNormalColor/AlphaTest.fragment.glsl",
+            "GLSL/pipelines/SingleBlock/AlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPosUVNormalColor/AlphaTest.fragment.hlsl",
+            "HLSL/pipelines/SingleBlock/AlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlock/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlock/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "Transparent": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPosUVNormalColor/AlphaTest.fragment.glsl",
+            "GLSL/pipelines/SingleBlock/AlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPosUVNormalColor/AlphaTest.fragment.hlsl",
+            "HLSL/pipelines/SingleBlock/AlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlock/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlock/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    }
+  }
+}

@@ -1,0 +1,79 @@
+{
+  "material": "BeaconBeam",
+  "parent": "",
+  "passes": {
+    "Opaque": {
+      "default_features": {
+        "Fancy": "On"
+      },
+      "supported_features": {
+        "Fancy": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/BeaconBeam/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BeaconBeam/Opaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/BeaconBeam/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BeaconBeam/Opaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "Transparent": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/BeaconBeam/Transparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BeaconBeam/Transparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/BeaconBeam/Transparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BeaconBeam/Transparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

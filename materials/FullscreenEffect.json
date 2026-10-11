@@ -1,0 +1,144 @@
+{
+  "material": "FullscreenEffect",
+  "parent": "",
+  "passes": {
+    "FullScreenOverlayTransparent": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "Opaque": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "Transparent": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/FullscreenEffect/FullScreenOverlayTransparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    }
+  }
+}

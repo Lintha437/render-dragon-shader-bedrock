@@ -1,0 +1,340 @@
+{
+  "material": "ActorBannerForwardPBR",
+  "parent": "ActorForwardPBR",
+  "passes": {
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "Tinting": "Enabled",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "Tinting": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "Tinting": "Enabled",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "Tinting": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    },
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "Tinting": "Enabled",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "Tinting": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/DepthOnlyOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/DepthOnlyOpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    },
+    "ForwardPBRAlphaTest": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "Tinting": "Enabled",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "Tinting": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    },
+    "ForwardPBROpaque": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "Tinting": "Enabled",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "Tinting": [
+          "Disabled",
+          "Enabled"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorBannerForwardPBR/ForwardPBROpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorBannerForwardPBR/ForwardPBROpaque.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    }
+  }
+}

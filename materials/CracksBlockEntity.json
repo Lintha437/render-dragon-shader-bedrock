@@ -1,0 +1,41 @@
+{
+  "material": "CracksBlockEntity",
+  "parent": "",
+  "passes": {
+    "Transparent": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Blit/Transparent.fragment.glsl",
+            "GLSL/pipelines/CracksBlockEntity/Transparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Blit/Transparent.fragment.hlsl",
+            "HLSL/pipelines/CracksBlockEntity/Transparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/CracksBlockEntity/Transparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/CracksBlockEntity/Transparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

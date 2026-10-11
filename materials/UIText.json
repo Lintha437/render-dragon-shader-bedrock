@@ -1,0 +1,53 @@
+{
+  "material": "UIText",
+  "parent": "UI/Fill",
+  "passes": {
+    "Transparent": {
+      "default_features": {
+        "ALPHA_TEST": "Off",
+        "FONT_TYPE": "Bitmap"
+      },
+      "supported_features": {
+        "ALPHA_TEST": [
+          "Off",
+          "On"
+        ],
+        "FONT_TYPE": [
+          "Bitmap",
+          "BitmapSmooth",
+          "MSDF",
+          "TrueType"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/UIText/Transparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/UIText/Transparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/UIText/Transparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/UIText/Transparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    }
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "material": "MeshFallbackForwardPBR",
+  "parent": "",
+  "passes": {
+    "ForwardPBRAlphaTest": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 96
+    },
+    "ForwardPBROpaque": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 96
+    },
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 96
+    }
+  }
+}

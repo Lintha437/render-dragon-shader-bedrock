@@ -1,0 +1,258 @@
+{
+  "material": "ActorMultiTexturePrepass",
+  "parent": "ActorPrepass",
+  "passes": {
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Change_Color": "Off",
+        "ColorSecondTexture": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "ColorSecondTexture": [
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorMultiTexturePrepass/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorMultiTexturePrepass/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorMultiTexturePrepass/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorMultiTexturePrepass/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "Change_Color": "Off",
+        "ColorSecondTexture": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "ColorSecondTexture": [
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "GeometryPrepass": {
+      "default_features": {
+        "Change_Color": "Off",
+        "ColorSecondTexture": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "ColorSecondTexture": [
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepass.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepass.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepass.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepass.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "GeometryPrepassAlphaTest": {
+      "default_features": {
+        "Change_Color": "Off",
+        "ColorSecondTexture": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "ColorSecondTexture": [
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepass.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepass.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepassAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorMultiTexturePrepass/GeometryPrepassAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    }
+  }
+}

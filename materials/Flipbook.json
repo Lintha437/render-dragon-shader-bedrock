@@ -1,0 +1,39 @@
+{
+  "material": "Flipbook",
+  "parent": "",
+  "passes": {
+    "Blit": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Flipbook/Blit.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Flipbook/Blit.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Flipbook/Blit.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Flipbook/Blit.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}
