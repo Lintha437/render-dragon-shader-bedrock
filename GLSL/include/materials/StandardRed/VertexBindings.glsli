@@ -1,0 +1,45 @@
+// Native resource and stage-interface layouts for StandardRed / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 4
+    vec4 packedValues[8];
+#elif RD_BINDING_LAYOUT == 1
+    vec4 packedValues[20];
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5
+    vec4 packedValues[4];
+#elif RD_BINDING_LAYOUT == 6
+    vec4 packedValues[28];
+#elif RD_BINDING_LAYOUT == 7
+    vec4 packedValues[27];
+#elif RD_BINDING_LAYOUT == 8
+    vec4 packedValues[12];
+#elif RD_BINDING_LAYOUT == 9
+    vec4 packedValues[11];
+#endif
+} vertexVectorConstants0;
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 8
+layout(location = 2) in vec4 vertexColor0;
+layout(location = 8) in vec4 vertexNormal0;
+#elif RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+layout(location = 2) in vec4 vertexColor0;
+layout(location = 8) in vec3 vertexNormal0;
+#endif
+layout(location = 9) in vec3 vertexPosition0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7
+layout(location = 11) in vec2 vertexTexCoord0;
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 9
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 18) in vec4 vertexTexCoord7;
+layout(location = 17) in vec4 vertexTexCoord6;
+layout(location = 16) in vec4 vertexTexCoord5;
+#elif RD_BINDING_LAYOUT == 5
+layout(location = 18) in vec4 vertexTexCoord7;
+layout(location = 17) in vec4 vertexTexCoord6;
+layout(location = 16) in vec4 vertexTexCoord5;
+#endif
+layout(location = 2) out vec4 varyingColor0;
+layout(location = 11) out vec2 varyingTexCoord0;
+layout(location = 8) out vec3 varyingNormal0;
+layout(location = 3) out vec4 varyingColor1;
+layout(location = 14) out vec3 varyingTexCoord3;

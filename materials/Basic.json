@@ -1,0 +1,156 @@
+{
+  "material": "Basic",
+  "parent": "",
+  "passes": {
+    "AlphaTest": {
+      "default_features": {
+        "Instancing": "Off",
+        "SampleMatTexture": "Off",
+        "TransformUV0": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "SampleMatTexture": [
+          "Off",
+          "On"
+        ],
+        "TransformUV0": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Basic/AlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Basic/AlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Basic/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Basic/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "Opaque": {
+      "default_features": {
+        "Instancing": "Off",
+        "SampleMatTexture": "Off",
+        "TransformUV0": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "SampleMatTexture": [
+          "Off",
+          "On"
+        ],
+        "TransformUV0": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Basic/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Basic/Opaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Basic/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Basic/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "Transparent": {
+      "default_features": {
+        "Instancing": "Off",
+        "SampleMatTexture": "Off",
+        "TransformUV0": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "SampleMatTexture": [
+          "Off",
+          "On"
+        ],
+        "TransformUV0": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Basic/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Basic/Opaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Basic/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Basic/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    }
+  }
+}

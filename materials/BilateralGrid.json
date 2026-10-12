@@ -1,0 +1,89 @@
+{
+  "material": "BilateralGrid",
+  "parent": "",
+  "passes": {
+    "BuildBilateralGrid": {
+      "default_features": {
+        "ThreadLimit": "LimitedAt64"
+      },
+      "supported_features": {
+        "ThreadLimit": [
+          "LimitedAt64",
+          "Native"
+        ]
+      },
+      "sources": {
+        "compute": {
+          "glsl": [
+            "GLSL/pipelines/BilateralGrid/BuildBilateralGrid.compute.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BilateralGrid/BuildBilateralGrid.compute.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "cs_5_0",
+        "cs_6_3",
+        "cs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "ClearBilateralGrid": {
+      "default_features": {
+        "ThreadLimit": "LimitedAt128"
+      },
+      "supported_features": {
+        "ThreadLimit": [
+          "LimitedAt128",
+          "LimitedAt256",
+          "Native"
+        ]
+      },
+      "sources": {
+        "compute": {
+          "glsl": [
+            "GLSL/pipelines/BilateralGrid/ClearBilateralGrid.compute.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BilateralGrid/ClearBilateralGrid.compute.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "cs_5_0",
+        "cs_6_3",
+        "cs_6_5"
+      ],
+      "original_variants": 3
+    },
+    "FilterBilateralGrid": {
+      "default_features": {
+        "ThreadLimit": "LimitedAt128"
+      },
+      "supported_features": {
+        "ThreadLimit": [
+          "LimitedAt128",
+          "LimitedAt256",
+          "Native"
+        ]
+      },
+      "sources": {
+        "compute": {
+          "glsl": [
+            "GLSL/pipelines/BilateralGrid/FilterBilateralGrid.compute.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BilateralGrid/FilterBilateralGrid.compute.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "cs_5_0",
+        "cs_6_3",
+        "cs_6_5"
+      ],
+      "original_variants": 3
+    }
+  }
+}

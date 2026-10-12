@@ -1,0 +1,252 @@
+{
+  "ALPHA_TEST": {
+    "macro": "RD_FEATURE_ALPHA_TEST",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "AlphaTest": {
+    "macro": "RD_OPTION_ALPHA_TEST",
+    "values": {
+      "Off": 0,
+      "On": 1,
+      "On_DiscardValueBased": 2,
+      "On_VertexTintMaskBased": 3
+    }
+  },
+  "AngularRefinement": {
+    "macro": "RD_FEATURE_ANGULAR_REFINEMENT",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Change_Color": {
+    "macro": "RD_OPTION_CHANGE_COLOR",
+    "values": {
+      "Off": 0,
+      "Multi": 1,
+      "On": 2
+    }
+  },
+  "ColorSecondTexture": {
+    "macro": "RD_FEATURE_COLOR_SECOND_TEXTURE",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Dithering": {
+    "macro": "RD_FEATURE_DITHERING",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Emissive": {
+    "macro": "RD_OPTION_EMISSIVE",
+    "values": {
+      "Off": 0,
+      "Emissive": 1,
+      "EmissiveOnly": 2
+    }
+  },
+  "ExtendedGapFill": {
+    "macro": "RD_FEATURE_EXTENDED_GAP_FILL",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "FFXPrecision": {
+    "macro": "RD_OPTION_FFXPRECISION",
+    "values": {
+      "FULL": 0,
+      "HALF": 1
+    }
+  },
+  "FONT_TYPE": {
+    "macro": "RD_OPTION_FONT_TYPE",
+    "values": {
+      "Bitmap": 0,
+      "BitmapSmooth": 1,
+      "MSDF": 2,
+      "TrueType": 3
+    }
+  },
+  "FSRFilterMode": {
+    "macro": "RD_OPTION_FSRFILTER_MODE",
+    "values": {
+      "BILINEAR": 0,
+      "EASU": 1,
+      "RCAS": 2
+    }
+  },
+  "Fancy": {
+    "macro": "RD_FEATURE_FANCY",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "FlipOcclusion": {
+    "macro": "RD_FEATURE_FLIP_OCCLUSION",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "GPUBlockLighting": {
+    "macro": "RD_FEATURE_GPUBLOCK_LIGHTING",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Instancing": {
+    "macro": "RD_FEATURE_INSTANCING",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Lit": {
+    "macro": "RD_FEATURE_LIT",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "MaskedMultitexture": {
+    "macro": "RD_FEATURE_MASKED_MULTITEXTURE",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Mode": {
+    "macro": "RD_OPTION_MODE",
+    "values": {
+      "Default": 0,
+      "MixedRes": 1
+    }
+  },
+  "MultiColorTint": {
+    "macro": "RD_FEATURE_MULTI_COLOR_TINT",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "NoOcclusion": {
+    "macro": "RD_FEATURE_NO_OCCLUSION",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "NoVariety": {
+    "macro": "RD_FEATURE_NO_VARIETY",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "PointLightShading": {
+    "macro": "RD_FEATURE_POINT_LIGHT_SHADING",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "RenderAsBillboards": {
+    "macro": "RD_FEATURE_RENDER_AS_BILLBOARDS",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "SampleMatTexture": {
+    "macro": "RD_FEATURE_SAMPLE_MAT_TEXTURE",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "Seasons": {
+    "macro": "RD_FEATURE_SEASONS",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "SourceInputType0": {
+    "macro": "RD_OPTION_SOURCE_INPUT_TYPE0",
+    "values": {
+      "Constant": 0,
+      "Sampled": 1
+    }
+  },
+  "SourceInputType1": {
+    "macro": "RD_OPTION_SOURCE_INPUT_TYPE1",
+    "values": {
+      "Constant": 0,
+      "Sampled": 1,
+      "Shared0": 2
+    }
+  },
+  "SourceInputType2": {
+    "macro": "RD_OPTION_SOURCE_INPUT_TYPE2",
+    "values": {
+      "Constant": 0,
+      "Sampled": 1,
+      "Shared0": 2,
+      "Shared1": 3
+    }
+  },
+  "ThreadLimit": {
+    "macro": "RD_OPTION_THREAD_LIMIT",
+    "values": {
+      "LimitedAt128": 0,
+      "LimitedAt256": 1,
+      "LimitedAt64": 2,
+      "Native": 3
+    }
+  },
+  "Tinting": {
+    "macro": "RD_FEATURE_TINTING",
+    "values": {
+      "Disabled": 0,
+      "Enabled": 1
+    }
+  },
+  "TransformUV0": {
+    "macro": "RD_FEATURE_TRANSFORM_UV0",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "UIEntity": {
+    "macro": "RD_FEATURE_UIENTITY",
+    "values": {
+      "Disabled": 0,
+      "Enabled": 1
+    }
+  },
+  "Upscaling": {
+    "macro": "RD_FEATURE_UPSCALING",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  },
+  "UseTextures": {
+    "macro": "RD_FEATURE_USE_TEXTURES",
+    "values": {
+      "Off": 0,
+      "On": 1
+    }
+  }
+}

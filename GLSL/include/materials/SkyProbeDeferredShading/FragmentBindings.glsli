@@ -1,0 +1,51 @@
+// Native resource and stage-interface layouts for SkyProbeDeferredShading / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[140];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[35];
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 1) uniform texture2D colorMetalnessSubsurfaceTexture;
+layout(set = 0, binding = 2) uniform utexture2D emissiveAmbientLinearRoughnessTexture;
+layout(set = 0, binding = 6) uniform texture2D sceneDepthTexture;
+layout(set = 0, binding = 8) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 1) uniform sampler colorMetalnessSubsurfaceSampler;
+layout(set = 0, binding = 6) uniform sampler sceneDepthSampler;
+layout(set = 0, binding = 8) uniform sampler scatteringBufferSampler;
+layout(location = 3) in vec3 varyingColor1;
+layout(location = 11) in vec4 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform utexture2D intermediateValue1;
+layout(set = 0, binding = 6) uniform texture2D materialTexture6;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(location = 3) in vec2 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

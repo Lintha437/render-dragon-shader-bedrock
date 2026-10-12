@@ -1,0 +1,3 @@
+// Native resource and stage-interface layouts for Checkerboarding / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+

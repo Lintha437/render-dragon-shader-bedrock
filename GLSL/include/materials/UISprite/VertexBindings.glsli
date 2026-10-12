@@ -1,0 +1,11 @@
+// Native resource and stage-interface layouts for UISprite / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+    vec4 packedValues[4];
+} vertexVectorConstants0;
+layout(location = 2) in vec4 vertexColor0;
+layout(location = 9) in vec3 vertexPosition0;
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 2) out vec4 varyingColor0;
+layout(location = 11) out vec2 varyingTexCoord0;

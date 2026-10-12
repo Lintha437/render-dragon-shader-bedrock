@@ -1,0 +1,14 @@
+// Native resource and stage-interface layouts for GamefaceStencilPath / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(location = 11) in vec4 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 14) flat in vec4 varyingTexCoord3;
+layout(location = 0) out vec4 fragmentColor0;
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

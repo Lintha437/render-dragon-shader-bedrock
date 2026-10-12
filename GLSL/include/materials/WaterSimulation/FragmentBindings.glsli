@@ -1,0 +1,46 @@
+// Native resource and stage-interface layouts for WaterSimulation / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[12];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#elif RD_BINDING_LAYOUT == 4
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[24];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#elif RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+#endif
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[3];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D simTextureTexture;
+layout(set = 0, binding = 0) uniform sampler simTextureSampler;
+#elif RD_BINDING_LAYOUT == 1
+    vec4 packedValues[3];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4
+    vec4 packedValues[6];
+} fragmentVectorConstants1;
+#elif RD_BINDING_LAYOUT == 3
+    vec4 packedValues[4];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D simTextureTexture;
+layout(set = 0, binding = 0) uniform sampler simTextureSampler;
+#elif RD_BINDING_LAYOUT == 5
+    float packedValues[16];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;

@@ -1,0 +1,34 @@
+// Native resource and stage-interface layouts for Color / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[6];
+} fragmentVectorConstants1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[24];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[6];
+} fragmentVectorConstants1;
+layout(location = 8) in vec3 varyingNormal0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#endif

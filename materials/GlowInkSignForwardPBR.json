@@ -1,0 +1,366 @@
+{
+  "material": "GlowInkSignForwardPBR",
+  "parent": "MeshFallbackForwardPBR",
+  "passes": {
+    "RasterizedAlphaTest": {
+      "default_features": {
+        "AlphaTest": "On_DiscardValueBased",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "On_DiscardValueBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "ForwardPBRAlphaTest": {
+      "default_features": {
+        "AlphaTest": "On_DiscardValueBased",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "On_DiscardValueBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "RasterizedOpaque": {
+      "default_features": {
+        "AlphaTest": "On_DiscardValueBased",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "On_DiscardValueBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "ForwardPBROpaque": {
+      "default_features": {
+        "AlphaTest": "On_DiscardValueBased",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "On_DiscardValueBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "RasterizedTransparent": {
+      "default_features": {
+        "AlphaTest": "On_DiscardValueBased",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "On_DiscardValueBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "AlphaTest": "On_DiscardValueBased",
+        "Lit": "Off",
+        "Fancy": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "On_DiscardValueBased"
+        ],
+        "Fancy": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/RasterizedAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/GlowInkSignForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/GlowInkSignForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    }
+  }
+}

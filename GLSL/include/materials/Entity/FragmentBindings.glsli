@@ -1,0 +1,143 @@
+// Native resource and stage-interface layouts for Entity / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 39 || RD_BINDING_LAYOUT == 40 || RD_BINDING_LAYOUT == 42 || RD_BINDING_LAYOUT == 59 || RD_BINDING_LAYOUT == 65 || RD_BINDING_LAYOUT == 67 || RD_BINDING_LAYOUT == 68 || RD_BINDING_LAYOUT == 70 || RD_BINDING_LAYOUT == 83
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 31 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 44 || RD_BINDING_LAYOUT == 46 || RD_BINDING_LAYOUT == 48 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 50 || RD_BINDING_LAYOUT == 51 || RD_BINDING_LAYOUT == 61 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 71 || RD_BINDING_LAYOUT == 73 || RD_BINDING_LAYOUT == 75 || RD_BINDING_LAYOUT == 85 || RD_BINDING_LAYOUT == 87 || RD_BINDING_LAYOUT == 93
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[12];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 33 || RD_BINDING_LAYOUT == 53 || RD_BINDING_LAYOUT == 55 || RD_BINDING_LAYOUT == 57 || RD_BINDING_LAYOUT == 77 || RD_BINDING_LAYOUT == 79 || RD_BINDING_LAYOUT == 89 || RD_BINDING_LAYOUT == 9 || RD_BINDING_LAYOUT == 92 || RD_BINDING_LAYOUT == 95 || RD_BINDING_LAYOUT == 97
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[8];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 101 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 35 || RD_BINDING_LAYOUT == 81 || RD_BINDING_LAYOUT == 99
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[4];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 37 || RD_BINDING_LAYOUT == 62 || RD_BINDING_LAYOUT == 64
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[20];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 38 || RD_BINDING_LAYOUT == 39 || RD_BINDING_LAYOUT == 40 || RD_BINDING_LAYOUT == 41 || RD_BINDING_LAYOUT == 42 || RD_BINDING_LAYOUT == 58 || RD_BINDING_LAYOUT == 59 || RD_BINDING_LAYOUT == 65 || RD_BINDING_LAYOUT == 66 || RD_BINDING_LAYOUT == 67 || RD_BINDING_LAYOUT == 68 || RD_BINDING_LAYOUT == 69 || RD_BINDING_LAYOUT == 70 || RD_BINDING_LAYOUT == 82 || RD_BINDING_LAYOUT == 83
+    vec4 packedValues[4];
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 31 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 43 || RD_BINDING_LAYOUT == 44 || RD_BINDING_LAYOUT == 45 || RD_BINDING_LAYOUT == 46 || RD_BINDING_LAYOUT == 47 || RD_BINDING_LAYOUT == 48 || RD_BINDING_LAYOUT == 49 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 50 || RD_BINDING_LAYOUT == 51 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 60 || RD_BINDING_LAYOUT == 61 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 71 || RD_BINDING_LAYOUT == 72 || RD_BINDING_LAYOUT == 73 || RD_BINDING_LAYOUT == 74 || RD_BINDING_LAYOUT == 75 || RD_BINDING_LAYOUT == 84 || RD_BINDING_LAYOUT == 85 || RD_BINDING_LAYOUT == 86 || RD_BINDING_LAYOUT == 87 || RD_BINDING_LAYOUT == 91 || RD_BINDING_LAYOUT == 93
+    vec4 packedValues[3];
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 32 || RD_BINDING_LAYOUT == 33 || RD_BINDING_LAYOUT == 52 || RD_BINDING_LAYOUT == 53 || RD_BINDING_LAYOUT == 54 || RD_BINDING_LAYOUT == 55 || RD_BINDING_LAYOUT == 56 || RD_BINDING_LAYOUT == 57 || RD_BINDING_LAYOUT == 76 || RD_BINDING_LAYOUT == 77 || RD_BINDING_LAYOUT == 78 || RD_BINDING_LAYOUT == 79 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 88 || RD_BINDING_LAYOUT == 89 || RD_BINDING_LAYOUT == 9 || RD_BINDING_LAYOUT == 90 || RD_BINDING_LAYOUT == 92 || RD_BINDING_LAYOUT == 94 || RD_BINDING_LAYOUT == 95 || RD_BINDING_LAYOUT == 96 || RD_BINDING_LAYOUT == 97
+    vec4 packedValues[2];
+#elif RD_BINDING_LAYOUT == 100 || RD_BINDING_LAYOUT == 101 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 34 || RD_BINDING_LAYOUT == 35 || RD_BINDING_LAYOUT == 80 || RD_BINDING_LAYOUT == 81 || RD_BINDING_LAYOUT == 98 || RD_BINDING_LAYOUT == 99
+    vec4 packedValues[1];
+#elif RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 36 || RD_BINDING_LAYOUT == 37 || RD_BINDING_LAYOUT == 62 || RD_BINDING_LAYOUT == 63 || RD_BINDING_LAYOUT == 64
+    vec4 packedValues[5];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 32 || RD_BINDING_LAYOUT == 36 || RD_BINDING_LAYOUT == 45 || RD_BINDING_LAYOUT == 58 || RD_BINDING_LAYOUT == 66 || RD_BINDING_LAYOUT == 76 || RD_BINDING_LAYOUT == 86
+layout(set = 0, binding = 1) uniform texture2D matTexture1Texture;
+layout(set = 0, binding = 1) uniform sampler matTexture1Sampler;
+#elif RD_BINDING_LAYOUT == 33 || RD_BINDING_LAYOUT == 37 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 46 || RD_BINDING_LAYOUT == 59 || RD_BINDING_LAYOUT == 67 || RD_BINDING_LAYOUT == 77 || RD_BINDING_LAYOUT == 87
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 49 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 69 || RD_BINDING_LAYOUT == 78 || RD_BINDING_LAYOUT == 91
+layout(set = 0, binding = 0) uniform texture2D matTexture0Texture;
+layout(set = 0, binding = 0) uniform sampler matTexture0Sampler;
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 51 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 70 || RD_BINDING_LAYOUT == 79 || RD_BINDING_LAYOUT == 93
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+#elif RD_BINDING_LAYOUT == 34 || RD_BINDING_LAYOUT == 38 || RD_BINDING_LAYOUT == 54 || RD_BINDING_LAYOUT == 60 || RD_BINDING_LAYOUT == 72 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 80 || RD_BINDING_LAYOUT == 96
+layout(set = 0, binding = 0) uniform texture2D matTexture0Texture;
+layout(set = 0, binding = 1) uniform texture2D matTexture1Texture;
+layout(set = 0, binding = 0) uniform sampler matTexture0Sampler;
+layout(set = 0, binding = 1) uniform sampler matTexture1Sampler;
+#elif RD_BINDING_LAYOUT == 35 || RD_BINDING_LAYOUT == 39 || RD_BINDING_LAYOUT == 55 || RD_BINDING_LAYOUT == 61 || RD_BINDING_LAYOUT == 73 || RD_BINDING_LAYOUT == 81 || RD_BINDING_LAYOUT == 9 || RD_BINDING_LAYOUT == 97
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#elif RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 47 || RD_BINDING_LAYOUT == 84 || RD_BINDING_LAYOUT == 90
+layout(set = 0, binding = 2) uniform texture2D matTexture2Texture;
+layout(set = 0, binding = 2) uniform sampler matTexture2Sampler;
+#elif RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 40 || RD_BINDING_LAYOUT == 48 || RD_BINDING_LAYOUT == 62 || RD_BINDING_LAYOUT == 85 || RD_BINDING_LAYOUT == 92
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+#elif RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 43 || RD_BINDING_LAYOUT == 88
+layout(set = 0, binding = 1) uniform texture2D matTexture1Texture;
+layout(set = 0, binding = 2) uniform texture2D matTexture2Texture;
+layout(set = 0, binding = 1) uniform sampler matTexture1Sampler;
+layout(set = 0, binding = 2) uniform sampler matTexture2Sampler;
+#elif RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 44 || RD_BINDING_LAYOUT == 65 || RD_BINDING_LAYOUT == 89
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+#elif RD_BINDING_LAYOUT == 100 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 56 || RD_BINDING_LAYOUT == 94
+layout(set = 0, binding = 0) uniform texture2D matTexture0Texture;
+layout(set = 0, binding = 2) uniform texture2D matTexture2Texture;
+layout(set = 0, binding = 0) uniform sampler matTexture0Sampler;
+layout(set = 0, binding = 2) uniform sampler matTexture2Sampler;
+#elif RD_BINDING_LAYOUT == 101 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 31 || RD_BINDING_LAYOUT == 50 || RD_BINDING_LAYOUT == 57 || RD_BINDING_LAYOUT == 68 || RD_BINDING_LAYOUT == 95
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+#elif RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 52 || RD_BINDING_LAYOUT == 98
+layout(set = 0, binding = 0) uniform texture2D matTexture0Texture;
+layout(set = 0, binding = 1) uniform texture2D matTexture1Texture;
+layout(set = 0, binding = 2) uniform texture2D matTexture2Texture;
+layout(set = 0, binding = 0) uniform sampler matTexture0Sampler;
+layout(set = 0, binding = 1) uniform sampler matTexture1Sampler;
+layout(set = 0, binding = 2) uniform sampler matTexture2Sampler;
+#elif RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 53 || RD_BINDING_LAYOUT == 71 || RD_BINDING_LAYOUT == 99
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+#endif
+layout(location = 4) in vec4 varyingColor2;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 100 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 32 || RD_BINDING_LAYOUT == 34 || RD_BINDING_LAYOUT == 36 || RD_BINDING_LAYOUT == 38 || RD_BINDING_LAYOUT == 41 || RD_BINDING_LAYOUT == 43 || RD_BINDING_LAYOUT == 45 || RD_BINDING_LAYOUT == 47 || RD_BINDING_LAYOUT == 49 || RD_BINDING_LAYOUT == 52 || RD_BINDING_LAYOUT == 54 || RD_BINDING_LAYOUT == 56 || RD_BINDING_LAYOUT == 58 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 60 || RD_BINDING_LAYOUT == 63 || RD_BINDING_LAYOUT == 66 || RD_BINDING_LAYOUT == 69 || RD_BINDING_LAYOUT == 72 || RD_BINDING_LAYOUT == 74 || RD_BINDING_LAYOUT == 76 || RD_BINDING_LAYOUT == 78 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 80 || RD_BINDING_LAYOUT == 82 || RD_BINDING_LAYOUT == 84 || RD_BINDING_LAYOUT == 86 || RD_BINDING_LAYOUT == 88 || RD_BINDING_LAYOUT == 90 || RD_BINDING_LAYOUT == 91 || RD_BINDING_LAYOUT == 94 || RD_BINDING_LAYOUT == 96 || RD_BINDING_LAYOUT == 98
+layout(location = 13) in vec4 varyingTexCoord2;
+layout(location = 5) in vec4 varyingColor3;
+layout(location = 11) in vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 42 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 64 || RD_BINDING_LAYOUT == 75 || RD_BINDING_LAYOUT == 83
+layout(location = 5) in vec3 varyingColor3;
+#elif RD_BINDING_LAYOUT == 101 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 33 || RD_BINDING_LAYOUT == 35 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 40 || RD_BINDING_LAYOUT == 44 || RD_BINDING_LAYOUT == 46 || RD_BINDING_LAYOUT == 48 || RD_BINDING_LAYOUT == 50 || RD_BINDING_LAYOUT == 51 || RD_BINDING_LAYOUT == 53 || RD_BINDING_LAYOUT == 55 || RD_BINDING_LAYOUT == 57 || RD_BINDING_LAYOUT == 62 || RD_BINDING_LAYOUT == 65 || RD_BINDING_LAYOUT == 67 || RD_BINDING_LAYOUT == 68 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 70 || RD_BINDING_LAYOUT == 71 || RD_BINDING_LAYOUT == 73 || RD_BINDING_LAYOUT == 77 || RD_BINDING_LAYOUT == 79 || RD_BINDING_LAYOUT == 81 || RD_BINDING_LAYOUT == 85 || RD_BINDING_LAYOUT == 87 || RD_BINDING_LAYOUT == 89 || RD_BINDING_LAYOUT == 9 || RD_BINDING_LAYOUT == 92 || RD_BINDING_LAYOUT == 93 || RD_BINDING_LAYOUT == 95 || RD_BINDING_LAYOUT == 97 || RD_BINDING_LAYOUT == 99
+layout(location = 5) in vec3 varyingColor3;
+layout(location = 11) in vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 37 || RD_BINDING_LAYOUT == 59
+layout(location = 13) in vec4 varyingTexCoord2;
+layout(location = 5) in vec3 varyingColor3;
+#elif RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 31 || RD_BINDING_LAYOUT == 39 || RD_BINDING_LAYOUT == 61
+layout(location = 13) in vec4 varyingTexCoord2;
+layout(location = 5) in vec3 varyingColor3;
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 8
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 15 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 27 || RD_BINDING_LAYOUT == 28 || RD_BINDING_LAYOUT == 29 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 30 || RD_BINDING_LAYOUT == 31 || RD_BINDING_LAYOUT == 32 || RD_BINDING_LAYOUT == 33 || RD_BINDING_LAYOUT == 34 || RD_BINDING_LAYOUT == 35 || RD_BINDING_LAYOUT == 36 || RD_BINDING_LAYOUT == 37 || RD_BINDING_LAYOUT == 38 || RD_BINDING_LAYOUT == 39 || RD_BINDING_LAYOUT == 40 || RD_BINDING_LAYOUT == 41 || RD_BINDING_LAYOUT == 42 || RD_BINDING_LAYOUT == 43 || RD_BINDING_LAYOUT == 44 || RD_BINDING_LAYOUT == 45 || RD_BINDING_LAYOUT == 46 || RD_BINDING_LAYOUT == 47 || RD_BINDING_LAYOUT == 48 || RD_BINDING_LAYOUT == 49 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 50 || RD_BINDING_LAYOUT == 51 || RD_BINDING_LAYOUT == 52 || RD_BINDING_LAYOUT == 53 || RD_BINDING_LAYOUT == 54 || RD_BINDING_LAYOUT == 55 || RD_BINDING_LAYOUT == 56 || RD_BINDING_LAYOUT == 57 || RD_BINDING_LAYOUT == 62 || RD_BINDING_LAYOUT == 63 || RD_BINDING_LAYOUT == 64 || RD_BINDING_LAYOUT == 65 || RD_BINDING_LAYOUT == 66 || RD_BINDING_LAYOUT == 67 || RD_BINDING_LAYOUT == 68 || RD_BINDING_LAYOUT == 69 || RD_BINDING_LAYOUT == 70 || RD_BINDING_LAYOUT == 71 || RD_BINDING_LAYOUT == 72 || RD_BINDING_LAYOUT == 73
+#include "../../FragmentControl.glsli"
+#endif
