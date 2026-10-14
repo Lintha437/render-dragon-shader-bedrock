@@ -1,0 +1,14 @@
+// Native resource and stage-interface layouts for EditorSelectionCursor / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[20];
+} vertexScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+    vec4 packedValues[5];
+} vertexVectorConstants0;
+layout(location = 9) in vec4 vertexPosition0;
+layout(location = 11) out float varyingTexCoord0;

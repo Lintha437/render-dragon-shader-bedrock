@@ -1,0 +1,40 @@
+// Native resource and stage-interface layouts for WaterExtinction / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+float intermediateValue15;
+layout(set = 0, binding = 11, std430) restrict readonly buffer SSBO
+{
+    uint packedValues[];
+} intermediateValue3;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[52];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[13];
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D biomeBlendingMapTexture;
+layout(set = 0, binding = 3) uniform texture2D sceneDepthTexture;
+layout(set = 0, binding = 4) uniform texture2D waterDepthTexture;
+layout(set = 0, binding = 11) uniform usamplerBuffer zBiomeInfoBuffer;
+layout(set = 0, binding = 3) uniform sampler sceneDepthSampler;
+layout(set = 0, binding = 4) uniform sampler waterDepthSampler;
+layout(location = 3) in vec3 varyingColor1;
+layout(location = 11) in vec4 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(location = 3) in vec2 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);

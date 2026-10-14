@@ -1,0 +1,23 @@
+// Native resource and stage-interface layouts for EndPortal / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D colorTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D parallaxTextureTexture;
+layout(set = 0, binding = 0) uniform sampler colorTextureSampler;
+layout(set = 0, binding = 1) uniform sampler parallaxTextureSampler;
+#endif
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+#if RD_BINDING_LAYOUT == 0
+layout(location = 12) centroid in vec2 varyingTexCoord1;
+#endif
+layout(location = 13) in float varyingTexCoord2;
+layout(location = 2) in vec4 varyingColor0;
+#if RD_BINDING_LAYOUT == 1
+layout(location = 12) centroid in vec2 varyingTexCoord1;
+#endif
+layout(location = 0) out vec4 fragmentColor0;

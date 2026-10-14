@@ -1,0 +1,41 @@
+// Native resource and stage-interface layouts for SingleBlock / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[116];
+} vertexScalarConstants0;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[124];
+} vertexScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+    vec4 packedValues[29];
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[31];
+#endif
+} vertexVectorConstants0;
+layout(location = 2) in vec4 vertexColor0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+layout(location = 8) in vec4 vertexNormal0;
+#endif
+layout(location = 9) in vec3 vertexPosition0;
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 5) out vec4 varyingColor3;
+layout(location = 2) out vec4 varyingColor0;
+layout(location = 4) out vec4 varyingColor2;
+layout(location = 3) out vec4 varyingColor1;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(location = 11) centroid out vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+layout(location = 11) out vec2 varyingTexCoord0;
+#endif
+layout(location = 14) out vec3 varyingTexCoord3;
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

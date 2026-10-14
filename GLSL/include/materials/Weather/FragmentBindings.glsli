@@ -1,0 +1,40 @@
+// Native resource and stage-interface layouts for Weather / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#endif
+{
+#if RD_BINDING_LAYOUT == 0
+    float packedValues[4];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+#elif RD_BINDING_LAYOUT == 1
+    vec4 packedValues[1];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D lightingTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D occlusionTextureTexture;
+layout(set = 0, binding = 2) uniform texture2D weatherTextureTexture;
+layout(set = 0, binding = 0) uniform sampler lightingTextureSampler;
+layout(set = 0, binding = 1) uniform sampler occlusionTextureSampler;
+layout(set = 0, binding = 2) uniform sampler weatherTextureSampler;
+layout(location = 2) in vec4 varyingColor0;
+#endif
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 13) in float varyingTexCoord2;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#if RD_BINDING_LAYOUT == 1
+layout(location = 14) in vec3 varyingTexCoord3;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

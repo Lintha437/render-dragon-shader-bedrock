@@ -1,0 +1,753 @@
+// Native resource and stage-interface layouts for RenderChunkForwardPBR / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 19
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+float intermediateValue233;
+float intermediateValue234;
+float intermediateValue235;
+float intermediateValue236;
+float intermediateValue237;
+float intermediateValue238;
+float intermediateValue227;
+float intermediateValue228;
+float intermediateValue229;
+float intermediateValue230;
+float intermediateValue231;
+float intermediateValue232;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[576];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[144];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D brdfLutTexture;
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 4) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 5) uniform texture2D seasonsTextureTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 7) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 8) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 9) uniform textureCubeArray specularIblRecordsTexture;
+layout(set = 0, binding = 10) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 11) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 0) uniform sampler brdfLutSampler;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(set = 0, binding = 4) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 5) uniform sampler seasonsTextureSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(set = 0, binding = 7) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 8) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 9) uniform sampler specularIblRecordsSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 17
+const uvec4 intermediateValue21[69] = uvec4[](uvec4(1065353216u, 0u, 0u, 0u), uvec4(0u, 1065353216u, 0u, 0u), uvec4(0u, 0u, 1065353216u, 0u), uvec4(0u, 0u, 0u, 1065353216u), uvec4(4294967295u, 0u, 0u, 1u), uvec4(2u, 0u, 0u, 1u), uvec4(3u, 0u, 1u, 0u), uvec4(4294967295u, 0u, 1u, 0u), uvec4(0u, 1u, 0u, 0u), uvec4(6u, 1u, 0u, 0u), uvec4(7u, 0u, 1u, 0u), uvec4(4294967295u, 1u, 0u, 0u), uvec4(1u, 0u, 1u, 1u), uvec4(10u, 1u, 0u, 1u), uvec4(11u, 0u, 1u, 1u), uvec4(4294967295u, 0u, 1u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4u, 0u, 0u, 0u), uvec4(14u, 0u, 0u, 0u), uvec4(16u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(8u, 0u, 0u, 0u), uvec4(18u, 0u, 0u, 0u), uvec4(20u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(12u, 0u, 0u, 0u), uvec4(22u, 0u, 0u, 0u), uvec4(24u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(5u, 0u, 0u, 0u), uvec4(15u, 0u, 0u, 0u), uvec4(17u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(9u, 0u, 0u, 0u), uvec4(19u, 0u, 0u, 0u), uvec4(21u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(13u, 0u, 0u, 0u), uvec4(23u, 0u, 0u, 0u), uvec4(25u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(0u));
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 10, std430) restrict readonly buffer SSBO
+{
+    uvec4 packedValues[];
+} intermediateValue7;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue227
+{
+    uint packedValues[];
+} intermediateValue8;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue228
+{
+    uvec2 packedValues[];
+} intermediateValue9;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue229
+{
+    uvec4 packedValues[];
+} intermediateValue10;
+layout(set = 0, binding = 12, std430) restrict readonly buffer intermediateValue230
+{
+    uint packedValues[];
+} intermediateValue11;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[4096];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform textureCubeArray materialTexture9;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 2
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+float intermediateValue238;
+float intermediateValue239;
+float intermediateValue240;
+float intermediateValue241;
+float intermediateValue242;
+float intermediateValue243;
+float intermediateValue232;
+float intermediateValue233;
+float intermediateValue234;
+float intermediateValue235;
+float intermediateValue236;
+float intermediateValue237;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[576];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[144];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D brdfLutTexture;
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 4) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 7) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 8) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 9) uniform textureCubeArray specularIblRecordsTexture;
+layout(set = 0, binding = 10) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 11) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 0) uniform sampler brdfLutSampler;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(set = 0, binding = 4) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(set = 0, binding = 7) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 8) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 9) uniform sampler specularIblRecordsSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 3
+const uvec4 intermediateValue23[69] = uvec4[](uvec4(1065353216u, 0u, 0u, 0u), uvec4(0u, 1065353216u, 0u, 0u), uvec4(0u, 0u, 1065353216u, 0u), uvec4(0u, 0u, 0u, 1065353216u), uvec4(4294967295u, 0u, 0u, 1u), uvec4(2u, 0u, 0u, 1u), uvec4(3u, 0u, 1u, 0u), uvec4(4294967295u, 0u, 1u, 0u), uvec4(0u, 1u, 0u, 0u), uvec4(6u, 1u, 0u, 0u), uvec4(7u, 0u, 1u, 0u), uvec4(4294967295u, 1u, 0u, 0u), uvec4(1u, 0u, 1u, 1u), uvec4(10u, 1u, 0u, 1u), uvec4(11u, 0u, 1u, 1u), uvec4(4294967295u, 0u, 1u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4u, 0u, 0u, 0u), uvec4(14u, 0u, 0u, 0u), uvec4(16u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(8u, 0u, 0u, 0u), uvec4(18u, 0u, 0u, 0u), uvec4(20u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(12u, 0u, 0u, 0u), uvec4(22u, 0u, 0u, 0u), uvec4(24u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(5u, 0u, 0u, 0u), uvec4(15u, 0u, 0u, 0u), uvec4(17u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(9u, 0u, 0u, 0u), uvec4(19u, 0u, 0u, 0u), uvec4(21u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(13u, 0u, 0u, 0u), uvec4(23u, 0u, 0u, 0u), uvec4(25u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(0u));
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 10, std430) restrict readonly buffer SSBO
+{
+    uvec4 packedValues[];
+} intermediateValue8;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue225
+{
+    uint packedValues[];
+} intermediateValue9;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue226
+{
+    uvec2 packedValues[];
+} intermediateValue10;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue227
+{
+    uvec4 packedValues[];
+} intermediateValue11;
+layout(set = 0, binding = 12, std430) restrict readonly buffer intermediateValue228
+{
+    uint packedValues[];
+} intermediateValue12;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[4096];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform textureCubeArray materialTexture9;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 4
+const uvec4 intermediateValue26[69] = uvec4[](uvec4(1065353216u, 0u, 0u, 0u), uvec4(0u, 1065353216u, 0u, 0u), uvec4(0u, 0u, 1065353216u, 0u), uvec4(0u, 0u, 0u, 1065353216u), uvec4(4294967295u, 0u, 0u, 1u), uvec4(2u, 0u, 0u, 1u), uvec4(3u, 0u, 1u, 0u), uvec4(4294967295u, 0u, 1u, 0u), uvec4(0u, 1u, 0u, 0u), uvec4(6u, 1u, 0u, 0u), uvec4(7u, 0u, 1u, 0u), uvec4(4294967295u, 1u, 0u, 0u), uvec4(1u, 0u, 1u, 1u), uvec4(10u, 1u, 0u, 1u), uvec4(11u, 0u, 1u, 1u), uvec4(4294967295u, 0u, 1u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4u, 0u, 0u, 0u), uvec4(14u, 0u, 0u, 0u), uvec4(16u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(8u, 0u, 0u, 0u), uvec4(18u, 0u, 0u, 0u), uvec4(20u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(12u, 0u, 0u, 0u), uvec4(22u, 0u, 0u, 0u), uvec4(24u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(5u, 0u, 0u, 0u), uvec4(15u, 0u, 0u, 0u), uvec4(17u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(9u, 0u, 0u, 0u), uvec4(19u, 0u, 0u, 0u), uvec4(21u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(13u, 0u, 0u, 0u), uvec4(23u, 0u, 0u, 0u), uvec4(25u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(0u));
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 10, std430) restrict readonly buffer SSBO
+{
+    uvec4 packedValues[];
+} intermediateValue8;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue292
+{
+    uint packedValues[];
+} intermediateValue9;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue293
+{
+    uvec2 packedValues[];
+} intermediateValue10;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue294
+{
+    uvec4 packedValues[];
+} intermediateValue11;
+layout(set = 0, binding = 12, std430) restrict readonly buffer intermediateValue295
+{
+    uint packedValues[];
+} intermediateValue12;
+layout(set = 0, binding = 13, std430) restrict readonly buffer intermediateValue296
+{
+    uint packedValues[];
+} intermediateValue13;
+layout(set = 0, binding = 14, std430) restrict readonly buffer intermediateValue297
+{
+    uint packedValues[];
+} intermediateValue14;
+layout(set = 0, binding = 14, std430) restrict readonly buffer intermediateValue298
+{
+    uvec4 packedValues[];
+} intermediateValue15;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[4096];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform textureCubeArray materialTexture9;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 5
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+uint intermediateValue82;
+float intermediateValue287;
+float intermediateValue288;
+float intermediateValue289;
+float intermediateValue290;
+float intermediateValue291;
+float intermediateValue292;
+float intermediateValue281;
+float intermediateValue282;
+float intermediateValue283;
+float intermediateValue284;
+float intermediateValue285;
+float intermediateValue286;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[648];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[162];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D brdfLutTexture;
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 3) uniform texture2D pointLightShadowTextureAtlasTexture;
+layout(set = 0, binding = 4) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 7) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 8) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 9) uniform textureCubeArray specularIblRecordsTexture;
+layout(set = 0, binding = 10) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 11) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 13) uniform usamplerBuffer zLightLookupArray;
+layout(set = 0, binding = 14) uniform usamplerBuffer zLights;
+layout(set = 0, binding = 0) uniform sampler brdfLutSampler;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(set = 0, binding = 3) uniform sampler pointLightShadowTextureAtlasSampler;
+layout(set = 0, binding = 4) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(set = 0, binding = 7) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 8) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 9) uniform sampler specularIblRecordsSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 6
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+uint intermediateValue77;
+float intermediateValue282;
+float intermediateValue283;
+float intermediateValue284;
+float intermediateValue285;
+float intermediateValue286;
+float intermediateValue287;
+float intermediateValue276;
+float intermediateValue277;
+float intermediateValue278;
+float intermediateValue279;
+float intermediateValue280;
+float intermediateValue281;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[648];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[162];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D brdfLutTexture;
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 3) uniform texture2D pointLightShadowTextureAtlasTexture;
+layout(set = 0, binding = 4) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 5) uniform texture2D seasonsTextureTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 7) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 8) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 9) uniform textureCubeArray specularIblRecordsTexture;
+layout(set = 0, binding = 10) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 11) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 13) uniform usamplerBuffer zLightLookupArray;
+layout(set = 0, binding = 14) uniform usamplerBuffer zLights;
+layout(set = 0, binding = 0) uniform sampler brdfLutSampler;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(set = 0, binding = 3) uniform sampler pointLightShadowTextureAtlasSampler;
+layout(set = 0, binding = 4) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 5) uniform sampler seasonsTextureSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(set = 0, binding = 7) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 8) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 9) uniform sampler specularIblRecordsSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 7
+const uvec4 intermediateValue28[69] = uvec4[](uvec4(1065353216u, 0u, 0u, 0u), uvec4(0u, 1065353216u, 0u, 0u), uvec4(0u, 0u, 1065353216u, 0u), uvec4(0u, 0u, 0u, 1065353216u), uvec4(4294967295u, 0u, 0u, 1u), uvec4(2u, 0u, 0u, 1u), uvec4(3u, 0u, 1u, 0u), uvec4(4294967295u, 0u, 1u, 0u), uvec4(0u, 1u, 0u, 0u), uvec4(6u, 1u, 0u, 0u), uvec4(7u, 0u, 1u, 0u), uvec4(4294967295u, 1u, 0u, 0u), uvec4(1u, 0u, 1u, 1u), uvec4(10u, 1u, 0u, 1u), uvec4(11u, 0u, 1u, 1u), uvec4(4294967295u, 0u, 1u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4u, 0u, 0u, 0u), uvec4(14u, 0u, 0u, 0u), uvec4(16u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(8u, 0u, 0u, 0u), uvec4(18u, 0u, 0u, 0u), uvec4(20u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(12u, 0u, 0u, 0u), uvec4(22u, 0u, 0u, 0u), uvec4(24u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(5u, 0u, 0u, 0u), uvec4(15u, 0u, 0u, 0u), uvec4(17u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(9u, 0u, 0u, 0u), uvec4(19u, 0u, 0u, 0u), uvec4(21u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(13u, 0u, 0u, 0u), uvec4(23u, 0u, 0u, 0u), uvec4(25u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(0u));
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 10, std430) restrict readonly buffer SSBO
+{
+    uvec4 packedValues[];
+} intermediateValue9;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue290
+{
+    uint packedValues[];
+} intermediateValue10;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue291
+{
+    uvec2 packedValues[];
+} intermediateValue11;
+layout(set = 0, binding = 11, std430) restrict readonly buffer intermediateValue292
+{
+    uvec4 packedValues[];
+} intermediateValue12;
+layout(set = 0, binding = 12, std430) restrict readonly buffer intermediateValue293
+{
+    uint packedValues[];
+} intermediateValue13;
+layout(set = 0, binding = 13, std430) restrict readonly buffer intermediateValue294
+{
+    uint packedValues[];
+} intermediateValue14;
+layout(set = 0, binding = 14, std430) restrict readonly buffer intermediateValue295
+{
+    uint packedValues[];
+} intermediateValue15;
+layout(set = 0, binding = 14, std430) restrict readonly buffer intermediateValue296
+{
+    uvec4 packedValues[];
+} intermediateValue16;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[4096];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform textureCubeArray materialTexture9;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 8
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+float intermediateValue240;
+float intermediateValue241;
+float intermediateValue242;
+float intermediateValue243;
+float intermediateValue244;
+float intermediateValue245;
+float intermediateValue234;
+float intermediateValue235;
+float intermediateValue236;
+float intermediateValue237;
+float intermediateValue238;
+float intermediateValue239;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[596];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[149];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D brdfLutTexture;
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 4) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 7) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 8) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 9) uniform textureCubeArray specularIblRecordsTexture;
+layout(set = 0, binding = 10) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 11) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 0) uniform sampler brdfLutSampler;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(set = 0, binding = 4) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(set = 0, binding = 7) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 8) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 9) uniform sampler specularIblRecordsSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 9
+const uvec4 intermediateValue19[69] = uvec4[](uvec4(1065353216u, 0u, 0u, 0u), uvec4(0u, 1065353216u, 0u, 0u), uvec4(0u, 0u, 1065353216u, 0u), uvec4(0u, 0u, 0u, 1065353216u), uvec4(4294967295u, 0u, 0u, 1u), uvec4(2u, 0u, 0u, 1u), uvec4(3u, 0u, 1u, 0u), uvec4(4294967295u, 0u, 1u, 0u), uvec4(0u, 1u, 0u, 0u), uvec4(6u, 1u, 0u, 0u), uvec4(7u, 0u, 1u, 0u), uvec4(4294967295u, 1u, 0u, 0u), uvec4(1u, 0u, 1u, 1u), uvec4(10u, 1u, 0u, 1u), uvec4(11u, 0u, 1u, 1u), uvec4(4294967295u, 0u, 1u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4u, 0u, 0u, 0u), uvec4(14u, 0u, 0u, 0u), uvec4(16u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(8u, 0u, 0u, 0u), uvec4(18u, 0u, 0u, 0u), uvec4(20u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(12u, 0u, 0u, 0u), uvec4(22u, 0u, 0u, 0u), uvec4(24u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(5u, 0u, 0u, 0u), uvec4(15u, 0u, 0u, 0u), uvec4(17u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(9u, 0u, 0u, 0u), uvec4(19u, 0u, 0u, 0u), uvec4(21u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(13u, 0u, 0u, 0u), uvec4(23u, 0u, 0u, 0u), uvec4(25u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(0u));
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[4096];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform textureCubeArray materialTexture9;
+layout(set = 0, binding = 10) uniform usamplerBuffer intermediateValue7;
+layout(set = 0, binding = 11) uniform usamplerBuffer intermediateValue8;
+layout(set = 0, binding = 12) uniform usamplerBuffer intermediateValue9;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 27
+const uvec4 intermediateValue23[69] = uvec4[](uvec4(1065353216u, 0u, 0u, 0u), uvec4(0u, 1065353216u, 0u, 0u), uvec4(0u, 0u, 1065353216u, 0u), uvec4(0u, 0u, 0u, 1065353216u), uvec4(4294967295u, 0u, 0u, 1u), uvec4(2u, 0u, 0u, 1u), uvec4(3u, 0u, 1u, 0u), uvec4(4294967295u, 0u, 1u, 0u), uvec4(0u, 1u, 0u, 0u), uvec4(6u, 1u, 0u, 0u), uvec4(7u, 0u, 1u, 0u), uvec4(4294967295u, 1u, 0u, 0u), uvec4(1u, 0u, 1u, 1u), uvec4(10u, 1u, 0u, 1u), uvec4(11u, 0u, 1u, 1u), uvec4(4294967295u, 0u, 1u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 0u, 1u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4294967295u, 1u, 1u, 0u), uvec4(4u, 0u, 0u, 0u), uvec4(14u, 0u, 0u, 0u), uvec4(16u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(8u, 0u, 0u, 0u), uvec4(18u, 0u, 0u, 0u), uvec4(20u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(12u, 0u, 0u, 0u), uvec4(22u, 0u, 0u, 0u), uvec4(24u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(5u, 0u, 0u, 0u), uvec4(15u, 0u, 0u, 0u), uvec4(17u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(9u, 0u, 0u, 0u), uvec4(19u, 0u, 0u, 0u), uvec4(21u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(13u, 0u, 0u, 0u), uvec4(23u, 0u, 0u, 0u), uvec4(25u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(4294967295u, 0u, 0u, 0u), uvec4(0u));
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[4096];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 6) uniform texture2DArray materialTexture6;
+layout(set = 0, binding = 7) uniform texture2DArray materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform textureCubeArray materialTexture9;
+layout(set = 0, binding = 10) uniform usamplerBuffer intermediateValue8;
+layout(set = 0, binding = 11) uniform usamplerBuffer intermediateValue9;
+layout(set = 0, binding = 12) uniform usamplerBuffer intermediateValue10;
+layout(set = 0, binding = 13) uniform usamplerBuffer intermediateValue11;
+layout(set = 0, binding = 14) uniform usamplerBuffer intermediateValue12;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 26
+const uint intermediateValue[64] = uint[](4294967295u, 2u, 3u, 4294967295u, 0u, 6u, 7u, 4294967295u, 1u, 10u, 11u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4u, 14u, 16u, 4294967295u, 8u, 18u, 20u, 4294967295u, 12u, 22u, 24u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 5u, 15u, 17u, 4294967295u, 9u, 19u, 21u, 4294967295u, 13u, 23u, 25u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u, 4294967295u);
+const uint intermediateValue1[24] = uint[](0u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 1u, 0u, 0u, 1u, 0u, 0u, 0u, 1u, 0u, 1u, 0u, 0u);
+const uint intermediateValue2[24] = uint[](0u, 1u, 1u, 1u, 0u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u, 1u, 1u, 1u, 0u, 1u, 1u, 0u);
+uint intermediateValue84;
+float intermediateValue289;
+float intermediateValue290;
+float intermediateValue291;
+float intermediateValue292;
+float intermediateValue293;
+float intermediateValue294;
+float intermediateValue283;
+float intermediateValue284;
+float intermediateValue285;
+float intermediateValue286;
+float intermediateValue287;
+float intermediateValue288;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[668];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[167];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D brdfLutTexture;
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 3) uniform texture2D pointLightShadowTextureAtlasTexture;
+layout(set = 0, binding = 4) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 6) uniform texture2DArray causticsTextureTexture;
+layout(set = 0, binding = 7) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 8) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 9) uniform textureCubeArray specularIblRecordsTexture;
+layout(set = 0, binding = 10) uniform usamplerBuffer gpuEntryBuffer;
+layout(set = 0, binding = 11) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 12) uniform usamplerBuffer voxelBuffer;
+layout(set = 0, binding = 13) uniform usamplerBuffer zLightLookupArray;
+layout(set = 0, binding = 14) uniform usamplerBuffer zLights;
+layout(set = 0, binding = 0) uniform sampler brdfLutSampler;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(set = 0, binding = 3) uniform sampler pointLightShadowTextureAtlasSampler;
+layout(set = 0, binding = 4) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 6) uniform sampler causticsTextureSampler;
+layout(set = 0, binding = 7) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 8) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 9) uniform sampler specularIblRecordsSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 13) in vec2 varyingTexCoord2;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 12) in vec2 varyingTexCoord1;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 12
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 13
+layout(set = 0, binding = 2) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 2) uniform sampler matTextureSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 15
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 9
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 13
+#include "../../FragmentControl.glsli"
+#elif RD_BINDING_LAYOUT == 16 || RD_BINDING_LAYOUT == 17 || RD_BINDING_LAYOUT == 18 || RD_BINDING_LAYOUT == 19 || RD_BINDING_LAYOUT == 20 || RD_BINDING_LAYOUT == 21 || RD_BINDING_LAYOUT == 22 || RD_BINDING_LAYOUT == 23 || RD_BINDING_LAYOUT == 24 || RD_BINDING_LAYOUT == 25 || RD_BINDING_LAYOUT == 26 || RD_BINDING_LAYOUT == 27
+layout(location = 1) out vec4 fragmentColor1;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#endif

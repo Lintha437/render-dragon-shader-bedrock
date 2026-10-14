@@ -1,0 +1,3 @@
+// Native resource and stage-interface layouts for Checkerboarding / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(location = 0) out vec4 fragmentColor0;

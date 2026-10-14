@@ -1,0 +1,140 @@
+// Native resource and stage-interface layouts for DeferredWater / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+#elif RD_BINDING_LAYOUT == 1
+float intermediateValue62;
+float intermediateValue63;
+float intermediateValue64;
+#elif RD_BINDING_LAYOUT == 2
+uint intermediateValue21;
+float intermediateValue99;
+float intermediateValue100;
+float intermediateValue101;
+#elif RD_BINDING_LAYOUT == 3
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 15, std430) restrict readonly buffer SSBO
+{
+    uint packedValues[];
+} intermediateValue8;
+layout(set = 0, binding = 16, std430) restrict readonly buffer intermediateValue146
+{
+    uint packedValues[];
+} intermediateValue9;
+layout(set = 0, binding = 16, std430) restrict readonly buffer intermediateValue147
+{
+    uvec4 packedValues[];
+} intermediateValue10;
+#endif
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 3
+    float packedValues[16384];
+#elif RD_BINDING_LAYOUT == 1
+    float packedValues[412];
+#elif RD_BINDING_LAYOUT == 2
+    float packedValues[468];
+#endif
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[4096];
+#elif RD_BINDING_LAYOUT == 1
+    vec4 packedValues[103];
+#elif RD_BINDING_LAYOUT == 2
+    vec4 packedValues[117];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 3) uniform utexture2D intermediateValue;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 6) uniform texture2D materialTexture6;
+layout(set = 0, binding = 7) uniform texture2D materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform texture2DArray materialTexture9;
+layout(set = 0, binding = 10) uniform texture3D materialTexture10;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(set = 0, binding = 10) uniform sampler textureSampler10;
+layout(location = 3) in vec2 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 3) uniform utexture2D emissiveAmbientLinearRoughnessTexture;
+layout(set = 0, binding = 4) uniform texture2D normalTexture;
+layout(set = 0, binding = 6) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 7) uniform texture2D sceneDepthTexture;
+layout(set = 0, binding = 8) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 9) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 10) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 4) uniform sampler normalSampler;
+layout(set = 0, binding = 6) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 7) uniform sampler sceneDepthSampler;
+layout(set = 0, binding = 8) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 9) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 10) uniform sampler skyAmbientSamplesSampler;
+layout(location = 3) in vec3 varyingColor1;
+layout(location = 11) in vec4 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 3) uniform utexture2D emissiveAmbientLinearRoughnessTexture;
+layout(set = 0, binding = 4) uniform texture2D normalTexture;
+layout(set = 0, binding = 5) uniform texture2D pointLightShadowTextureAtlasTexture;
+layout(set = 0, binding = 6) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 7) uniform texture2D sceneDepthTexture;
+layout(set = 0, binding = 8) uniform texture2DArray scatteringBufferTexture;
+layout(set = 0, binding = 9) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 10) uniform texture3D skyAmbientSamplesTexture;
+layout(set = 0, binding = 15) uniform usamplerBuffer zLightLookupArray;
+layout(set = 0, binding = 16) uniform usamplerBuffer zLights;
+layout(set = 0, binding = 4) uniform sampler normalSampler;
+layout(set = 0, binding = 5) uniform sampler pointLightShadowTextureAtlasSampler;
+layout(set = 0, binding = 6) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 7) uniform sampler sceneDepthSampler;
+layout(set = 0, binding = 8) uniform sampler scatteringBufferSampler;
+layout(set = 0, binding = 9) uniform sampler shadowCascadesSampler;
+layout(set = 0, binding = 10) uniform sampler skyAmbientSamplesSampler;
+layout(location = 3) in vec3 varyingColor1;
+layout(location = 11) in vec4 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 3) uniform utexture2D intermediateValue;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 6) uniform texture2D materialTexture6;
+layout(set = 0, binding = 7) uniform texture2D materialTexture7;
+layout(set = 0, binding = 8) uniform texture2DArray materialTexture8;
+layout(set = 0, binding = 9) uniform texture2DArray materialTexture9;
+layout(set = 0, binding = 10) uniform texture3D materialTexture10;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+layout(set = 0, binding = 6) uniform sampler textureSampler6;
+layout(set = 0, binding = 7) uniform sampler textureSampler7;
+layout(set = 0, binding = 8) uniform sampler textureSampler8;
+layout(set = 0, binding = 9) uniform sampler textureSampler9;
+layout(set = 0, binding = 10) uniform sampler textureSampler10;
+layout(location = 3) in vec2 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

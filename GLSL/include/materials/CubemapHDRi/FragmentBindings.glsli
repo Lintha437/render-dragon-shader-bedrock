@@ -1,0 +1,45 @@
+// Native resource and stage-interface layouts for CubemapHDRi / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+#endif
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[1];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 1) uniform textureCube matTextureTexture;
+layout(set = 0, binding = 0) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 1) uniform sampler matTextureSampler;
+#elif RD_BINDING_LAYOUT == 1
+    vec4 packedValues[2];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 1) uniform textureCube matTextureTexture;
+layout(set = 0, binding = 0) uniform sampler previousFrameAverageLuminanceSampler;
+layout(set = 0, binding = 1) uniform sampler matTextureSampler;
+#elif RD_BINDING_LAYOUT == 2
+    float packedValues[4];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform textureCube materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#elif RD_BINDING_LAYOUT == 3
+    float packedValues[8];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform textureCube materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#endif
+layout(location = 11) in vec3 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#endif

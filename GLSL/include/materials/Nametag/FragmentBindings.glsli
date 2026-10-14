@@ -1,0 +1,20 @@
+// Native resource and stage-interface layouts for Nametag / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[8];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[2];
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(location = 5) in vec4 varyingColor3;
+#endif
+layout(location = 2) in vec4 varyingColor0;
+#if RD_BINDING_LAYOUT == 0
+layout(location = 14) in vec3 varyingTexCoord3;
+#endif
+layout(location = 0) out vec4 fragmentColor0;

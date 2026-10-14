@@ -1,0 +1,31 @@
+// Native resource and stage-interface layouts for BeaconBeam / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[4];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[1];
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 0) uniform texture2D beaconTextureTexture;
+layout(set = 0, binding = 0) uniform sampler beaconTextureSampler;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+#endif
+layout(location = 2) in vec4 varyingColor0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(location = 4) in vec4 varyingColor2;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+layout(location = 4) in vec4 varyingColor2;
+layout(location = 3) in vec4 varyingColor1;
+#elif RD_BINDING_LAYOUT == 3
+layout(location = 11) in vec2 varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;

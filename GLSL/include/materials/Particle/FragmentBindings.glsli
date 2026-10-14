@@ -1,0 +1,24 @@
+// Native resource and stage-interface layouts for Particle / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 0) uniform texture2D particleTextureTexture;
+layout(set = 0, binding = 0) uniform sampler particleTextureSampler;
+layout(location = 2) in vec4 varyingColor0;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(location = 2) in vec3 varyingColor0;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(location = 2) in vec4 varyingColor0;
+#endif
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 11) in vec2 varyingTexCoord0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(location = 14) in vec3 varyingTexCoord3;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+#include "../../FragmentControl.glsli"
+#endif

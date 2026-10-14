@@ -1,0 +1,727 @@
+#version 460
+#extension GL_GOOGLE_include_directive : require
+// RenderChunk / Opaque / vertex forward pipeline.
+// Feature macros choose supported code paths; native layouts come from the build recipe.
+#include "../../include/ProjectConfig.h"
+
+#ifndef RD_CONFIGURATION
+#define RD_CONFIGURATION 12
+#endif
+#ifndef RD_PLATFORM
+#define RD_PLATFORM RD_PLATFORM_SM65
+#endif
+#ifndef RD_FEATURE_DITHERING
+#define RD_FEATURE_DITHERING RD_OFF
+#endif
+#ifndef RD_FEATURE_INSTANCING
+#define RD_FEATURE_INSTANCING RD_OFF
+#endif
+#ifndef RD_FEATURE_RENDER_AS_BILLBOARDS
+#define RD_FEATURE_RENDER_AS_BILLBOARDS RD_OFF
+#endif
+#ifndef RD_FEATURE_SEASONS
+#define RD_FEATURE_SEASONS RD_OFF
+#endif
+#ifndef RD_BINDING_LAYOUT
+#define RD_BINDING_LAYOUT 1
+#endif
+
+#if RD_PLATFORM == RD_PLATFORM_SM40 || RD_PLATFORM == RD_PLATFORM_SM50
+#if defined(GL_ARB_gpu_shader_int64)
+#extension GL_ARB_gpu_shader_int64 : require
+#else
+#error No extension available for 64-bit integers.
+#endif
+#extension GL_EXT_scalar_block_layout : require
+#endif
+#extension GL_EXT_spirv_intrinsics : require
+#if (RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM40) || (RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM50)
+#define RD_USE_DOT2_PRECISE_FLOAT_5 1
+#endif
+#if RD_PLATFORM == RD_PLATFORM_SM40 || RD_PLATFORM == RD_PLATFORM_SM50
+#define RD_USE_DOT3_PRECISE2_FLOAT_3 1
+#endif
+#if RD_PLATFORM == RD_PLATFORM_SM40 || RD_PLATFORM == RD_PLATFORM_SM50
+#define RD_USE_DOT4_PRECISE_FLOAT_0 1
+#endif
+#if RD_PLATFORM == RD_PLATFORM_SM40 || RD_PLATFORM == RD_PLATFORM_SM50
+#define RD_USE_EVALUATE_FLOAT_EXPRESSION_FLOAT_4 1
+#endif
+
+#include "../../include/materials/RenderChunk/VertexBindings.glsli"
+
+#if RD_PLATFORM == RD_PLATFORM_SM40 || RD_PLATFORM == RD_PLATFORM_SM50
+#include "../../include/Math.glsli"
+#endif
+void main()
+{
+#if (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM40)
+    precise float sumValue3 = vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[112u];
+    precise float productValue3 = vertexPosition0.y * vertexVectorConstants0.packedValues[9u].x;
+    precise float productValue4 = vertexPosition0.y * vertexVectorConstants0.packedValues[9u].y;
+    precise float productValue5 = vertexPosition0.y * vertexVectorConstants0.packedValues[9u].z;
+    precise float multiplyAddValue7 = fma(vertexVectorConstants0.packedValues[10u].x, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].x, vertexPosition0.x, productValue3)) + vertexVectorConstants0.packedValues[11u].x;
+    precise float multiplyAddValue8 = fma(vertexVectorConstants0.packedValues[10u].y, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].y, vertexPosition0.x, productValue4)) + vertexVectorConstants0.packedValues[11u].y;
+    precise float multiplyAddValue9 = fma(vertexVectorConstants0.packedValues[10u].z, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].z, vertexPosition0.x, productValue5)) + vertexVectorConstants0.packedValues[11u].z;
+    precise float productValue6 = multiplyAddValue8 * vertexVectorConstants0.packedValues[5u].x;
+    precise float productValue7 = multiplyAddValue8 * vertexVectorConstants0.packedValues[5u].y;
+    precise float productValue8 = multiplyAddValue8 * vertexVectorConstants0.packedValues[5u].z;
+    precise float productValue9 = multiplyAddValue8 * vertexVectorConstants0.packedValues[5u].w;
+    precise float multiplyAddValue10 = fma(vertexVectorConstants0.packedValues[6u].x, multiplyAddValue9, fma(vertexVectorConstants0.packedValues[4u].x, multiplyAddValue7, productValue6)) + vertexVectorConstants0.packedValues[7u].x;
+    precise float multiplyAddValue11 = fma(vertexVectorConstants0.packedValues[6u].y, multiplyAddValue9, fma(vertexVectorConstants0.packedValues[4u].y, multiplyAddValue7, productValue7)) + vertexVectorConstants0.packedValues[7u].y;
+    precise float multiplyAddValue12 = fma(vertexVectorConstants0.packedValues[6u].z, multiplyAddValue9, fma(vertexVectorConstants0.packedValues[4u].z, multiplyAddValue7, productValue8)) + vertexVectorConstants0.packedValues[7u].z;
+    precise float multiplyAddValue13 = fma(vertexVectorConstants0.packedValues[6u].w, multiplyAddValue9, fma(vertexVectorConstants0.packedValues[4u].w, multiplyAddValue7, productValue9)) + vertexVectorConstants0.packedValues[7u].w;
+    vec4 vectorValue = vec4(multiplyAddValue10, multiplyAddValue11, multiplyAddValue12, multiplyAddValue13);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], sumValue3, vertexScalarConstants0.packedValues[12u]), vectorValue);
+    precise float sumValue4 = vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[113u];
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], sumValue4, vertexScalarConstants0.packedValues[13u]), vectorValue);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), vectorValue);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), vectorValue);
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    precise float productValue10 = vertexTexCoord1.x * 65535.0;
+    precise float productValue11 = vertexTexCoord1.y * 65535.0;
+    uint scalarValue = uint(roundEven(productValue11));
+    varyingTexCoord2.x = float((uint(roundEven(productValue10)) & 256u) != 0u);
+    varyingTexCoord2.y = float((scalarValue & 256u) != 0u);
+    precise float bitwiseValue = rdEvaluateFloatExpression((scalarValue >> 4u) & 15u) * 0.066666670143604278564453125;
+    precise float bitwiseValue1 = rdEvaluateFloatExpression(scalarValue & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.x = bitwiseValue;
+    varyingTexCoord1.y = bitwiseValue1;
+    precise float sumValue5 = vertexVectorConstants0.packedValues[29u].x - multiplyAddValue7;
+    precise float sumValue6 = vertexVectorConstants0.packedValues[29u].y - multiplyAddValue8;
+    precise float sumValue7 = vertexVectorConstants0.packedValues[29u].z - multiplyAddValue9;
+    varyingTexCoord3.x = multiplyAddValue7;
+    varyingTexCoord3.y = multiplyAddValue8;
+    varyingTexCoord3.z = multiplyAddValue9;
+    vec3 vectorValue1 = vec3(sumValue5, sumValue6, sumValue7);
+    bool conditionValue1 = vertexScalarConstants0.packedValues[104u] > 0.5;
+    precise float nonlinearValue = sqrt(rdDot3Precise2(vectorValue1, vectorValue1)) / (conditionValue1 ? 100000.0 : vertexVectorConstants0.packedValues[24u].z);
+    precise float sumValue8 = nonlinearValue + vertexScalarConstants0.packedValues[108u];
+    precise float comparisonValue1 = sumValue8 - (conditionValue1 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[24u].x);
+    precise float sumValue9 = 1.0 - 0.9900000095367431640625;
+    precise float sumValue10 = vertexVectorConstants0.packedValues[24u].y - vertexVectorConstants0.packedValues[24u].x;
+    precise float comparisonValue2 = comparisonValue1 / (conditionValue1 ? sumValue9 : sumValue10);
+    varyingColor2.w = spvNClamp(comparisonValue2, 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[25u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[25u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[25u].z;
+    precise float productValue12 = vertexTexCoord0.x * 65535.0;
+    precise float productValue13 = vertexTexCoord0.y * 65535.0;
+    uint scalarValue1 = uint(roundEven(productValue12));
+    uint scalarValue2 = uint(roundEven(productValue13));
+    precise float multiplyAddValue14 = fma(rdEvaluateFloatExpression((scalarValue1 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    precise float multiplyAddValue15 = fma(rdEvaluateFloatExpression((scalarValue2 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression((scalarValue1 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue14);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression((scalarValue2 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue15);
+#elif (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM40)
+    precise float productValue3 = vertexPosition0.y * vertexVectorConstants0.packedValues[9u].x;
+    precise float productValue4 = vertexPosition0.y * vertexVectorConstants0.packedValues[9u].y;
+    precise float productValue5 = vertexPosition0.y * vertexVectorConstants0.packedValues[9u].z;
+    precise float multiplyAddValue7 = fma(vertexVectorConstants0.packedValues[10u].x, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].x, vertexPosition0.x, productValue3)) + vertexVectorConstants0.packedValues[11u].x;
+    precise float multiplyAddValue8 = fma(vertexVectorConstants0.packedValues[10u].y, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].y, vertexPosition0.x, productValue4)) + vertexVectorConstants0.packedValues[11u].y;
+    precise float multiplyAddValue9 = fma(vertexVectorConstants0.packedValues[10u].z, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].z, vertexPosition0.x, productValue5)) + vertexVectorConstants0.packedValues[11u].z;
+    precise float sumValue37 = multiplyAddValue7 + 0.5;
+    precise float sumValue38 = multiplyAddValue8 + 0.5;
+    precise float sumValue39 = multiplyAddValue9 + 0.5;
+    varyingTexCoord3.x = multiplyAddValue7;
+    varyingTexCoord3.y = multiplyAddValue8;
+    varyingTexCoord3.z = multiplyAddValue9;
+    precise float sumValue40 = sumValue39 - vertexVectorConstants0.packedValues[29u].z;
+    precise float sumValue41 = sumValue37 - vertexVectorConstants0.packedValues[29u].x;
+    precise float sumValue42 = sumValue38 - vertexVectorConstants0.packedValues[29u].y;
+    vec3 vectorValue4 = vec3(sumValue40, sumValue41, sumValue42);
+    float inverseLengthValue4 = inversesqrt(rdDot3Precise2(vectorValue4, vectorValue4));
+    precise float productValue27 = inverseLengthValue4 * sumValue40;
+    precise float productValue28 = inverseLengthValue4 * sumValue41;
+    precise float productValue29 = inverseLengthValue4 * sumValue42;
+    precise float productValue30 = productValue29 * 0.0;
+    precise float productValue31 = productValue27 * 0.0;
+    precise float productValue32 = productValue28 * 1.0;
+    float multiplyAddValue28 = fma(productValue27, 1.0, -productValue30);
+    float multiplyAddValue29 = fma(productValue29, 0.0, -productValue32);
+    vec2 vectorValue5 = vec2(multiplyAddValue28, multiplyAddValue29);
+    float inverseLengthValue5 = inversesqrt(rdDot2Precise(vectorValue5, vectorValue5));
+    precise float productValue33 = inverseLengthValue5 * multiplyAddValue28;
+    precise float multiplyAddValue30 = inverseLengthValue5 * fma(productValue28, 0.0, -productValue31);
+    precise float productValue34 = inverseLengthValue5 * multiplyAddValue29;
+    precise float productValue35 = productValue27 * multiplyAddValue30;
+    precise float productValue36 = productValue28 * productValue34;
+    precise float productValue37 = productValue29 * productValue33;
+    precise float sumValue43 = vertexColor0.z - 0.5;
+    precise float sumValue44 = vertexColor0.x - 0.5;
+    precise float productValue38 = productValue33 * sumValue44;
+    precise float productValue39 = multiplyAddValue30 * sumValue44;
+    precise float productValue40 = productValue34 * sumValue44;
+    precise float multiplyAddValue31 = sumValue37 - fma(fma(productValue29, productValue34, -productValue35), sumValue43, productValue38);
+    precise float multiplyAddValue32 = sumValue38 - fma(fma(productValue27, productValue33, -productValue36), sumValue43, productValue39);
+    precise float multiplyAddValue33 = sumValue39 - fma(fma(productValue28, multiplyAddValue30, -productValue37), sumValue43, productValue40);
+    precise float productValue41 = multiplyAddValue32 * vertexVectorConstants0.packedValues[5u].x;
+    precise float productValue42 = multiplyAddValue32 * vertexVectorConstants0.packedValues[5u].y;
+    precise float productValue43 = multiplyAddValue32 * vertexVectorConstants0.packedValues[5u].z;
+    precise float productValue44 = multiplyAddValue32 * vertexVectorConstants0.packedValues[5u].w;
+    precise float sumValue45 = vertexVectorConstants0.packedValues[29u].x - multiplyAddValue31;
+    precise float sumValue46 = vertexVectorConstants0.packedValues[29u].y - multiplyAddValue32;
+    precise float sumValue47 = vertexVectorConstants0.packedValues[29u].z - multiplyAddValue33;
+    vec3 vectorValue6 = vec3(sumValue45, sumValue46, sumValue47);
+    precise float multiplyAddValue34 = fma(vertexVectorConstants0.packedValues[6u].x, multiplyAddValue33, fma(vertexVectorConstants0.packedValues[4u].x, multiplyAddValue31, productValue41)) + vertexVectorConstants0.packedValues[7u].x;
+    precise float multiplyAddValue35 = fma(vertexVectorConstants0.packedValues[6u].y, multiplyAddValue33, fma(vertexVectorConstants0.packedValues[4u].y, multiplyAddValue31, productValue42)) + vertexVectorConstants0.packedValues[7u].y;
+    precise float multiplyAddValue36 = fma(vertexVectorConstants0.packedValues[6u].z, multiplyAddValue33, fma(vertexVectorConstants0.packedValues[4u].z, multiplyAddValue31, productValue43)) + vertexVectorConstants0.packedValues[7u].z;
+    precise float multiplyAddValue37 = fma(vertexVectorConstants0.packedValues[6u].w, multiplyAddValue33, fma(vertexVectorConstants0.packedValues[4u].w, multiplyAddValue31, productValue44)) + vertexVectorConstants0.packedValues[7u].w;
+    precise float sumValue3 = vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[112u];
+    vec4 vectorValue7 = vec4(multiplyAddValue34, multiplyAddValue35, multiplyAddValue36, multiplyAddValue37);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], sumValue3, vertexScalarConstants0.packedValues[12u]), vectorValue7);
+    precise float sumValue4 = vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[113u];
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], sumValue4, vertexScalarConstants0.packedValues[13u]), vectorValue7);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), vectorValue7);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), vectorValue7);
+    varyingColor0.x = 1.0;
+    varyingColor0.y = 1.0;
+    varyingColor0.z = 1.0;
+    varyingColor0.w = 1.0;
+    precise float productValue10 = vertexTexCoord1.x * 65535.0;
+    precise float productValue11 = vertexTexCoord1.y * 65535.0;
+    uint scalarValue = uint(roundEven(productValue11));
+    varyingTexCoord2.x = float((uint(roundEven(productValue10)) & 256u) != 0u);
+    varyingTexCoord2.y = float((scalarValue & 256u) != 0u);
+    precise float bitwiseValue = rdEvaluateFloatExpression((scalarValue >> 4u) & 15u) * 0.066666670143604278564453125;
+    precise float bitwiseValue1 = rdEvaluateFloatExpression(scalarValue & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.x = bitwiseValue;
+    varyingTexCoord1.y = bitwiseValue1;
+    bool conditionValue1 = vertexScalarConstants0.packedValues[104u] > 0.5;
+    precise float nonlinearValue1 = sqrt(rdDot3Precise2(vectorValue6, vectorValue6)) / (conditionValue1 ? 100000.0 : vertexVectorConstants0.packedValues[24u].z);
+    precise float sumValue48 = nonlinearValue1 + vertexScalarConstants0.packedValues[108u];
+    precise float comparisonValue3 = sumValue48 - (conditionValue1 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[24u].x);
+    precise float sumValue9 = 1.0 - 0.9900000095367431640625;
+    precise float sumValue10 = vertexVectorConstants0.packedValues[24u].y - vertexVectorConstants0.packedValues[24u].x;
+    precise float comparisonValue4 = comparisonValue3 / (conditionValue1 ? sumValue9 : sumValue10);
+    varyingColor2.w = spvNClamp(comparisonValue4, 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[25u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[25u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[25u].z;
+    precise float productValue12 = vertexTexCoord0.x * 65535.0;
+    precise float productValue13 = vertexTexCoord0.y * 65535.0;
+    uint scalarValue1 = uint(roundEven(productValue12));
+    uint scalarValue2 = uint(roundEven(productValue13));
+    precise float multiplyAddValue14 = fma(rdEvaluateFloatExpression((scalarValue1 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    precise float multiplyAddValue15 = fma(rdEvaluateFloatExpression((scalarValue2 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression((scalarValue1 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue14);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression((scalarValue2 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue15);
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM40)
+    precise float sumValue49 = vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[48u];
+    vec4 vectorValue8 = vec4(vertexPosition0.x, vertexPosition0.y, vertexPosition0.z, 1.0);
+    float scalarValue4 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord6.x, vertexTexCoord6.y, vertexTexCoord6.z, vertexTexCoord6.w));
+    precise float productValue45 = scalarValue4 * vertexVectorConstants0.packedValues[5u].x;
+    precise float productValue46 = scalarValue4 * vertexVectorConstants0.packedValues[5u].y;
+    precise float productValue47 = scalarValue4 * vertexVectorConstants0.packedValues[5u].z;
+    precise float productValue48 = scalarValue4 * vertexVectorConstants0.packedValues[5u].w;
+    float scalarValue5 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord7.x, vertexTexCoord7.y, vertexTexCoord7.z, vertexTexCoord7.w));
+    float scalarValue6 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord5.x, vertexTexCoord5.y, vertexTexCoord5.z, vertexTexCoord5.w));
+    precise float multiplyAddValue38 = fma(vertexVectorConstants0.packedValues[6u].x, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].x, scalarValue5, productValue45)) + vertexVectorConstants0.packedValues[7u].x;
+    precise float multiplyAddValue39 = fma(vertexVectorConstants0.packedValues[6u].y, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].y, scalarValue5, productValue46)) + vertexVectorConstants0.packedValues[7u].y;
+    precise float multiplyAddValue40 = fma(vertexVectorConstants0.packedValues[6u].z, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].z, scalarValue5, productValue47)) + vertexVectorConstants0.packedValues[7u].z;
+    precise float multiplyAddValue41 = fma(vertexVectorConstants0.packedValues[6u].w, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].w, scalarValue5, productValue48)) + vertexVectorConstants0.packedValues[7u].w;
+    vec4 vectorValue9 = vec4(multiplyAddValue38, multiplyAddValue39, multiplyAddValue40, multiplyAddValue41);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], sumValue49, vertexScalarConstants0.packedValues[12u]), vectorValue9);
+    precise float sumValue50 = vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[49u];
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], sumValue50, vertexScalarConstants0.packedValues[13u]), vectorValue9);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), vectorValue9);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), vectorValue9);
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    precise float productValue10 = vertexTexCoord1.x * 65535.0;
+    precise float productValue11 = vertexTexCoord1.y * 65535.0;
+    uint scalarValue = uint(roundEven(productValue11));
+    varyingTexCoord2.x = float((uint(roundEven(productValue10)) & 256u) != 0u);
+    varyingTexCoord2.y = float((scalarValue & 256u) != 0u);
+    precise float bitwiseValue = rdEvaluateFloatExpression((scalarValue >> 4u) & 15u) * 0.066666670143604278564453125;
+    precise float bitwiseValue1 = rdEvaluateFloatExpression(scalarValue & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.x = bitwiseValue;
+    varyingTexCoord1.y = bitwiseValue1;
+    precise float sumValue51 = vertexVectorConstants0.packedValues[13u].x - scalarValue5;
+    precise float sumValue52 = vertexVectorConstants0.packedValues[13u].y - scalarValue4;
+    precise float sumValue53 = vertexVectorConstants0.packedValues[13u].z - scalarValue6;
+    varyingTexCoord3.x = scalarValue5;
+    varyingTexCoord3.y = scalarValue4;
+    varyingTexCoord3.z = scalarValue6;
+    vec3 vectorValue10 = vec3(sumValue51, sumValue52, sumValue53);
+    bool conditionValue2 = vertexScalarConstants0.packedValues[40u] > 0.5;
+    precise float nonlinearValue2 = sqrt(rdDot3Precise2(vectorValue10, vectorValue10)) / (conditionValue2 ? 100000.0 : vertexVectorConstants0.packedValues[8u].z);
+    precise float sumValue54 = nonlinearValue2 + vertexScalarConstants0.packedValues[44u];
+    precise float comparisonValue5 = sumValue54 - (conditionValue2 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[8u].x);
+    precise float sumValue9 = 1.0 - 0.9900000095367431640625;
+    precise float sumValue55 = vertexVectorConstants0.packedValues[8u].y - vertexVectorConstants0.packedValues[8u].x;
+    precise float comparisonValue6 = comparisonValue5 / (conditionValue2 ? sumValue9 : sumValue55);
+    varyingColor2.w = spvNClamp(comparisonValue6, 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[9u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[9u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[9u].z;
+    precise float productValue12 = vertexTexCoord0.x * 65535.0;
+    precise float productValue13 = vertexTexCoord0.y * 65535.0;
+    uint scalarValue1 = uint(roundEven(productValue12));
+    uint scalarValue2 = uint(roundEven(productValue13));
+    precise float multiplyAddValue14 = fma(rdEvaluateFloatExpression((scalarValue1 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    precise float multiplyAddValue15 = fma(rdEvaluateFloatExpression((scalarValue2 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression((scalarValue1 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue14);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression((scalarValue2 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue15);
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM40)
+    vec4 vectorValue8 = vec4(vertexPosition0.x, vertexPosition0.y, vertexPosition0.z, 1.0);
+    float scalarValue5 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord7.x, vertexTexCoord7.y, vertexTexCoord7.z, vertexTexCoord7.w));
+    float scalarValue4 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord6.x, vertexTexCoord6.y, vertexTexCoord6.z, vertexTexCoord6.w));
+    float scalarValue6 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord5.x, vertexTexCoord5.y, vertexTexCoord5.z, vertexTexCoord5.w));
+    precise float sumValue70 = scalarValue5 + 0.5;
+    precise float sumValue71 = scalarValue4 + 0.5;
+    precise float sumValue72 = scalarValue6 + 0.5;
+    varyingTexCoord3.x = scalarValue5;
+    varyingTexCoord3.y = scalarValue4;
+    varyingTexCoord3.z = scalarValue6;
+    precise float sumValue73 = sumValue72 - vertexVectorConstants0.packedValues[13u].z;
+    precise float sumValue74 = sumValue70 - vertexVectorConstants0.packedValues[13u].x;
+    precise float sumValue75 = sumValue71 - vertexVectorConstants0.packedValues[13u].y;
+    vec3 vectorValue11 = vec3(sumValue73, sumValue74, sumValue75);
+    float inverseLengthValue8 = inversesqrt(rdDot3Precise2(vectorValue11, vectorValue11));
+    precise float productValue57 = inverseLengthValue8 * sumValue73;
+    precise float productValue58 = inverseLengthValue8 * sumValue74;
+    precise float productValue59 = inverseLengthValue8 * sumValue75;
+    precise float productValue60 = productValue59 * 0.0;
+    precise float productValue61 = productValue57 * 0.0;
+    precise float productValue62 = productValue58 * 1.0;
+    float multiplyAddValue54 = fma(productValue57, 1.0, -productValue60);
+    float multiplyAddValue55 = fma(productValue59, 0.0, -productValue62);
+    vec2 vectorValue12 = vec2(multiplyAddValue54, multiplyAddValue55);
+    float inverseLengthValue9 = inversesqrt(rdDot2Precise(vectorValue12, vectorValue12));
+    precise float productValue63 = inverseLengthValue9 * multiplyAddValue54;
+    precise float multiplyAddValue56 = inverseLengthValue9 * fma(productValue58, 0.0, -productValue61);
+    precise float productValue64 = inverseLengthValue9 * multiplyAddValue55;
+    precise float productValue65 = productValue57 * multiplyAddValue56;
+    precise float productValue66 = productValue58 * productValue64;
+    precise float productValue67 = productValue59 * productValue63;
+    precise float sumValue43 = vertexColor0.z - 0.5;
+    precise float sumValue44 = vertexColor0.x - 0.5;
+    precise float productValue68 = productValue63 * sumValue44;
+    precise float productValue69 = multiplyAddValue56 * sumValue44;
+    precise float productValue70 = productValue64 * sumValue44;
+    precise float multiplyAddValue57 = sumValue70 - fma(fma(productValue59, productValue64, -productValue65), sumValue43, productValue68);
+    precise float multiplyAddValue58 = sumValue71 - fma(fma(productValue57, productValue63, -productValue66), sumValue43, productValue69);
+    precise float multiplyAddValue59 = sumValue72 - fma(fma(productValue58, multiplyAddValue56, -productValue67), sumValue43, productValue70);
+    precise float productValue71 = multiplyAddValue58 * vertexVectorConstants0.packedValues[5u].x;
+    precise float productValue72 = multiplyAddValue58 * vertexVectorConstants0.packedValues[5u].y;
+    precise float productValue73 = multiplyAddValue58 * vertexVectorConstants0.packedValues[5u].z;
+    precise float productValue74 = multiplyAddValue58 * vertexVectorConstants0.packedValues[5u].w;
+    precise float sumValue76 = vertexVectorConstants0.packedValues[13u].x - multiplyAddValue57;
+    precise float sumValue77 = vertexVectorConstants0.packedValues[13u].y - multiplyAddValue58;
+    precise float sumValue78 = vertexVectorConstants0.packedValues[13u].z - multiplyAddValue59;
+    vec3 vectorValue13 = vec3(sumValue76, sumValue77, sumValue78);
+    precise float multiplyAddValue60 = fma(vertexVectorConstants0.packedValues[6u].x, multiplyAddValue59, fma(vertexVectorConstants0.packedValues[4u].x, multiplyAddValue57, productValue71)) + vertexVectorConstants0.packedValues[7u].x;
+    precise float multiplyAddValue61 = fma(vertexVectorConstants0.packedValues[6u].y, multiplyAddValue59, fma(vertexVectorConstants0.packedValues[4u].y, multiplyAddValue57, productValue72)) + vertexVectorConstants0.packedValues[7u].y;
+    precise float multiplyAddValue62 = fma(vertexVectorConstants0.packedValues[6u].z, multiplyAddValue59, fma(vertexVectorConstants0.packedValues[4u].z, multiplyAddValue57, productValue73)) + vertexVectorConstants0.packedValues[7u].z;
+    precise float multiplyAddValue63 = fma(vertexVectorConstants0.packedValues[6u].w, multiplyAddValue59, fma(vertexVectorConstants0.packedValues[4u].w, multiplyAddValue57, productValue74)) + vertexVectorConstants0.packedValues[7u].w;
+    precise float sumValue49 = vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[48u];
+    vec4 vectorValue14 = vec4(multiplyAddValue60, multiplyAddValue61, multiplyAddValue62, multiplyAddValue63);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], sumValue49, vertexScalarConstants0.packedValues[12u]), vectorValue14);
+    precise float sumValue50 = vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[49u];
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], sumValue50, vertexScalarConstants0.packedValues[13u]), vectorValue14);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), vectorValue14);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), vectorValue14);
+    varyingColor0.x = 1.0;
+    varyingColor0.y = 1.0;
+    varyingColor0.z = 1.0;
+    varyingColor0.w = 1.0;
+    precise float productValue10 = vertexTexCoord1.x * 65535.0;
+    precise float productValue11 = vertexTexCoord1.y * 65535.0;
+    uint scalarValue = uint(roundEven(productValue11));
+    varyingTexCoord2.x = float((uint(roundEven(productValue10)) & 256u) != 0u);
+    varyingTexCoord2.y = float((scalarValue & 256u) != 0u);
+    precise float bitwiseValue = rdEvaluateFloatExpression((scalarValue >> 4u) & 15u) * 0.066666670143604278564453125;
+    precise float bitwiseValue1 = rdEvaluateFloatExpression(scalarValue & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.x = bitwiseValue;
+    varyingTexCoord1.y = bitwiseValue1;
+    bool conditionValue2 = vertexScalarConstants0.packedValues[40u] > 0.5;
+    precise float nonlinearValue3 = sqrt(rdDot3Precise2(vectorValue13, vectorValue13)) / (conditionValue2 ? 100000.0 : vertexVectorConstants0.packedValues[8u].z);
+    precise float sumValue79 = nonlinearValue3 + vertexScalarConstants0.packedValues[44u];
+    precise float comparisonValue8 = sumValue79 - (conditionValue2 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[8u].x);
+    precise float sumValue9 = 1.0 - 0.9900000095367431640625;
+    precise float sumValue55 = vertexVectorConstants0.packedValues[8u].y - vertexVectorConstants0.packedValues[8u].x;
+    precise float comparisonValue9 = comparisonValue8 / (conditionValue2 ? sumValue9 : sumValue55);
+    varyingColor2.w = spvNClamp(comparisonValue9, 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[9u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[9u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[9u].z;
+    precise float productValue12 = vertexTexCoord0.x * 65535.0;
+    precise float productValue13 = vertexTexCoord0.y * 65535.0;
+    uint scalarValue1 = uint(roundEven(productValue12));
+    uint scalarValue2 = uint(roundEven(productValue13));
+    precise float multiplyAddValue14 = fma(rdEvaluateFloatExpression((scalarValue1 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    precise float multiplyAddValue15 = fma(rdEvaluateFloatExpression((scalarValue2 >> 15u) & 1u), 2.0, -1.0) * 3.0517578125e-05;
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression((scalarValue1 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue14);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression((scalarValue2 << 1u) & 65534u), 1.525902189314365386962890625e-05, multiplyAddValue15);
+#elif (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM50)
+    float multiplyAddValue16 = fma(vertexVectorConstants0.packedValues[10u].x, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].x, vertexPosition0.x, vertexPosition0.y * vertexVectorConstants0.packedValues[9u].x)) + vertexVectorConstants0.packedValues[11u].x;
+    float multiplyAddValue17 = fma(vertexVectorConstants0.packedValues[10u].y, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].y, vertexPosition0.x, vertexPosition0.y * vertexVectorConstants0.packedValues[9u].y)) + vertexVectorConstants0.packedValues[11u].y;
+    float multiplyAddValue18 = fma(vertexVectorConstants0.packedValues[10u].z, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].z, vertexPosition0.x, vertexPosition0.y * vertexVectorConstants0.packedValues[9u].z)) + vertexVectorConstants0.packedValues[11u].z;
+    vec4 multiplyAddValue19 = vec4(fma(vertexVectorConstants0.packedValues[6u].x, multiplyAddValue18, fma(vertexVectorConstants0.packedValues[4u].x, multiplyAddValue16, multiplyAddValue17 * vertexVectorConstants0.packedValues[5u].x)) + vertexVectorConstants0.packedValues[7u].x, fma(vertexVectorConstants0.packedValues[6u].y, multiplyAddValue18, fma(vertexVectorConstants0.packedValues[4u].y, multiplyAddValue16, multiplyAddValue17 * vertexVectorConstants0.packedValues[5u].y)) + vertexVectorConstants0.packedValues[7u].y, fma(vertexVectorConstants0.packedValues[6u].z, multiplyAddValue18, fma(vertexVectorConstants0.packedValues[4u].z, multiplyAddValue16, multiplyAddValue17 * vertexVectorConstants0.packedValues[5u].z)) + vertexVectorConstants0.packedValues[7u].z, fma(vertexVectorConstants0.packedValues[6u].w, multiplyAddValue18, fma(vertexVectorConstants0.packedValues[4u].w, multiplyAddValue16, multiplyAddValue17 * vertexVectorConstants0.packedValues[5u].w)) + vertexVectorConstants0.packedValues[7u].w);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[112u], vertexScalarConstants0.packedValues[12u]), multiplyAddValue19);
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[113u], vertexScalarConstants0.packedValues[13u]), multiplyAddValue19);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), multiplyAddValue19);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), multiplyAddValue19);
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingTexCoord1.x = rdEvaluateFloatExpression((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = rdEvaluateFloatExpression(productValue2 & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord3.x = multiplyAddValue16;
+    varyingTexCoord3.y = multiplyAddValue17;
+    varyingTexCoord3.z = multiplyAddValue18;
+    vec3 sumValue11 = vec3(vertexVectorConstants0.packedValues[29u].x - multiplyAddValue16, vertexVectorConstants0.packedValues[29u].y - multiplyAddValue17, vertexVectorConstants0.packedValues[29u].z - multiplyAddValue18);
+    bool conditionValue1 = vertexScalarConstants0.packedValues[104u] > 0.5;
+    float sumValue12 = 1.0 - 0.9900000095367431640625;
+    varyingColor2.w = spvNClamp((((sqrt(rdDot3Precise2(sumValue11, sumValue11)) / (conditionValue1 ? 100000.0 : vertexVectorConstants0.packedValues[24u].z)) + vertexScalarConstants0.packedValues[108u]) - (conditionValue1 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[24u].x)) / (conditionValue1 ? sumValue12 : (vertexVectorConstants0.packedValues[24u].y - vertexVectorConstants0.packedValues[24u].x)), 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[25u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[25u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[25u].z;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue1, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue1, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+#elif (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM50)
+    float multiplyAddValue16 = fma(vertexVectorConstants0.packedValues[10u].x, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].x, vertexPosition0.x, vertexPosition0.y * vertexVectorConstants0.packedValues[9u].x)) + vertexVectorConstants0.packedValues[11u].x;
+    float multiplyAddValue17 = fma(vertexVectorConstants0.packedValues[10u].y, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].y, vertexPosition0.x, vertexPosition0.y * vertexVectorConstants0.packedValues[9u].y)) + vertexVectorConstants0.packedValues[11u].y;
+    float multiplyAddValue18 = fma(vertexVectorConstants0.packedValues[10u].z, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[8u].z, vertexPosition0.x, vertexPosition0.y * vertexVectorConstants0.packedValues[9u].z)) + vertexVectorConstants0.packedValues[11u].z;
+    float sumValue25 = multiplyAddValue16 + 0.5;
+    float sumValue26 = multiplyAddValue17 + 0.5;
+    float sumValue27 = multiplyAddValue18 + 0.5;
+    varyingTexCoord3.x = multiplyAddValue16;
+    varyingTexCoord3.y = multiplyAddValue17;
+    varyingTexCoord3.z = multiplyAddValue18;
+    float sumValue28 = sumValue27 - vertexVectorConstants0.packedValues[29u].z;
+    float sumValue29 = sumValue25 - vertexVectorConstants0.packedValues[29u].x;
+    float sumValue30 = sumValue26 - vertexVectorConstants0.packedValues[29u].y;
+    vec3 vectorValue2 = vec3(sumValue28, sumValue29, sumValue30);
+    float inverseLengthValue2 = inversesqrt(rdDot3Precise2(vectorValue2, vectorValue2));
+    float productValue22 = inverseLengthValue2 * sumValue28;
+    float productValue23 = inverseLengthValue2 * sumValue29;
+    float productValue24 = inverseLengthValue2 * sumValue30;
+    float scalarValue3 = -productValue23;
+    vec2 vectorValue3 = vec2(productValue22, scalarValue3);
+    float inverseLengthValue3 = inversesqrt(rdDot2Precise(vectorValue3, vectorValue3));
+    float productValue25 = inverseLengthValue3 * productValue22;
+    float productValue26 = inverseLengthValue3 * scalarValue3;
+    float sumValue31 = vertexColor0.z - 0.5;
+    float sumValue32 = vertexColor0.x - 0.5;
+    float multiplyAddValue24 = fma(productValue24 * productValue26, sumValue31, productValue25 * sumValue32);
+    float multiplyAddValue25 = fma(productValue22, productValue25, -(productValue23 * productValue26)) * sumValue31;
+    float multiplyAddValue26 = fma(-(productValue24 * productValue25), sumValue31, productValue26 * sumValue32);
+    float sumValue33 = sumValue25 - multiplyAddValue24;
+    float sumValue34 = sumValue26 - multiplyAddValue25;
+    float sumValue35 = sumValue27 - multiplyAddValue26;
+    vec3 sumValue36 = vec3((multiplyAddValue24 - sumValue25) + vertexVectorConstants0.packedValues[29u].x, (multiplyAddValue25 - sumValue26) + vertexVectorConstants0.packedValues[29u].y, (multiplyAddValue26 - sumValue27) + vertexVectorConstants0.packedValues[29u].z);
+    vec4 multiplyAddValue27 = vec4(fma(vertexVectorConstants0.packedValues[6u].x, sumValue35, fma(vertexVectorConstants0.packedValues[4u].x, sumValue33, sumValue34 * vertexVectorConstants0.packedValues[5u].x)) + vertexVectorConstants0.packedValues[7u].x, fma(vertexVectorConstants0.packedValues[6u].y, sumValue35, fma(vertexVectorConstants0.packedValues[4u].y, sumValue33, sumValue34 * vertexVectorConstants0.packedValues[5u].y)) + vertexVectorConstants0.packedValues[7u].y, fma(vertexVectorConstants0.packedValues[6u].z, sumValue35, fma(vertexVectorConstants0.packedValues[4u].z, sumValue33, sumValue34 * vertexVectorConstants0.packedValues[5u].z)) + vertexVectorConstants0.packedValues[7u].z, fma(vertexVectorConstants0.packedValues[6u].w, sumValue35, fma(vertexVectorConstants0.packedValues[4u].w, sumValue33, sumValue34 * vertexVectorConstants0.packedValues[5u].w)) + vertexVectorConstants0.packedValues[7u].w);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[112u], vertexScalarConstants0.packedValues[12u]), multiplyAddValue27);
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[113u], vertexScalarConstants0.packedValues[13u]), multiplyAddValue27);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), multiplyAddValue27);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), multiplyAddValue27);
+    varyingColor0.x = 1.0;
+    varyingColor0.y = 1.0;
+    varyingColor0.z = 1.0;
+    varyingColor0.w = 1.0;
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingTexCoord1.x = rdEvaluateFloatExpression((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = rdEvaluateFloatExpression(productValue2 & 15u) * 0.066666670143604278564453125;
+    bool conditionValue1 = vertexScalarConstants0.packedValues[104u] > 0.5;
+    float sumValue12 = 1.0 - 0.9900000095367431640625;
+    varyingColor2.w = spvNClamp((((sqrt(rdDot3Precise2(sumValue36, sumValue36)) / (conditionValue1 ? 100000.0 : vertexVectorConstants0.packedValues[24u].z)) + vertexScalarConstants0.packedValues[108u]) - (conditionValue1 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[24u].x)) / (conditionValue1 ? sumValue12 : (vertexVectorConstants0.packedValues[24u].y - vertexVectorConstants0.packedValues[24u].x)), 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[25u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[25u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[25u].z;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue1, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue1, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM50)
+    vec4 vectorValue8 = vec4(vertexPosition0.x, vertexPosition0.y, vertexPosition0.z, 1.0);
+    float scalarValue4 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord6.x, vertexTexCoord6.y, vertexTexCoord6.z, vertexTexCoord6.w));
+    float scalarValue5 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord7.x, vertexTexCoord7.y, vertexTexCoord7.z, vertexTexCoord7.w));
+    float scalarValue6 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord5.x, vertexTexCoord5.y, vertexTexCoord5.z, vertexTexCoord5.w));
+    vec4 multiplyAddValue42 = vec4(fma(vertexVectorConstants0.packedValues[6u].x, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].x, scalarValue5, scalarValue4 * vertexVectorConstants0.packedValues[5u].x)) + vertexVectorConstants0.packedValues[7u].x, fma(vertexVectorConstants0.packedValues[6u].y, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].y, scalarValue5, scalarValue4 * vertexVectorConstants0.packedValues[5u].y)) + vertexVectorConstants0.packedValues[7u].y, fma(vertexVectorConstants0.packedValues[6u].z, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].z, scalarValue5, scalarValue4 * vertexVectorConstants0.packedValues[5u].z)) + vertexVectorConstants0.packedValues[7u].z, fma(vertexVectorConstants0.packedValues[6u].w, scalarValue6, fma(vertexVectorConstants0.packedValues[4u].w, scalarValue5, scalarValue4 * vertexVectorConstants0.packedValues[5u].w)) + vertexVectorConstants0.packedValues[7u].w);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[48u], vertexScalarConstants0.packedValues[12u]), multiplyAddValue42);
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[49u], vertexScalarConstants0.packedValues[13u]), multiplyAddValue42);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), multiplyAddValue42);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), multiplyAddValue42);
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingTexCoord1.x = rdEvaluateFloatExpression((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = rdEvaluateFloatExpression(productValue2 & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord3.x = scalarValue5;
+    varyingTexCoord3.y = scalarValue4;
+    varyingTexCoord3.z = scalarValue6;
+    vec3 sumValue56 = vec3(vertexVectorConstants0.packedValues[13u].x - scalarValue5, vertexVectorConstants0.packedValues[13u].y - scalarValue4, vertexVectorConstants0.packedValues[13u].z - scalarValue6);
+    bool conditionValue2 = vertexScalarConstants0.packedValues[40u] > 0.5;
+    float sumValue12 = 1.0 - 0.9900000095367431640625;
+    varyingColor2.w = spvNClamp((((sqrt(rdDot3Precise2(sumValue56, sumValue56)) / (conditionValue2 ? 100000.0 : vertexVectorConstants0.packedValues[8u].z)) + vertexScalarConstants0.packedValues[44u]) - (conditionValue2 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[8u].x)) / (conditionValue2 ? sumValue12 : (vertexVectorConstants0.packedValues[8u].y - vertexVectorConstants0.packedValues[8u].x)), 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[9u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[9u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[9u].z;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue1, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue1, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM50)
+    vec4 vectorValue8 = vec4(vertexPosition0.x, vertexPosition0.y, vertexPosition0.z, 1.0);
+    float scalarValue5 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord7.x, vertexTexCoord7.y, vertexTexCoord7.z, vertexTexCoord7.w));
+    float scalarValue4 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord6.x, vertexTexCoord6.y, vertexTexCoord6.z, vertexTexCoord6.w));
+    float scalarValue6 = rdDot4Precise(vectorValue8, vec4(vertexTexCoord5.x, vertexTexCoord5.y, vertexTexCoord5.z, vertexTexCoord5.w));
+    float sumValue80 = scalarValue5 + 0.5;
+    float sumValue81 = scalarValue4 + 0.5;
+    float sumValue82 = scalarValue6 + 0.5;
+    varyingTexCoord3.x = scalarValue5;
+    varyingTexCoord3.y = scalarValue4;
+    varyingTexCoord3.z = scalarValue6;
+    float sumValue83 = sumValue82 - vertexVectorConstants0.packedValues[13u].z;
+    float sumValue84 = sumValue80 - vertexVectorConstants0.packedValues[13u].x;
+    float sumValue85 = sumValue81 - vertexVectorConstants0.packedValues[13u].y;
+    vec3 vectorValue15 = vec3(sumValue83, sumValue84, sumValue85);
+    float inverseLengthValue10 = inversesqrt(rdDot3Precise2(vectorValue15, vectorValue15));
+    float productValue75 = inverseLengthValue10 * sumValue83;
+    float productValue76 = inverseLengthValue10 * sumValue84;
+    float productValue77 = inverseLengthValue10 * sumValue85;
+    float scalarValue7 = -productValue76;
+    vec2 vectorValue16 = vec2(productValue75, scalarValue7);
+    float inverseLengthValue11 = inversesqrt(rdDot2Precise(vectorValue16, vectorValue16));
+    float productValue78 = inverseLengthValue11 * productValue75;
+    float productValue79 = inverseLengthValue11 * scalarValue7;
+    float sumValue31 = vertexColor0.z - 0.5;
+    float sumValue32 = vertexColor0.x - 0.5;
+    float multiplyAddValue64 = fma(productValue77 * productValue79, sumValue31, productValue78 * sumValue32);
+    float multiplyAddValue65 = fma(productValue75, productValue78, -(productValue76 * productValue79)) * sumValue31;
+    float multiplyAddValue66 = fma(-(productValue77 * productValue78), sumValue31, productValue79 * sumValue32);
+    float sumValue86 = sumValue80 - multiplyAddValue64;
+    float sumValue87 = sumValue81 - multiplyAddValue65;
+    float sumValue88 = sumValue82 - multiplyAddValue66;
+    vec3 sumValue89 = vec3((multiplyAddValue64 - sumValue80) + vertexVectorConstants0.packedValues[13u].x, (multiplyAddValue65 - sumValue81) + vertexVectorConstants0.packedValues[13u].y, (multiplyAddValue66 - sumValue82) + vertexVectorConstants0.packedValues[13u].z);
+    vec4 multiplyAddValue67 = vec4(fma(vertexVectorConstants0.packedValues[6u].x, sumValue88, fma(vertexVectorConstants0.packedValues[4u].x, sumValue86, sumValue87 * vertexVectorConstants0.packedValues[5u].x)) + vertexVectorConstants0.packedValues[7u].x, fma(vertexVectorConstants0.packedValues[6u].y, sumValue88, fma(vertexVectorConstants0.packedValues[4u].y, sumValue86, sumValue87 * vertexVectorConstants0.packedValues[5u].y)) + vertexVectorConstants0.packedValues[7u].y, fma(vertexVectorConstants0.packedValues[6u].z, sumValue88, fma(vertexVectorConstants0.packedValues[4u].z, sumValue86, sumValue87 * vertexVectorConstants0.packedValues[5u].z)) + vertexVectorConstants0.packedValues[7u].z, fma(vertexVectorConstants0.packedValues[6u].w, sumValue88, fma(vertexVectorConstants0.packedValues[4u].w, sumValue86, sumValue87 * vertexVectorConstants0.packedValues[5u].w)) + vertexVectorConstants0.packedValues[7u].w);
+    gl_Position.x = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[0u], vertexScalarConstants0.packedValues[4u], vertexScalarConstants0.packedValues[8u] + vertexScalarConstants0.packedValues[48u], vertexScalarConstants0.packedValues[12u]), multiplyAddValue67);
+    gl_Position.y = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[1u], vertexScalarConstants0.packedValues[5u], vertexScalarConstants0.packedValues[9u] - vertexScalarConstants0.packedValues[49u], vertexScalarConstants0.packedValues[13u]), multiplyAddValue67);
+    gl_Position.z = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[2u], vertexScalarConstants0.packedValues[6u], vertexScalarConstants0.packedValues[10u], vertexScalarConstants0.packedValues[14u]), multiplyAddValue67);
+    gl_Position.w = rdDot4Precise(vec4(vertexScalarConstants0.packedValues[3u], vertexScalarConstants0.packedValues[7u], vertexScalarConstants0.packedValues[11u], vertexScalarConstants0.packedValues[15u]), multiplyAddValue67);
+    varyingColor0.x = 1.0;
+    varyingColor0.y = 1.0;
+    varyingColor0.z = 1.0;
+    varyingColor0.w = 1.0;
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingTexCoord1.x = rdEvaluateFloatExpression((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = rdEvaluateFloatExpression(productValue2 & 15u) * 0.066666670143604278564453125;
+    bool conditionValue2 = vertexScalarConstants0.packedValues[40u] > 0.5;
+    float sumValue12 = 1.0 - 0.9900000095367431640625;
+    varyingColor2.w = spvNClamp((((sqrt(rdDot3Precise2(sumValue89, sumValue89)) / (conditionValue2 ? 100000.0 : vertexVectorConstants0.packedValues[8u].z)) + vertexScalarConstants0.packedValues[44u]) - (conditionValue2 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[8u].x)) / (conditionValue2 ? sumValue12 : (vertexVectorConstants0.packedValues[8u].y - vertexVectorConstants0.packedValues[8u].x)), 0.0, 1.0);
+    varyingColor2.x = vertexVectorConstants0.packedValues[9u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[9u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[9u].z;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    varyingTexCoord0.x = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+    varyingTexCoord0.y = fma(rdEvaluateFloatExpression(bitfieldInsert(0u, productValue1, int(1u), int(15u))), 1.525902189314365386962890625e-05, fma(rdEvaluateFloatExpression(bitfieldExtract(productValue1, int(15u), int(1u))), 2.0, -1.0) * 3.0517578125e-05);
+#elif (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM65)
+    float multiplyAddValue = fma(vertexVectorConstants0.packedValues[10u].x, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[9u].x, vertexPosition0.y, vertexVectorConstants0.packedValues[8u].x * vertexPosition0.x)) + vertexVectorConstants0.packedValues[11u].x;
+    float multiplyAddValue1 = fma(vertexVectorConstants0.packedValues[10u].y, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[9u].y, vertexPosition0.y, vertexVectorConstants0.packedValues[8u].y * vertexPosition0.x)) + vertexVectorConstants0.packedValues[11u].y;
+    float multiplyAddValue2 = fma(vertexVectorConstants0.packedValues[10u].z, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[9u].z, vertexPosition0.y, vertexVectorConstants0.packedValues[8u].z * vertexPosition0.x)) + vertexVectorConstants0.packedValues[11u].z;
+    float sumValue = vertexVectorConstants0.packedValues[29u].x - multiplyAddValue;
+    float sumValue1 = vertexVectorConstants0.packedValues[29u].y - multiplyAddValue1;
+    float sumValue2 = vertexVectorConstants0.packedValues[29u].z - multiplyAddValue2;
+    bool conditionValue = vertexVectorConstants0.packedValues[26u].x > 0.5;
+    float comparisonValue = conditionValue ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[24u].x;
+    float multiplyAddValue3 = fma(vertexVectorConstants0.packedValues[6u].x, multiplyAddValue2, fma(vertexVectorConstants0.packedValues[5u].x, multiplyAddValue1, multiplyAddValue * vertexVectorConstants0.packedValues[4u].x)) + vertexVectorConstants0.packedValues[7u].x;
+    float multiplyAddValue4 = fma(vertexVectorConstants0.packedValues[6u].y, multiplyAddValue2, fma(vertexVectorConstants0.packedValues[5u].y, multiplyAddValue1, multiplyAddValue * vertexVectorConstants0.packedValues[4u].y)) + vertexVectorConstants0.packedValues[7u].y;
+    float multiplyAddValue5 = fma(vertexVectorConstants0.packedValues[6u].z, multiplyAddValue2, fma(vertexVectorConstants0.packedValues[5u].z, multiplyAddValue1, multiplyAddValue * vertexVectorConstants0.packedValues[4u].z)) + vertexVectorConstants0.packedValues[7u].z;
+    float multiplyAddValue6 = fma(vertexVectorConstants0.packedValues[6u].w, multiplyAddValue2, fma(vertexVectorConstants0.packedValues[5u].w, multiplyAddValue1, multiplyAddValue * vertexVectorConstants0.packedValues[4u].w)) + vertexVectorConstants0.packedValues[7u].w;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    gl_Position.x = fma(vertexVectorConstants0.packedValues[3u].x, multiplyAddValue6, fma(vertexVectorConstants0.packedValues[28u].x + vertexVectorConstants0.packedValues[2u].x, multiplyAddValue5, fma(vertexVectorConstants0.packedValues[1u].x, multiplyAddValue4, multiplyAddValue3 * vertexVectorConstants0.packedValues[0u].x)));
+    gl_Position.y = fma(vertexVectorConstants0.packedValues[3u].y, multiplyAddValue6, fma(vertexVectorConstants0.packedValues[2u].y - vertexVectorConstants0.packedValues[28u].y, multiplyAddValue5, fma(vertexVectorConstants0.packedValues[1u].y, multiplyAddValue4, multiplyAddValue3 * vertexVectorConstants0.packedValues[0u].y)));
+    gl_Position.z = fma(vertexVectorConstants0.packedValues[3u].z, multiplyAddValue6, fma(vertexVectorConstants0.packedValues[2u].z, multiplyAddValue5, fma(vertexVectorConstants0.packedValues[1u].z, multiplyAddValue4, multiplyAddValue3 * vertexVectorConstants0.packedValues[0u].z)));
+    gl_Position.w = fma(vertexVectorConstants0.packedValues[3u].w, multiplyAddValue6, fma(vertexVectorConstants0.packedValues[2u].w, multiplyAddValue5, fma(vertexVectorConstants0.packedValues[1u].w, multiplyAddValue4, multiplyAddValue3 * vertexVectorConstants0.packedValues[0u].w)));
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingColor2.x = vertexVectorConstants0.packedValues[25u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[25u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[25u].z;
+    varyingColor2.w = spvNClamp((((sqrt(((sumValue * sumValue) + (sumValue1 * sumValue1)) + (sumValue2 * sumValue2)) / (conditionValue ? 100000.0 : vertexVectorConstants0.packedValues[24u].z)) + vertexVectorConstants0.packedValues[27u].x) - comparisonValue) / ((conditionValue ? 1.0 : vertexVectorConstants0.packedValues[24u].y) - comparisonValue), 0.0, 1.0);
+    varyingTexCoord1.x = float((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = float(productValue2 & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord0.x = ((float((productValue >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord0.y = ((float((productValue1 >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue1 << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord3.x = multiplyAddValue;
+    varyingTexCoord3.y = multiplyAddValue1;
+    varyingTexCoord3.z = multiplyAddValue2;
+#elif (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_INSTANCING == RD_OFF && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM65)
+    float multiplyAddValue = fma(vertexVectorConstants0.packedValues[10u].x, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[9u].x, vertexPosition0.y, vertexVectorConstants0.packedValues[8u].x * vertexPosition0.x)) + vertexVectorConstants0.packedValues[11u].x;
+    float multiplyAddValue1 = fma(vertexVectorConstants0.packedValues[10u].y, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[9u].y, vertexPosition0.y, vertexVectorConstants0.packedValues[8u].y * vertexPosition0.x)) + vertexVectorConstants0.packedValues[11u].y;
+    float multiplyAddValue2 = fma(vertexVectorConstants0.packedValues[10u].z, vertexPosition0.z, fma(vertexVectorConstants0.packedValues[9u].z, vertexPosition0.y, vertexVectorConstants0.packedValues[8u].z * vertexPosition0.x)) + vertexVectorConstants0.packedValues[11u].z;
+    float sumValue13 = multiplyAddValue + 0.5;
+    float sumValue14 = multiplyAddValue1 + 0.5;
+    float sumValue15 = multiplyAddValue2 + 0.5;
+    float sumValue16 = sumValue13 - vertexVectorConstants0.packedValues[29u].x;
+    float sumValue17 = sumValue14 - vertexVectorConstants0.packedValues[29u].y;
+    float sumValue18 = sumValue15 - vertexVectorConstants0.packedValues[29u].z;
+    float inverseLengthValue = inversesqrt(dot(vec3(sumValue16, sumValue17, sumValue18), vec3(sumValue16, sumValue17, sumValue18)));
+    float productValue14 = sumValue16 * inverseLengthValue;
+    float productValue15 = sumValue18 * inverseLengthValue;
+    float sumValue19 = (-0.0) - productValue14;
+    float inverseLengthValue1 = inversesqrt(dot(vec3(productValue15, 0.0, sumValue19), vec3(productValue15, 0.0, sumValue19)));
+    float productValue16 = inverseLengthValue1 * productValue15;
+    float productValue17 = inverseLengthValue1 * sumValue19;
+    float sumValue20 = vertexColor0.z + (-0.5);
+    float productValue18 = (inverseLengthValue * sumValue20) * sumValue17;
+    float sumValue21 = vertexColor0.x + (-0.5);
+    float productValue19 = (sumValue13 - (productValue16 * sumValue21)) - (productValue17 * productValue18);
+    float productValue20 = sumValue14 - (((productValue16 * productValue15) - (productValue17 * productValue14)) * sumValue20);
+    float productValue21 = sumValue15 - ((productValue17 * sumValue21) - (productValue16 * productValue18));
+    float sumValue22 = vertexVectorConstants0.packedValues[29u].x - productValue19;
+    float sumValue23 = vertexVectorConstants0.packedValues[29u].y - productValue20;
+    float sumValue24 = vertexVectorConstants0.packedValues[29u].z - productValue21;
+    bool conditionValue = vertexVectorConstants0.packedValues[26u].x > 0.5;
+    float comparisonValue = conditionValue ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[24u].x;
+    float multiplyAddValue20 = fma(vertexVectorConstants0.packedValues[6u].x, productValue21, fma(vertexVectorConstants0.packedValues[5u].x, productValue20, productValue19 * vertexVectorConstants0.packedValues[4u].x)) + vertexVectorConstants0.packedValues[7u].x;
+    float multiplyAddValue21 = fma(vertexVectorConstants0.packedValues[6u].y, productValue21, fma(vertexVectorConstants0.packedValues[5u].y, productValue20, productValue19 * vertexVectorConstants0.packedValues[4u].y)) + vertexVectorConstants0.packedValues[7u].y;
+    float multiplyAddValue22 = fma(vertexVectorConstants0.packedValues[6u].z, productValue21, fma(vertexVectorConstants0.packedValues[5u].z, productValue20, productValue19 * vertexVectorConstants0.packedValues[4u].z)) + vertexVectorConstants0.packedValues[7u].z;
+    float multiplyAddValue23 = fma(vertexVectorConstants0.packedValues[6u].w, productValue21, fma(vertexVectorConstants0.packedValues[5u].w, productValue20, productValue19 * vertexVectorConstants0.packedValues[4u].w)) + vertexVectorConstants0.packedValues[7u].w;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    gl_Position.x = fma(vertexVectorConstants0.packedValues[3u].x, multiplyAddValue23, fma(vertexVectorConstants0.packedValues[28u].x + vertexVectorConstants0.packedValues[2u].x, multiplyAddValue22, fma(vertexVectorConstants0.packedValues[1u].x, multiplyAddValue21, multiplyAddValue20 * vertexVectorConstants0.packedValues[0u].x)));
+    gl_Position.y = fma(vertexVectorConstants0.packedValues[3u].y, multiplyAddValue23, fma(vertexVectorConstants0.packedValues[2u].y - vertexVectorConstants0.packedValues[28u].y, multiplyAddValue22, fma(vertexVectorConstants0.packedValues[1u].y, multiplyAddValue21, multiplyAddValue20 * vertexVectorConstants0.packedValues[0u].y)));
+    gl_Position.z = fma(vertexVectorConstants0.packedValues[3u].z, multiplyAddValue23, fma(vertexVectorConstants0.packedValues[2u].z, multiplyAddValue22, fma(vertexVectorConstants0.packedValues[1u].z, multiplyAddValue21, multiplyAddValue20 * vertexVectorConstants0.packedValues[0u].z)));
+    gl_Position.w = fma(vertexVectorConstants0.packedValues[3u].w, multiplyAddValue23, fma(vertexVectorConstants0.packedValues[2u].w, multiplyAddValue22, fma(vertexVectorConstants0.packedValues[1u].w, multiplyAddValue21, multiplyAddValue20 * vertexVectorConstants0.packedValues[0u].w)));
+    varyingColor0.x = 1.0;
+    varyingColor0.y = 1.0;
+    varyingColor0.z = 1.0;
+    varyingColor0.w = 1.0;
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingColor2.x = vertexVectorConstants0.packedValues[25u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[25u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[25u].z;
+    varyingColor2.w = spvNClamp((((sqrt(((sumValue24 * sumValue24) + (sumValue22 * sumValue22)) + (sumValue23 * sumValue23)) / (conditionValue ? 100000.0 : vertexVectorConstants0.packedValues[24u].z)) + vertexVectorConstants0.packedValues[27u].x) - comparisonValue) / ((conditionValue ? 1.0 : vertexVectorConstants0.packedValues[24u].y) - comparisonValue), 0.0, 1.0);
+    varyingTexCoord1.x = float((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = float(productValue2 & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord0.x = ((float((productValue >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord0.y = ((float((productValue1 >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue1 << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord3.x = multiplyAddValue;
+    varyingTexCoord3.y = multiplyAddValue1;
+    varyingTexCoord3.z = multiplyAddValue2;
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM65)
+    float multiplyAddValue43 = fma(vertexPosition0.z, vertexTexCoord7.z, fma(vertexPosition0.y, vertexTexCoord7.y, vertexPosition0.x * vertexTexCoord7.x)) + vertexTexCoord7.w;
+    float multiplyAddValue44 = fma(vertexPosition0.z, vertexTexCoord6.z, fma(vertexPosition0.y, vertexTexCoord6.y, vertexPosition0.x * vertexTexCoord6.x)) + vertexTexCoord6.w;
+    float multiplyAddValue45 = fma(vertexPosition0.z, vertexTexCoord5.z, fma(vertexPosition0.y, vertexTexCoord5.y, vertexPosition0.x * vertexTexCoord5.x)) + vertexTexCoord5.w;
+    float sumValue57 = vertexVectorConstants0.packedValues[13u].x - multiplyAddValue43;
+    float sumValue58 = vertexVectorConstants0.packedValues[13u].y - multiplyAddValue44;
+    float sumValue59 = vertexVectorConstants0.packedValues[13u].z - multiplyAddValue45;
+    bool conditionValue3 = vertexVectorConstants0.packedValues[10u].x > 0.5;
+    float comparisonValue7 = conditionValue3 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[8u].x;
+    float multiplyAddValue46 = fma(vertexVectorConstants0.packedValues[6u].x, multiplyAddValue45, fma(vertexVectorConstants0.packedValues[5u].x, multiplyAddValue44, multiplyAddValue43 * vertexVectorConstants0.packedValues[4u].x)) + vertexVectorConstants0.packedValues[7u].x;
+    float multiplyAddValue47 = fma(vertexVectorConstants0.packedValues[6u].y, multiplyAddValue45, fma(vertexVectorConstants0.packedValues[5u].y, multiplyAddValue44, multiplyAddValue43 * vertexVectorConstants0.packedValues[4u].y)) + vertexVectorConstants0.packedValues[7u].y;
+    float multiplyAddValue48 = fma(vertexVectorConstants0.packedValues[6u].z, multiplyAddValue45, fma(vertexVectorConstants0.packedValues[5u].z, multiplyAddValue44, multiplyAddValue43 * vertexVectorConstants0.packedValues[4u].z)) + vertexVectorConstants0.packedValues[7u].z;
+    float multiplyAddValue49 = fma(vertexVectorConstants0.packedValues[6u].w, multiplyAddValue45, fma(vertexVectorConstants0.packedValues[5u].w, multiplyAddValue44, multiplyAddValue43 * vertexVectorConstants0.packedValues[4u].w)) + vertexVectorConstants0.packedValues[7u].w;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    gl_Position.x = fma(vertexVectorConstants0.packedValues[3u].x, multiplyAddValue49, fma(vertexVectorConstants0.packedValues[12u].x + vertexVectorConstants0.packedValues[2u].x, multiplyAddValue48, fma(vertexVectorConstants0.packedValues[1u].x, multiplyAddValue47, multiplyAddValue46 * vertexVectorConstants0.packedValues[0u].x)));
+    gl_Position.y = fma(vertexVectorConstants0.packedValues[3u].y, multiplyAddValue49, fma(vertexVectorConstants0.packedValues[2u].y - vertexVectorConstants0.packedValues[12u].y, multiplyAddValue48, fma(vertexVectorConstants0.packedValues[1u].y, multiplyAddValue47, multiplyAddValue46 * vertexVectorConstants0.packedValues[0u].y)));
+    gl_Position.z = fma(vertexVectorConstants0.packedValues[3u].z, multiplyAddValue49, fma(vertexVectorConstants0.packedValues[2u].z, multiplyAddValue48, fma(vertexVectorConstants0.packedValues[1u].z, multiplyAddValue47, multiplyAddValue46 * vertexVectorConstants0.packedValues[0u].z)));
+    gl_Position.w = fma(vertexVectorConstants0.packedValues[3u].w, multiplyAddValue49, fma(vertexVectorConstants0.packedValues[2u].w, multiplyAddValue48, fma(vertexVectorConstants0.packedValues[1u].w, multiplyAddValue47, multiplyAddValue46 * vertexVectorConstants0.packedValues[0u].w)));
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingColor2.x = vertexVectorConstants0.packedValues[9u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[9u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[9u].z;
+    varyingColor2.w = spvNClamp((((sqrt(((sumValue57 * sumValue57) + (sumValue58 * sumValue58)) + (sumValue59 * sumValue59)) / (conditionValue3 ? 100000.0 : vertexVectorConstants0.packedValues[8u].z)) + vertexVectorConstants0.packedValues[11u].x) - comparisonValue7) / ((conditionValue3 ? 1.0 : vertexVectorConstants0.packedValues[8u].y) - comparisonValue7), 0.0, 1.0);
+    varyingTexCoord1.x = float((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = float(productValue2 & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord0.x = ((float((productValue >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord0.y = ((float((productValue1 >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue1 << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord3.x = multiplyAddValue43;
+    varyingTexCoord3.y = multiplyAddValue44;
+    varyingTexCoord3.z = multiplyAddValue45;
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_INSTANCING == RD_ON && RD_FEATURE_RENDER_AS_BILLBOARDS == RD_ON && RD_PLATFORM == RD_PLATFORM_SM65)
+    float multiplyAddValue43 = fma(vertexPosition0.z, vertexTexCoord7.z, fma(vertexPosition0.y, vertexTexCoord7.y, vertexPosition0.x * vertexTexCoord7.x)) + vertexTexCoord7.w;
+    float multiplyAddValue44 = fma(vertexPosition0.z, vertexTexCoord6.z, fma(vertexPosition0.y, vertexTexCoord6.y, vertexPosition0.x * vertexTexCoord6.x)) + vertexTexCoord6.w;
+    float multiplyAddValue45 = fma(vertexPosition0.z, vertexTexCoord5.z, fma(vertexPosition0.y, vertexTexCoord5.y, vertexPosition0.x * vertexTexCoord5.x)) + vertexTexCoord5.w;
+    float sumValue60 = multiplyAddValue43 + 0.5;
+    float sumValue61 = multiplyAddValue44 + 0.5;
+    float sumValue62 = multiplyAddValue45 + 0.5;
+    float sumValue63 = sumValue60 - vertexVectorConstants0.packedValues[13u].x;
+    float sumValue64 = sumValue61 - vertexVectorConstants0.packedValues[13u].y;
+    float sumValue65 = sumValue62 - vertexVectorConstants0.packedValues[13u].z;
+    float inverseLengthValue6 = inversesqrt(dot(vec3(sumValue63, sumValue64, sumValue65), vec3(sumValue63, sumValue64, sumValue65)));
+    float productValue49 = sumValue63 * inverseLengthValue6;
+    float productValue50 = sumValue65 * inverseLengthValue6;
+    float sumValue66 = (-0.0) - productValue49;
+    float inverseLengthValue7 = inversesqrt(dot(vec3(productValue50, 0.0, sumValue66), vec3(productValue50, 0.0, sumValue66)));
+    float productValue51 = inverseLengthValue7 * productValue50;
+    float productValue52 = inverseLengthValue7 * sumValue66;
+    float sumValue20 = vertexColor0.z + (-0.5);
+    float productValue53 = (inverseLengthValue6 * sumValue20) * sumValue64;
+    float sumValue21 = vertexColor0.x + (-0.5);
+    float productValue54 = (sumValue60 - (productValue51 * sumValue21)) - (productValue52 * productValue53);
+    float productValue55 = sumValue61 - (((productValue51 * productValue50) - (productValue52 * productValue49)) * sumValue20);
+    float productValue56 = sumValue62 - ((productValue52 * sumValue21) - (productValue51 * productValue53));
+    float sumValue67 = vertexVectorConstants0.packedValues[13u].x - productValue54;
+    float sumValue68 = vertexVectorConstants0.packedValues[13u].y - productValue55;
+    float sumValue69 = vertexVectorConstants0.packedValues[13u].z - productValue56;
+    bool conditionValue3 = vertexVectorConstants0.packedValues[10u].x > 0.5;
+    float comparisonValue7 = conditionValue3 ? 0.9900000095367431640625 : vertexVectorConstants0.packedValues[8u].x;
+    float multiplyAddValue50 = fma(vertexVectorConstants0.packedValues[6u].x, productValue56, fma(vertexVectorConstants0.packedValues[5u].x, productValue55, productValue54 * vertexVectorConstants0.packedValues[4u].x)) + vertexVectorConstants0.packedValues[7u].x;
+    float multiplyAddValue51 = fma(vertexVectorConstants0.packedValues[6u].y, productValue56, fma(vertexVectorConstants0.packedValues[5u].y, productValue55, productValue54 * vertexVectorConstants0.packedValues[4u].y)) + vertexVectorConstants0.packedValues[7u].y;
+    float multiplyAddValue52 = fma(vertexVectorConstants0.packedValues[6u].z, productValue56, fma(vertexVectorConstants0.packedValues[5u].z, productValue55, productValue54 * vertexVectorConstants0.packedValues[4u].z)) + vertexVectorConstants0.packedValues[7u].z;
+    float multiplyAddValue53 = fma(vertexVectorConstants0.packedValues[6u].w, productValue56, fma(vertexVectorConstants0.packedValues[5u].w, productValue55, productValue54 * vertexVectorConstants0.packedValues[4u].w)) + vertexVectorConstants0.packedValues[7u].w;
+    uint productValue = uint(roundEven(vertexTexCoord0.x * 65535.0));
+    uint productValue1 = uint(roundEven(vertexTexCoord0.y * 65535.0));
+    uint productValue2 = uint(roundEven(vertexTexCoord1.y * 65535.0));
+    gl_Position.x = fma(vertexVectorConstants0.packedValues[3u].x, multiplyAddValue53, fma(vertexVectorConstants0.packedValues[12u].x + vertexVectorConstants0.packedValues[2u].x, multiplyAddValue52, fma(vertexVectorConstants0.packedValues[1u].x, multiplyAddValue51, multiplyAddValue50 * vertexVectorConstants0.packedValues[0u].x)));
+    gl_Position.y = fma(vertexVectorConstants0.packedValues[3u].y, multiplyAddValue53, fma(vertexVectorConstants0.packedValues[2u].y - vertexVectorConstants0.packedValues[12u].y, multiplyAddValue52, fma(vertexVectorConstants0.packedValues[1u].y, multiplyAddValue51, multiplyAddValue50 * vertexVectorConstants0.packedValues[0u].y)));
+    gl_Position.z = fma(vertexVectorConstants0.packedValues[3u].z, multiplyAddValue53, fma(vertexVectorConstants0.packedValues[2u].z, multiplyAddValue52, fma(vertexVectorConstants0.packedValues[1u].z, multiplyAddValue51, multiplyAddValue50 * vertexVectorConstants0.packedValues[0u].z)));
+    gl_Position.w = fma(vertexVectorConstants0.packedValues[3u].w, multiplyAddValue53, fma(vertexVectorConstants0.packedValues[2u].w, multiplyAddValue52, fma(vertexVectorConstants0.packedValues[1u].w, multiplyAddValue51, multiplyAddValue50 * vertexVectorConstants0.packedValues[0u].w)));
+    varyingColor0.x = 1.0;
+    varyingColor0.y = 1.0;
+    varyingColor0.z = 1.0;
+    varyingColor0.w = 1.0;
+    varyingTexCoord2.x = float((uint(roundEven(vertexTexCoord1.x * 65535.0)) & 256u) != 0u);
+    varyingTexCoord2.y = float((productValue2 & 256u) != 0u);
+    varyingColor2.x = vertexVectorConstants0.packedValues[9u].x;
+    varyingColor2.y = vertexVectorConstants0.packedValues[9u].y;
+    varyingColor2.z = vertexVectorConstants0.packedValues[9u].z;
+    varyingColor2.w = spvNClamp((((sqrt(((sumValue69 * sumValue69) + (sumValue67 * sumValue67)) + (sumValue68 * sumValue68)) / (conditionValue3 ? 100000.0 : vertexVectorConstants0.packedValues[8u].z)) + vertexVectorConstants0.packedValues[11u].x) - comparisonValue7) / ((conditionValue3 ? 1.0 : vertexVectorConstants0.packedValues[8u].y) - comparisonValue7), 0.0, 1.0);
+    varyingTexCoord1.x = float((productValue2 >> 4u) & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord1.y = float(productValue2 & 15u) * 0.066666670143604278564453125;
+    varyingTexCoord0.x = ((float((productValue >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord0.y = ((float((productValue1 >> 15u) & 1u) * 6.103515625e-05) + (-3.0517578125e-05)) + (float((productValue1 << 1u) & 65534u) * 1.525902189314365386962890625e-05);
+    varyingTexCoord3.x = multiplyAddValue43;
+    varyingTexCoord3.y = multiplyAddValue44;
+    varyingTexCoord3.z = multiplyAddValue45;
+#endif
+}
