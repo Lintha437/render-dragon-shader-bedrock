@@ -1,0 +1,21 @@
+{
+  "consumer_qualifier_conflicts": [
+    [
+      "87fb1ba885e9a2697d39e15cc7310354cec9364f9747944bd88e40a0c768f1e6",
+      "TEXCOORD:0",
+      [
+        "",
+        "linear centroid "
+      ]
+    ],
+    [
+      "c9d5f81f60e86d2cdc31d870dcd46d4d430437bc8842be397ed2f6c52ae54b5d",
+      "TEXCOORD:0",
+      [
+        "",
+        "linear centroid "
+      ]
+    ]
+  ],
+  "vertex_programs": 1109
+}

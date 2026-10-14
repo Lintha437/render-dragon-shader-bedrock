@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "bytes_before": 122705397,
+  "bytes_after": 25264108,
+  "redundant_entry_tables_removed": 52175,
+  "interned_interface_contracts": 478
+}
