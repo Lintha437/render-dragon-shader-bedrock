@@ -1,0 +1,21 @@
+name: Compatibility or rendering bug
+description: Report a reproducible shader or build problem.
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Game build and project revision
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Reproduction and expected behavior
+      description: Include graphics mode, GPU, driver and affected materials if known.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation results and sanitized errors
+      description: Distinguish compiler, D3D12 pipeline and actual game results. Do not upload original game files.
