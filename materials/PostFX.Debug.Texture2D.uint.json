@@ -1,0 +1,41 @@
+{
+  "material": "PostFX.Debug.Texture2D.uint",
+  "parent": "PostFX.Debug",
+  "passes": {
+    "DebugBlit": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/PostFX.Debug.Texture2D.uint/DebugBlit.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/PostFX.Debug.Texture2D.uint/DebugBlit.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/CubemapTransfer/CubemapToOffscreen.vertex.glsl",
+            "GLSL/pipelines/PostFX.Debug/DebugBlit.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/CubemapTransfer/CubemapToOffscreen.vertex.hlsl",
+            "HLSL/pipelines/PostFX.Debug/DebugBlit.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

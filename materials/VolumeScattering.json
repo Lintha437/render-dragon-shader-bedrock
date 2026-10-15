@@ -1,0 +1,81 @@
+{
+  "material": "VolumeScattering",
+  "parent": "",
+  "passes": {
+    "Fallback": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.glsl",
+            "GLSL/pipelines/Checkerboarding/Fallback.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.hlsl",
+            "HLSL/pipelines/Checkerboarding/Fallback.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.glsl",
+            "GLSL/pipelines/Checkerboarding/Fallback.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.hlsl",
+            "HLSL/pipelines/Checkerboarding/Fallback.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "Scattering": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "compute": {
+          "glsl": [
+            "GLSL/pipelines/VolumeScattering/Scattering.compute.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/VolumeScattering/Scattering.compute.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "cs_5_0",
+        "cs_6_3",
+        "cs_6_5",
+        "ps_4_0",
+        "vs_4_0"
+      ],
+      "original_variants": 1
+    }
+  }
+}

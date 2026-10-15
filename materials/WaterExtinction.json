@@ -1,0 +1,37 @@
+{
+  "material": "WaterExtinction",
+  "parent": "",
+  "passes": {
+    "WaterExtinction": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterExtinction/WaterExtinction.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterExtinction/WaterExtinction.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

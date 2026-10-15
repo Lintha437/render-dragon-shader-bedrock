@@ -1,0 +1,146 @@
+{
+  "material": "WaterSimulation",
+  "parent": "",
+  "passes": {
+    "HorizontalFFT": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterSimulation/HorizontalFFT.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterSimulation/HorizontalFFT.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/BlitHDR/Blit.vertex.glsl",
+            "GLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BlitHDR/Blit.vertex.hlsl",
+            "HLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "InitSpectrum": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterSimulation/InitSpectrum.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterSimulation/InitSpectrum.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/BlitHDR/Blit.vertex.glsl",
+            "GLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BlitHDR/Blit.vertex.hlsl",
+            "HLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "UpdateSpectrum": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterSimulation/UpdateSpectrum.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterSimulation/UpdateSpectrum.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/BlitHDR/Blit.vertex.glsl",
+            "GLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BlitHDR/Blit.vertex.hlsl",
+            "HLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "VerticalFFT": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterSimulation/VerticalFFT.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterSimulation/VerticalFFT.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/BlitHDR/Blit.vertex.glsl",
+            "GLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/BlitHDR/Blit.vertex.hlsl",
+            "HLSL/pipelines/EditorHighlight/HighlightTextureEdge.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

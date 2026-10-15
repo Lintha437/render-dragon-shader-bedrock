@@ -1,0 +1,72 @@
+{
+  "material": "CubemapHDRi",
+  "parent": "Cubemap",
+  "passes": {
+    "ForceForwardPBROpaque": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/CubemapHDRi/ForceForwardPBROpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/CubemapHDRi/ForceForwardPBROpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Cubemap/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Cubemap/Opaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "Opaque": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/CubemapHDRi/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/CubemapHDRi/Opaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Cubemap/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Cubemap/Opaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

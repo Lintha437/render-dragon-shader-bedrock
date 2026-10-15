@@ -1,0 +1,266 @@
+{
+  "material": "ItemInHandForwardPBRTextured",
+  "parent": "ItemInHandForwardPBR",
+  "passes": {
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "Fancy": "On",
+        "Instancing": "Off",
+        "MultiColorTint": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MultiColorTint": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Fancy": "On",
+        "Instancing": "Off",
+        "MultiColorTint": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MultiColorTint": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "Fancy": "On",
+        "Instancing": "Off",
+        "MultiColorTint": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MultiColorTint": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/DepthOnlyOpaque.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "ForwardPBRAlphaTest": {
+      "default_features": {
+        "Fancy": "On",
+        "Instancing": "Off",
+        "MultiColorTint": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MultiColorTint": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    },
+    "ForwardPBROpaque": {
+      "default_features": {
+        "Fancy": "On",
+        "Instancing": "Off",
+        "MultiColorTint": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MultiColorTint": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBROpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBROpaque.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBROpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ItemInHandForwardPBRTextured/ForwardPBROpaque.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 8
+    }
+  }
+}

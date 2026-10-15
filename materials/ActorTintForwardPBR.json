@@ -1,0 +1,320 @@
+{
+  "material": "ActorTintForwardPBR",
+  "parent": "ActorForwardPBR",
+  "passes": {
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorTintForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorTintForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "ForwardPBRAlphaTest": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorTintForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorTintForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "ForwardPBROpaque": {
+      "default_features": {
+        "Change_Color": "Off",
+        "Fancy": "On",
+        "Emissive": "Off",
+        "Instancing": "Off",
+        "MaskedMultitexture": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "Change_Color": [
+          "Multi",
+          "Off",
+          "On"
+        ],
+        "Emissive": [
+          "Off"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "MaskedMultitexture": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ActorForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/ActorTintForwardPBR/ForwardPBROpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ActorTintForwardPBR/ForwardPBROpaque.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    }
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "material": "LegacyCubemap",
+  "parent": "",
+  "passes": {
+    "ForceForwardPBROpaque": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "Transparent": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Blit/Transparent.fragment.glsl",
+            "GLSL/pipelines/LegacyCubemap/Transparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Blit/Transparent.fragment.hlsl",
+            "HLSL/pipelines/LegacyCubemap/Transparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "TransparentDegamma": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/LegacyCubemap/TransparentDegamma.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/LegacyCubemap/TransparentDegamma.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/LegacyCubemap/ForceForwardPBROpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

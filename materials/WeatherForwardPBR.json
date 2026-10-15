@@ -1,0 +1,179 @@
+{
+  "material": "WeatherForwardPBR",
+  "parent": "Weather",
+  "passes": {
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "PointLightShading": "Off",
+        "FlipOcclusion": "Off",
+        "Instancing": "Off",
+        "NoOcclusion": "Off",
+        "NoVariety": "Off"
+      },
+      "supported_features": {
+        "FlipOcclusion": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "NoOcclusion": [
+          "Off",
+          "On"
+        ],
+        "NoVariety": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/WeatherForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WeatherForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WeatherForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WeatherForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    },
+    "Transparent": {
+      "default_features": {
+        "PointLightShading": "Off",
+        "FlipOcclusion": "Off",
+        "Instancing": "Off",
+        "NoOcclusion": "Off",
+        "NoVariety": "Off"
+      },
+      "supported_features": {
+        "FlipOcclusion": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "NoOcclusion": [
+          "Off",
+          "On"
+        ],
+        "NoVariety": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WeatherForwardPBR/Transparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WeatherForwardPBR/Transparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/WeatherForwardPBR/Transparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WeatherForwardPBR/Transparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 32
+    },
+    "MotionOnly": {
+      "default_features": {
+        "PointLightShading": "Off",
+        "FlipOcclusion": "Off",
+        "NoOcclusion": "Off",
+        "NoVariety": "Off"
+      },
+      "supported_features": {
+        "FlipOcclusion": [
+          "Off",
+          "On"
+        ],
+        "NoOcclusion": [
+          "Off",
+          "On"
+        ],
+        "NoVariety": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WeatherForwardPBR/MotionOnly.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WeatherForwardPBR/MotionOnly.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/WeatherForwardPBR/MotionOnly.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WeatherForwardPBR/MotionOnly.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 16
+    }
+  }
+}

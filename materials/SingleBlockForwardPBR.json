@@ -1,0 +1,328 @@
+{
+  "material": "SingleBlockForwardPBR",
+  "parent": "",
+  "passes": {
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/DepthOnlyOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/DepthOnlyOpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "ForwardPBRAlphaTest": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "ForwardPBROpaque": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/ForwardPBRAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/ForwardPBRAlphaTest.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "Opaque": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "PointLightShading": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/Opaque.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SingleBlockForwardPBR/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SingleBlockForwardPBR/Opaque.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    }
+  }
+}
