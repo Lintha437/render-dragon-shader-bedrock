@@ -1,0 +1,26 @@
+// Native resource and stage-interface layouts for FullscreenEffect / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[108];
+} vertexScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+    vec4 packedValues[27];
+} vertexVectorConstants0;
+layout(location = 2) in vec4 vertexColor0;
+#if RD_BINDING_LAYOUT == 0
+layout(location = 8) in vec4 vertexNormal0;
+#endif
+layout(location = 9) in vec3 vertexPosition0;
+layout(location = 11) in vec2 vertexTexCoord0;
+layout(location = 2) out vec4 varyingColor0;
+layout(location = 4) out vec4 varyingColor2;
+layout(location = 3) out vec4 varyingColor1;
+#if RD_BINDING_LAYOUT == 0
+layout(location = 11) centroid out vec2 varyingTexCoord0;
+#elif RD_BINDING_LAYOUT == 1
+layout(location = 11) out vec2 varyingTexCoord0;
+#endif

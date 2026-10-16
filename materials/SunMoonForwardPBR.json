@@ -1,0 +1,82 @@
+{
+  "material": "SunMoonForwardPBR",
+  "parent": "",
+  "passes": {
+    "ForwardPBRTransparent": {
+      "default_features": {
+        "Instancing": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/StarsForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StarsForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SunMoonForwardPBR/ForwardPBRTransparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SunMoonForwardPBR/ForwardPBRTransparent.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "ForwardPBRTransparentSkyProbe": {
+      "default_features": {
+        "Instancing": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/StarsForwardPBR/ForwardPBRTransparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StarsForwardPBR/ForwardPBRTransparent.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SunMoonForwardPBR/ForwardPBRTransparentSkyProbe.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SunMoonForwardPBR/ForwardPBRTransparentSkyProbe.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    }
+  }
+}

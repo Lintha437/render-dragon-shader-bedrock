@@ -1,0 +1,41 @@
+{
+  "material": "ChunkOccluder",
+  "parent": "",
+  "passes": {
+    "DepthOnlyOpaque": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.glsl",
+            "GLSL/pipelines/Checkerboarding/Fallback.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.hlsl",
+            "HLSL/pipelines/Checkerboarding/Fallback.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/ChunkOccluder/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/ChunkOccluder/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

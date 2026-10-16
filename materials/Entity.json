@@ -1,0 +1,701 @@
+{
+  "material": "Entity",
+  "parent": "",
+  "passes": {
+    "AlphaTestMaskedOverwrite": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "AlphaTest": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "AlphaTestEmissiveOnly": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestEmissiveOnly.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestEmissiveOnly.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "Emissive": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/Emissive.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/Emissive.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "AlphaTestColorMaskGlint": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestColorMaskGlint.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestColorMaskGlint.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestColorMaskGlint.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestColorMaskGlint.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "AlphaTestColorMask": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestColorMask.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestColorMask.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "AlphaTestGlint": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestGlint.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestGlint.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestColorMaskGlint.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestColorMaskGlint.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "AlphaTestColorMaskMultiplicativeTint": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Sampled"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Sampled",
+          "Shared0",
+          "Shared1"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestColorMaskMultiplicativeTint.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestColorMaskMultiplicativeTint.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 18
+    },
+    "AlphaTestEmissive": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestEmissive.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestEmissive.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "Glint": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/Glint.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/Glint.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestColorMaskGlint.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestColorMaskGlint.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "BaseColor": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/BaseColor.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/BaseColor.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "AlphaTestMultiColor": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Sampled"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Sampled",
+          "Shared0",
+          "Shared1"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMultiColor.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMultiColor.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 18
+    },
+    "ColorMask": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Constant"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/ColorMask.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/ColorMask.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "MultiColor": {
+      "default_features": {
+        "SourceInputType0": "Constant",
+        "SourceInputType1": "Constant",
+        "SourceInputType2": "Constant"
+      },
+      "supported_features": {
+        "SourceInputType0": [
+          "Constant",
+          "Sampled"
+        ],
+        "SourceInputType1": [
+          "Constant",
+          "Sampled",
+          "Shared0"
+        ],
+        "SourceInputType2": [
+          "Constant",
+          "Sampled",
+          "Shared0",
+          "Shared1"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Entity/BaseColor.fragment.glsl",
+            "GLSL/pipelines/Entity/MultiColor.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/BaseColor.fragment.hlsl",
+            "HLSL/pipelines/Entity/MultiColor.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Entity/AlphaTestMaskedOverwrite.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    }
+  }
+}

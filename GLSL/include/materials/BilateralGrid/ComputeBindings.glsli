@@ -1,0 +1,92 @@
+// Native resource and stage-interface layouts for BilateralGrid / compute.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
+#elif RD_BINDING_LAYOUT == 1
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[16];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 2
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+#elif RD_BINDING_LAYOUT == 5
+layout(local_size_x = 16, local_size_y = 16, local_size_z = 1) in;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[16];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+#elif RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 9
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+#elif RD_BINDING_LAYOUT == 11
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[8];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 12
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[8];
+} computeScalarConstants0;
+#elif RD_BINDING_LAYOUT == 15
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[8];
+} computeScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform ComputeVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 5
+    vec4 packedValues[4];
+#elif RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 8 || RD_BINDING_LAYOUT == 9
+    vec4 packedValues[1];
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 14 || RD_BINDING_LAYOUT == 15
+    vec4 packedValues[2];
+#endif
+} computeVectorConstants0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 1) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 2) uniform texture2D sceneColorTexture;
+layout(set = 0, binding = 4, r32ui) uniform uimageBuffer bilateralGrid;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 4, r32ui) uniform uimageBuffer intermediateValue2;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 9
+layout(set = 0, binding = 4, r32ui) uniform writeonly uimageBuffer intermediateValue;
+#elif RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 8
+layout(set = 0, binding = 4, r32ui) uniform writeonly uimageBuffer bilateralGrid;
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 14
+layout(set = 0, binding = 3) uniform writeonly image3D filteredBilateralGridOutputTexture;
+layout(set = 0, binding = 4, r32ui) uniform readonly uimageBuffer bilateralGrid;
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 15
+layout(set = 0, binding = 3) uniform writeonly image3D intermediateValue;
+layout(set = 0, binding = 4, r32ui) uniform readonly uimageBuffer intermediateValue1;
+#endif

@@ -1,0 +1,21 @@
+// Native resource and stage-interface layouts for Checkerboarding / compute.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 1) in;
+layout(set = 0, binding = 0, std140) uniform ComputeVectorConstants0Buffer
+{
+    vec4 packedValues[1];
+} computeVectorConstants0;
+layout(set = 0, binding = 0) uniform texture2D colorMetalnessInputTexture;
+layout(set = 0, binding = 2) uniform texture2D emissiveLinearRoughnessInputTexture;
+layout(set = 0, binding = 4) uniform texture2D lowPrecisionWorldPositionInputTexture;
+layout(set = 0, binding = 6) uniform texture2D normalInputTexture;
+layout(set = 0, binding = 8) uniform utexture2D planeIdInputTexture;
+layout(set = 0, binding = 10) uniform texture2D viewDirectionAndSplitMaskInputTexture;
+layout(set = 0, binding = 12) uniform texture2D worldPositionInputTexture;
+layout(set = 0, binding = 1) uniform writeonly image2D colorMetalnessOutputTexture;
+layout(set = 0, binding = 3) uniform writeonly image2D emissiveLinearRoughnessOutputTexture;
+layout(set = 0, binding = 5) uniform writeonly image2D lowPrecisionWorldPositionOutputTexture;
+layout(set = 0, binding = 7) uniform writeonly image2D normalOutputTexture;
+layout(set = 0, binding = 9) uniform writeonly uimage2D planeIdOutputTexture;
+layout(set = 0, binding = 11) uniform writeonly image2D viewDirectionAndSplitMaskOutputTexture;
+layout(set = 0, binding = 13) uniform writeonly image2D worldPositionOutputTexture;

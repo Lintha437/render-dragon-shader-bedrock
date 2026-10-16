@@ -1,0 +1,113 @@
+{
+  "material": "SpecularConvolution",
+  "parent": "",
+  "passes": {
+    "Convolve": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.glsl",
+            "GLSL/pipelines/SpecularConvolution/Convolve.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.hlsl",
+            "HLSL/pipelines/SpecularConvolution/Convolve.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.glsl",
+            "GLSL/pipelines/CubemapTransfer/CubemapToOffscreen.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.hlsl",
+            "HLSL/pipelines/CubemapTransfer/CubemapToOffscreen.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "Fallback": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.glsl",
+            "GLSL/pipelines/Checkerboarding/Fallback.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.fragment.hlsl",
+            "HLSL/pipelines/Checkerboarding/Fallback.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.glsl",
+            "GLSL/pipelines/Checkerboarding/Fallback.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Checkerboarding/DoCheckerboarding.vertex.hlsl",
+            "HLSL/pipelines/Checkerboarding/Fallback.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "GenerateBrdf": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/SpecularConvolution/GenerateBrdf.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SpecularConvolution/GenerateBrdf.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/SpecularConvolution/GenerateBrdf.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/SpecularConvolution/GenerateBrdf.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

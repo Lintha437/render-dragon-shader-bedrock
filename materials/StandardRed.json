@@ -1,0 +1,166 @@
+{
+  "material": "StandardRed",
+  "parent": "",
+  "passes": {
+    "CustomPassBasedOnOpaque": {
+      "default_features": {
+        "Instancing": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/CustomPassBasedOnOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/CustomPassBasedOnOpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/Color/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/Color/Opaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Instancing": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "Instancing": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    },
+    "Opaque": {
+      "default_features": {
+        "Instancing": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/Opaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/StandardRed/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/StandardRed/Opaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 2
+    }
+  }
+}

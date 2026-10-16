@@ -1,0 +1,481 @@
+// ActorGlintForwardPBR / ForwardPBRTransparent / vertex forward pipeline.
+// Feature macros choose supported code paths; native layouts come from the build recipe.
+#include "../../include/ProjectConfig.h"
+
+#ifndef RD_CONFIGURATION
+#define RD_CONFIGURATION 4
+#endif
+#ifndef RD_PLATFORM
+#define RD_PLATFORM RD_PLATFORM_SM65
+#endif
+#ifndef RD_OPTION_CHANGE_COLOR
+#define RD_OPTION_CHANGE_COLOR RD_CHANGE_COLOR_OFF
+#endif
+#ifndef RD_OPTION_EMISSIVE
+#define RD_OPTION_EMISSIVE RD_EMISSIVE_OFF
+#endif
+#ifndef RD_FEATURE_FANCY
+#define RD_FEATURE_FANCY RD_ON
+#endif
+#ifndef RD_FEATURE_INSTANCING
+#define RD_FEATURE_INSTANCING RD_OFF
+#endif
+#ifndef RD_FEATURE_MASKED_MULTITEXTURE
+#define RD_FEATURE_MASKED_MULTITEXTURE RD_OFF
+#endif
+#ifndef RD_FEATURE_POINT_LIGHT_SHADING
+#define RD_FEATURE_POINT_LIGHT_SHADING RD_OFF
+#endif
+#ifndef RD_BINDING_LAYOUT
+#define RD_BINDING_LAYOUT 0
+#endif
+
+
+#include "../../include/materials/ActorGlintForwardPBR/VertexBindings.hlsli"
+
+#if (RD_FEATURE_INSTANCING == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM50)
+void main(
+  float4 vertexColor0 : COLOR0,
+  int vertexBlendIndices0 : BLENDINDICES0,
+  float4 vertexNormal0 : NORMAL0,
+  float3 vertexPosition0 : POSITION0,
+  float4 vertexTangent0 : TANGENT0,
+  float2 vertexTexCoord0 : TEXCOORD0,
+  out float4 clipSpacePosition : SV_POSITION0,
+  out float3 varyingBitangent0 : BITANGENT0,
+  out float4 varyingColor1 : COLOR1,
+  out float4 varyingColor0 : COLOR0,
+  out float4 varyingTexCoord2 : TEXCOORD2,
+  out float3 varyingNormal0 : NORMAL0,
+  out float3 varyingTexCoord4 : TEXCOORD4,
+  out float3 varyingTangent0 : TANGENT0,
+  out float4 varyingTexCoord0 : TEXCOORD0,
+  out float3 varyingTexCoord3 : TEXCOORD3)
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_PLATFORM == RD_PLATFORM_SM50)
+void main(
+  float4 vertexColor0 : COLOR0,
+  int vertexBlendIndices0 : BLENDINDICES0,
+  float4 vertexNormal0 : NORMAL0,
+  float3 vertexPosition0 : POSITION0,
+  float4 vertexTangent0 : TANGENT0,
+  float4 vertexTexCoord0 : TEXCOORD0,
+  float4 vertexTexCoord7 : TEXCOORD7,
+  float4 vertexTexCoord6 : TEXCOORD6,
+  float4 vertexTexCoord5 : TEXCOORD5,
+  out float4 clipSpacePosition : SV_POSITION0,
+  out float3 varyingBitangent0 : BITANGENT0,
+  out float4 varyingColor1 : COLOR1,
+  out float4 varyingColor0 : COLOR0,
+  out float4 varyingTexCoord2 : TEXCOORD2,
+  out float3 varyingNormal0 : NORMAL0,
+  out float3 varyingTexCoord4 : TEXCOORD4,
+  out float3 varyingTangent0 : TANGENT0,
+  out float4 varyingTexCoord0 : TEXCOORD0,
+  out float3 varyingTexCoord3 : TEXCOORD3)
+#elif RD_PLATFORM == RD_PLATFORM_SM60 || RD_PLATFORM == RD_PLATFORM_SM65
+void executeVertexStage()
+#endif
+{
+#if (RD_FEATURE_INSTANCING == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM50)
+  float4 workingVector0,workingVector1,workingVector2,workingVector3,workingVector4,workingVector5,workingVector6;
+  uint4 bitMask, integerResult;
+  float4 floatingPointResult;
+  workingVector0.z = RD_UNIFORM_SUB_PIXEL_OFFSET.x + RD_UNIFORM_PROJECTION_MATRIX_ROW_2.x;
+  workingVector0.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.x;
+  workingVector0.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.x;
+  workingVector0.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.x;
+  workingVector1.x = (uint)vertexBlendIndices0.x << 2;
+  workingVector1.yzw = vertexVectorConstants0[workingVector1.x+25].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector1.yzw = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+25].xxx + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+25].zzz + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+25].www + workingVector1.yzw;
+  workingVector2.xyz = vertexPosition0.yyy * workingVector1.yzw;
+  workingVector3.xyz = vertexVectorConstants0[workingVector1.x+24].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector3.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+24].xxx + workingVector3.xyz;
+  workingVector3.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+24].zzz + workingVector3.xyz;
+  workingVector3.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+24].www + workingVector3.xyz;
+  workingVector2.xyz = workingVector3.xyz * vertexPosition0.xxx + workingVector2.xyz;
+  workingVector4.xyz = vertexVectorConstants0[workingVector1.x+26].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector4.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+26].xxx + workingVector4.xyz;
+  workingVector4.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+26].zzz + workingVector4.xyz;
+  workingVector4.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+26].www + workingVector4.xyz;
+  workingVector2.xyz = workingVector4.xyz * vertexPosition0.zzz + workingVector2.xyz;
+  workingVector5.xyz = vertexVectorConstants0[workingVector1.x+27].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector5.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+27].xxx + workingVector5.xyz;
+  workingVector5.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+27].zzz + workingVector5.xyz;
+  workingVector5.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+27].www + workingVector5.xyz;
+  workingVector2.xyz = workingVector5.xyz + workingVector2.xyz;
+  workingVector5.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_1.xyzw * workingVector2.yyyy;
+  workingVector5.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_0.xyzw * workingVector2.xxxx + workingVector5.xyzw;
+  workingVector5.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_2.xyzw * workingVector2.zzzz + workingVector5.xyzw;
+  varyingTexCoord3.xyz = workingVector2.xyz;
+  workingVector2.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_3.xyzw + workingVector5.xyzw;
+  workingVector0.x = dot(workingVector0.xyzw, workingVector2.xyzw);
+  workingVector5.z = -RD_UNIFORM_SUB_PIXEL_OFFSET.y + RD_UNIFORM_PROJECTION_MATRIX_ROW_2.y;
+  workingVector5.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.y;
+  workingVector5.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.y;
+  workingVector5.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.y;
+  workingVector0.y = dot(workingVector5.xyzw, workingVector2.xyzw);
+  workingVector5.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.z;
+  workingVector5.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.z;
+  workingVector5.z = RD_UNIFORM_PROJECTION_MATRIX_ROW_2.z;
+  workingVector5.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.z;
+  workingVector0.z = dot(workingVector5.xyzw, workingVector2.xyzw);
+  workingVector5.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.w;
+  workingVector5.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.w;
+  workingVector5.z = RD_UNIFORM_PROJECTION_MATRIX_ROW_2.w;
+  workingVector5.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.w;
+  workingVector0.w = dot(workingVector5.xyzw, workingVector2.xyzw);
+  clipSpacePosition.xyzw = workingVector0.xyzw;
+  varyingColor1.xyzw = workingVector0.xyzw;
+  workingVector0.xyz = vertexTangent0.yzx * vertexNormal0.zxy;
+  workingVector0.xyz = vertexNormal0.yzx * vertexTangent0.zxy + -workingVector0.xyz;
+  workingVector0.xyz = vertexTangent0.www * workingVector0.xyz;
+  workingVector2.xyz = workingVector1.yzw * workingVector0.yyy;
+  workingVector0.xyw = workingVector3.xyz * workingVector0.xxx + workingVector2.xyz;
+  varyingBitangent0.xyz = workingVector4.xyz * workingVector0.zzz + workingVector0.xyw;
+  varyingColor0.xyzw = vertexColor0.xyzw;
+  sincos(RD_UNIFORM_UV_ANIMATION.z, workingVector0.x, workingVector2.x);
+  workingVector5.z = workingVector0.x;
+  workingVector5.y = workingVector2.x;
+  workingVector5.x = -workingVector0.x;
+  workingVector0.xy = float2(-0.5,-0.5) + vertexTexCoord0.xy;
+  workingVector0.z = dot(workingVector0.xy, workingVector5.yz);
+  workingVector2.y = dot(workingVector0.xy, workingVector5.xy);
+  workingVector2.x = RD_UNIFORM_UV_ANIMATION.x + workingVector0.z;
+  workingVector0.zw = float2(0.5,0.5) + workingVector2.xy;
+  varyingTexCoord2.xy = RD_UNIFORM_UV_SCALE.xy * workingVector0.zw;
+  sincos(RD_UNIFORM_UV_ANIMATION.w, workingVector2.x, workingVector5.x);
+  workingVector6.z = workingVector2.x;
+  workingVector6.y = workingVector5.x;
+  workingVector6.x = -workingVector2.x;
+  workingVector0.w = dot(workingVector0.xy, workingVector6.xy);
+  workingVector0.x = dot(workingVector0.xy, workingVector6.yz);
+  workingVector0.z = RD_UNIFORM_UV_ANIMATION.y + workingVector0.x;
+  workingVector0.xy = float2(0.5,0.5) + workingVector0.zw;
+  varyingTexCoord2.zw = RD_UNIFORM_UV_SCALE.xy * workingVector0.xy;
+  workingVector0.xyz = vertexNormal0.yyy * workingVector1.yzw;
+  workingVector1.yzw = vertexTangent0.yyy * workingVector1.yzw;
+  workingVector1.yzw = workingVector3.xyz * vertexTangent0.xxx + workingVector1.yzw;
+  workingVector0.xyz = workingVector3.xyz * vertexNormal0.xxx + workingVector0.xyz;
+  varyingNormal0.xyz = workingVector4.xyz * vertexNormal0.zzz + workingVector0.xyz;
+  varyingTangent0.xyz = workingVector4.xyz * vertexTangent0.zzz + workingVector1.yzw;
+  workingVector0.xyz = vertexVectorConstants0[workingVector1.x+58].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector0.xyz = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+58].xxx + workingVector0.xyz;
+  workingVector0.xyz = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+58].zzz + workingVector0.xyz;
+  workingVector0.xyz = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+58].www + workingVector0.xyz;
+  workingVector0.xyz = vertexPosition0.yyy * workingVector0.xyz;
+  workingVector1.yzw = vertexVectorConstants0[workingVector1.x+57].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+57].xxx + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+57].zzz + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+57].www + workingVector1.yzw;
+  workingVector0.xyz = workingVector1.yzw * vertexPosition0.xxx + workingVector0.xyz;
+  workingVector1.yzw = vertexVectorConstants0[workingVector1.x+59].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+59].xxx + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+59].zzz + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+59].www + workingVector1.yzw;
+  workingVector0.xyz = workingVector1.yzw * vertexPosition0.zzz + workingVector0.xyz;
+  workingVector1.yzw = vertexVectorConstants0[workingVector1.x+60].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector1.x+60].xxx + workingVector1.yzw;
+  workingVector1.yzw = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector1.x+60].zzz + workingVector1.yzw;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector1.x+60].www + workingVector1.yzw;
+  varyingTexCoord4.xyz = workingVector1.xyz + workingVector0.xyz;
+  varyingTexCoord0.xy = vertexTexCoord0.xy;
+  return;
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_PLATFORM == RD_PLATFORM_SM50)
+  float4 workingVector0,workingVector1,workingVector2,workingVector3,workingVector4,workingVector5,workingVector6;
+  uint4 bitMask, integerResult;
+  float4 floatingPointResult;
+  workingVector0.z = RD_UNIFORM_SUB_PIXEL_OFFSET.x + RD_UNIFORM_PROJECTION_MATRIX_ROW_2.x;
+  workingVector0.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.x;
+  workingVector0.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.x;
+  workingVector0.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.x;
+  workingVector1.xyz = vertexPosition0.xyz;
+  workingVector1.w = 1;
+  workingVector2.y = dot(workingVector1.xyzw, vertexTexCoord6.xyzw);
+  workingVector3.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_1.xyzw * workingVector2.yyyy;
+  workingVector2.x = dot(workingVector1.xyzw, vertexTexCoord7.xyzw);
+  workingVector2.z = dot(workingVector1.xyzw, vertexTexCoord5.xyzw);
+  workingVector1.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_0.xyzw * workingVector2.xxxx + workingVector3.xyzw;
+  varyingTexCoord3.xyz = workingVector2.xyz;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_2.xyzw * workingVector2.zzzz + workingVector1.xyzw;
+  workingVector1.xyzw = RD_UNIFORM_VIEW_MATRIX_ROW_3.xyzw + workingVector1.xyzw;
+  workingVector0.x = dot(workingVector0.xyzw, workingVector1.xyzw);
+  workingVector2.z = -RD_UNIFORM_SUB_PIXEL_OFFSET.y + RD_UNIFORM_PROJECTION_MATRIX_ROW_2.y;
+  workingVector2.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.y;
+  workingVector2.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.y;
+  workingVector2.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.y;
+  workingVector0.y = dot(workingVector2.xyzw, workingVector1.xyzw);
+  workingVector2.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.z;
+  workingVector2.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.z;
+  workingVector2.z = RD_UNIFORM_PROJECTION_MATRIX_ROW_2.z;
+  workingVector2.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.z;
+  workingVector0.z = dot(workingVector2.xyzw, workingVector1.xyzw);
+  workingVector2.x = RD_UNIFORM_PROJECTION_MATRIX_ROW_0.w;
+  workingVector2.y = RD_UNIFORM_PROJECTION_MATRIX_ROW_1.w;
+  workingVector2.z = RD_UNIFORM_PROJECTION_MATRIX_ROW_2.w;
+  workingVector2.w = RD_UNIFORM_PROJECTION_MATRIX_ROW_3.w;
+  workingVector0.w = dot(workingVector2.xyzw, workingVector1.xyzw);
+  clipSpacePosition.xyzw = workingVector0.xyzw;
+  varyingColor1.xyzw = workingVector0.xyzw;
+  workingVector0.xyz = vertexTangent0.yzx * vertexNormal0.zxy;
+  workingVector0.xyz = vertexNormal0.yzx * vertexTangent0.zxy + -workingVector0.xyz;
+  workingVector0.xyz = vertexTangent0.www * workingVector0.xyz;
+  workingVector0.w = (uint)vertexBlendIndices0.x << 2;
+  workingVector1.xyz = vertexVectorConstants0[workingVector0.w+25].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector1.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+25].xxx + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+25].zzz + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+25].www + workingVector1.xyz;
+  workingVector2.xyz = workingVector1.xyz * workingVector0.yyy;
+  workingVector3.xyz = vertexVectorConstants0[workingVector0.w+24].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector3.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+24].xxx + workingVector3.xyz;
+  workingVector3.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+24].zzz + workingVector3.xyz;
+  workingVector3.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+24].www + workingVector3.xyz;
+  workingVector2.xyz = workingVector3.xyz * workingVector0.xxx + workingVector2.xyz;
+  workingVector4.xyz = vertexVectorConstants0[workingVector0.w+26].yyy * RD_UNIFORM_MODEL_MATRICES_ROW_1.xyz;
+  workingVector4.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+26].xxx + workingVector4.xyz;
+  workingVector4.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+26].zzz + workingVector4.xyz;
+  workingVector4.xyz = RD_UNIFORM_MODEL_MATRICES_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+26].www + workingVector4.xyz;
+  varyingBitangent0.xyz = workingVector4.xyz * workingVector0.zzz + workingVector2.xyz;
+  varyingColor0.xyzw = vertexColor0.xyzw;
+  sincos(RD_UNIFORM_UV_ANIMATION.z, workingVector0.x, workingVector2.x);
+  workingVector5.z = workingVector0.x;
+  workingVector5.y = workingVector2.x;
+  workingVector5.x = -workingVector0.x;
+  workingVector0.xy = float2(-0.5,-0.5) + vertexTexCoord0.xy;
+  workingVector0.z = dot(workingVector0.xy, workingVector5.yz);
+  workingVector2.y = dot(workingVector0.xy, workingVector5.xy);
+  workingVector2.x = RD_UNIFORM_UV_ANIMATION.x + workingVector0.z;
+  workingVector2.xy = float2(0.5,0.5) + workingVector2.xy;
+  varyingTexCoord2.xy = RD_UNIFORM_UV_SCALE.xy * workingVector2.xy;
+  sincos(RD_UNIFORM_UV_ANIMATION.w, workingVector2.x, workingVector5.x);
+  workingVector6.z = workingVector2.x;
+  workingVector6.y = workingVector5.x;
+  workingVector6.x = -workingVector2.x;
+  workingVector2.w = dot(workingVector0.xy, workingVector6.xy);
+  workingVector0.x = dot(workingVector0.xy, workingVector6.yz);
+  workingVector2.z = RD_UNIFORM_UV_ANIMATION.y + workingVector0.x;
+  workingVector0.xy = float2(0.5,0.5) + workingVector2.zw;
+  varyingTexCoord2.zw = RD_UNIFORM_UV_SCALE.xy * workingVector0.xy;
+  workingVector0.xyz = vertexNormal0.yyy * workingVector1.xyz;
+  workingVector1.xyz = vertexTangent0.yyy * workingVector1.xyz;
+  workingVector1.xyz = workingVector3.xyz * vertexTangent0.xxx + workingVector1.xyz;
+  workingVector0.xyz = workingVector3.xyz * vertexNormal0.xxx + workingVector0.xyz;
+  varyingNormal0.xyz = workingVector4.xyz * vertexNormal0.zzz + workingVector0.xyz;
+  varyingTangent0.xyz = workingVector4.xyz * vertexTangent0.zzz + workingVector1.xyz;
+  workingVector0.xyz = vertexVectorConstants0[workingVector0.w+58].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector0.xyz = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+58].xxx + workingVector0.xyz;
+  workingVector0.xyz = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+58].zzz + workingVector0.xyz;
+  workingVector0.xyz = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+58].www + workingVector0.xyz;
+  workingVector0.xyz = vertexPosition0.yyy * workingVector0.xyz;
+  workingVector1.xyz = vertexVectorConstants0[workingVector0.w+57].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+57].xxx + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+57].zzz + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+57].www + workingVector1.xyz;
+  workingVector0.xyz = workingVector1.xyz * vertexPosition0.xxx + workingVector0.xyz;
+  workingVector1.xyz = vertexVectorConstants0[workingVector0.w+59].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+59].xxx + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+59].zzz + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+59].www + workingVector1.xyz;
+  workingVector0.xyz = workingVector1.xyz * vertexPosition0.zzz + workingVector0.xyz;
+  workingVector1.xyz = vertexVectorConstants0[workingVector0.w+60].yyy * RD_UNIFORM_PREV_WORLD_ROW_1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_0.xyz * vertexVectorConstants0[workingVector0.w+60].xxx + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_2.xyz * vertexVectorConstants0[workingVector0.w+60].zzz + workingVector1.xyz;
+  workingVector1.xyz = RD_UNIFORM_PREV_WORLD_ROW_3.xyz * vertexVectorConstants0[workingVector0.w+60].www + workingVector1.xyz;
+  varyingTexCoord4.xyz = workingVector1.xyz + workingVector0.xyz;
+  varyingTexCoord0.xy = vertexTexCoord0.xy;
+  return;
+#elif (RD_FEATURE_INSTANCING == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_INSTANCING == RD_OFF && RD_PLATFORM == RD_PLATFORM_SM65)
+    float sumValue = vertexTexCoord0.x + (-0.5f);
+    float sumValue1 = vertexTexCoord0.y + (-0.5f);
+    float wavePhaseValue = sin(RD_UNIFORM_UV_ANIMATION.z);
+    float wavePhaseValue1 = cos(RD_UNIFORM_UV_ANIMATION.z);
+    float sumValue2 = (-0.0f) - sumValue;
+    float wavePhaseValue2 = sin(RD_UNIFORM_UV_ANIMATION.w);
+    float wavePhaseValue3 = cos(RD_UNIFORM_UV_ANIMATION.w);
+    uint bitwiseValue = uint(vertexBlendIndices0) << 2u;
+    uint sumValue3 = bitwiseValue + 24u;
+    uint sumValue4 = bitwiseValue + 25u;
+    uint sumValue5 = bitwiseValue + 26u;
+    uint sumValue6 = bitwiseValue + 27u;
+    float multiplyAddValue = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue3].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue3].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue3].y, vertexConstants[sumValue3].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue1 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue4].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue4].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue4].y, vertexConstants[sumValue4].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue2 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue5].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue5].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue5].y, vertexConstants[sumValue5].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue3 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue3].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue3].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue3].y, vertexConstants[sumValue3].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue4 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue4].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue4].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue4].y, vertexConstants[sumValue4].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue5 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue5].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue5].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue5].y, vertexConstants[sumValue5].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue6 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue3].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue3].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue3].y, vertexConstants[sumValue3].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue7 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue4].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue4].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue4].y, vertexConstants[sumValue4].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue8 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue5].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue5].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue5].y, vertexConstants[sumValue5].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue9 = mad(multiplyAddValue2, vertexPosition0.z, mad(multiplyAddValue1, vertexPosition0.y, multiplyAddValue * vertexPosition0.x)) + mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue6].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue6].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue6].y, vertexConstants[sumValue6].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue10 = mad(multiplyAddValue5, vertexPosition0.z, mad(multiplyAddValue4, vertexPosition0.y, multiplyAddValue3 * vertexPosition0.x)) + mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue6].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue6].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue6].y, vertexConstants[sumValue6].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue11 = mad(multiplyAddValue8, vertexPosition0.z, mad(multiplyAddValue7, vertexPosition0.y, multiplyAddValue6 * vertexPosition0.x)) + mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue6].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue6].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue6].y, vertexConstants[sumValue6].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue12 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.x, multiplyAddValue11, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.x, multiplyAddValue10, multiplyAddValue9 * RD_UNIFORM_VIEW_MATRIX_ROW_0.x)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.x;
+    float multiplyAddValue13 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.y, multiplyAddValue11, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.y, multiplyAddValue10, multiplyAddValue9 * RD_UNIFORM_VIEW_MATRIX_ROW_0.y)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.y;
+    float multiplyAddValue14 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.z, multiplyAddValue11, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.z, multiplyAddValue10, multiplyAddValue9 * RD_UNIFORM_VIEW_MATRIX_ROW_0.z)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.z;
+    float multiplyAddValue15 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.w, multiplyAddValue11, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.w, multiplyAddValue10, multiplyAddValue9 * RD_UNIFORM_VIEW_MATRIX_ROW_0.w)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.w;
+    float multiplyAddValue16 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.x, multiplyAddValue15, mad(RD_UNIFORM_SUB_PIXEL_OFFSET.x + RD_UNIFORM_PROJECTION_MATRIX_ROW_2.x, multiplyAddValue14, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.x, multiplyAddValue13, multiplyAddValue12 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.x)));
+    float multiplyAddValue17 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.y, multiplyAddValue15, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_2.y - RD_UNIFORM_SUB_PIXEL_OFFSET.y, multiplyAddValue14, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.y, multiplyAddValue13, multiplyAddValue12 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.y)));
+    float multiplyAddValue18 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.z, multiplyAddValue15, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_2.z, multiplyAddValue14, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.z, multiplyAddValue13, multiplyAddValue12 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.z)));
+    float multiplyAddValue19 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.w, multiplyAddValue15, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_2.w, multiplyAddValue14, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.w, multiplyAddValue13, multiplyAddValue12 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.w)));
+    uint sumValue7 = bitwiseValue + 57u;
+    uint sumValue8 = bitwiseValue + 58u;
+    uint sumValue9 = bitwiseValue + 59u;
+    uint sumValue10 = bitwiseValue + 60u;
+    float productValue = ((vertexNormal0.y * vertexTangent0.z) - (vertexNormal0.z * vertexTangent0.y)) * vertexTangent0.w;
+    float productValue1 = ((vertexNormal0.z * vertexTangent0.x) - (vertexNormal0.x * vertexTangent0.z)) * vertexTangent0.w;
+    float productValue2 = ((vertexNormal0.x * vertexTangent0.y) - (vertexNormal0.y * vertexTangent0.x)) * vertexTangent0.w;
+    clipSpacePosition.x = multiplyAddValue16;
+    clipSpacePosition.y = multiplyAddValue17;
+    clipSpacePosition.z = multiplyAddValue18;
+    clipSpacePosition.w = multiplyAddValue19;
+    varyingBitangent0.x = mad(multiplyAddValue2, productValue2, mad(multiplyAddValue1, productValue1, multiplyAddValue * productValue));
+    varyingBitangent0.y = mad(multiplyAddValue5, productValue2, mad(multiplyAddValue4, productValue1, multiplyAddValue3 * productValue));
+    varyingBitangent0.z = mad(multiplyAddValue8, productValue2, mad(multiplyAddValue7, productValue1, multiplyAddValue6 * productValue));
+    varyingColor1.x = multiplyAddValue16;
+    varyingColor1.y = multiplyAddValue17;
+    varyingColor1.z = multiplyAddValue18;
+    varyingColor1.w = multiplyAddValue19;
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    varyingTexCoord2.x = ((RD_UNIFORM_UV_ANIMATION.x + 0.5f) + mad(sumValue1, wavePhaseValue, wavePhaseValue1 * sumValue)) * RD_UNIFORM_UV_SCALE.x;
+    varyingTexCoord2.y = (mad(sumValue1, wavePhaseValue1, wavePhaseValue * sumValue2) + 0.5f) * RD_UNIFORM_UV_SCALE.y;
+    varyingTexCoord2.z = ((RD_UNIFORM_UV_ANIMATION.y + 0.5f) + mad(sumValue1, wavePhaseValue2, wavePhaseValue3 * sumValue)) * RD_UNIFORM_UV_SCALE.x;
+    varyingTexCoord2.w = (mad(sumValue1, wavePhaseValue3, wavePhaseValue2 * sumValue2) + 0.5f) * RD_UNIFORM_UV_SCALE.y;
+    varyingNormal0.x = mad(multiplyAddValue2, vertexNormal0.z, mad(multiplyAddValue1, vertexNormal0.y, multiplyAddValue * vertexNormal0.x));
+    varyingNormal0.y = mad(multiplyAddValue5, vertexNormal0.z, mad(multiplyAddValue4, vertexNormal0.y, multiplyAddValue3 * vertexNormal0.x));
+    varyingNormal0.z = mad(multiplyAddValue8, vertexNormal0.z, mad(multiplyAddValue7, vertexNormal0.y, multiplyAddValue6 * vertexNormal0.x));
+    varyingTexCoord4.x = mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue9].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue9].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue9].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue9].x))), vertexPosition0.z, mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue8].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue8].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue8].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue8].x))), vertexPosition0.y, mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue7].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue7].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue7].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue7].x))) * vertexPosition0.x)) + mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue10].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue10].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue10].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue10].x)));
+    varyingTexCoord4.y = mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue9].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue9].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue9].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue9].x))), vertexPosition0.z, mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue8].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue8].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue8].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue8].x))), vertexPosition0.y, mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue7].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue7].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue7].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue7].x))) * vertexPosition0.x)) + mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue10].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue10].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue10].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue10].x)));
+    varyingTexCoord4.z = mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue9].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue9].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue9].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue9].x))), vertexPosition0.z, mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue8].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue8].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue8].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue8].x))), vertexPosition0.y, mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue7].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue7].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue7].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue7].x))) * vertexPosition0.x)) + mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue10].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue10].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue10].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue10].x)));
+    varyingTangent0.x = mad(multiplyAddValue2, vertexTangent0.z, mad(multiplyAddValue1, vertexTangent0.y, multiplyAddValue * vertexTangent0.x));
+    varyingTangent0.y = mad(multiplyAddValue5, vertexTangent0.z, mad(multiplyAddValue4, vertexTangent0.y, multiplyAddValue3 * vertexTangent0.x));
+    varyingTangent0.z = mad(multiplyAddValue8, vertexTangent0.z, mad(multiplyAddValue7, vertexTangent0.y, multiplyAddValue6 * vertexTangent0.x));
+    varyingTexCoord0.x = vertexTexCoord0.x;
+    varyingTexCoord0.y = vertexTexCoord0.y;
+    varyingTexCoord3.x = multiplyAddValue9;
+    varyingTexCoord3.y = multiplyAddValue10;
+    varyingTexCoord3.z = multiplyAddValue11;
+}
+VertexStageOutput main(VertexStageInput stage_input)
+{
+    vertexColor0 = stage_input.vertexColor0;
+    vertexBlendIndices0 = stage_input.vertexBlendIndices0;
+    vertexNormal0 = stage_input.vertexNormal0;
+    vertexPosition0 = stage_input.vertexPosition0;
+    vertexTangent0 = stage_input.vertexTangent0;
+    vertexTexCoord0 = stage_input.vertexTexCoord0;
+    executeVertexStage();
+    VertexStageOutput stage_output;
+    stage_output.clipSpacePosition = clipSpacePosition;
+    stage_output.varyingBitangent0 = varyingBitangent0;
+    stage_output.varyingColor1 = varyingColor1;
+    stage_output.varyingColor0 = varyingColor0;
+    stage_output.varyingTexCoord2 = varyingTexCoord2;
+    stage_output.varyingNormal0 = varyingNormal0;
+    stage_output.varyingTexCoord4 = varyingTexCoord4;
+    stage_output.varyingTangent0 = varyingTangent0;
+    stage_output.varyingTexCoord0 = varyingTexCoord0;
+    stage_output.varyingTexCoord3 = varyingTexCoord3;
+    return stage_output;
+#elif (RD_FEATURE_INSTANCING == RD_ON && RD_PLATFORM == RD_PLATFORM_SM60) || (RD_FEATURE_INSTANCING == RD_ON && RD_PLATFORM == RD_PLATFORM_SM65)
+    float sumValue = vertexTexCoord0.x + (-0.5f);
+    float sumValue1 = vertexTexCoord0.y + (-0.5f);
+    float wavePhaseValue = sin(RD_UNIFORM_UV_ANIMATION.z);
+    float wavePhaseValue1 = cos(RD_UNIFORM_UV_ANIMATION.z);
+    float sumValue2 = (-0.0f) - sumValue;
+    float wavePhaseValue2 = sin(RD_UNIFORM_UV_ANIMATION.w);
+    float wavePhaseValue3 = cos(RD_UNIFORM_UV_ANIMATION.w);
+    uint bitwiseValue = uint(vertexBlendIndices0) << 2u;
+    uint sumValue3 = bitwiseValue + 24u;
+    uint sumValue4 = bitwiseValue + 25u;
+    uint sumValue5 = bitwiseValue + 26u;
+    float multiplyAddValue = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue3].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue3].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue3].y, vertexConstants[sumValue3].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue1 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue4].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue4].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue4].y, vertexConstants[sumValue4].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue2 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.x, vertexConstants[sumValue5].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.x, vertexConstants[sumValue5].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.x, vertexConstants[sumValue5].y, vertexConstants[sumValue5].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.x)));
+    float multiplyAddValue3 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue3].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue3].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue3].y, vertexConstants[sumValue3].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue4 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue4].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue4].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue4].y, vertexConstants[sumValue4].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue5 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.y, vertexConstants[sumValue5].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.y, vertexConstants[sumValue5].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.y, vertexConstants[sumValue5].y, vertexConstants[sumValue5].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.y)));
+    float multiplyAddValue6 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue3].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue3].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue3].y, vertexConstants[sumValue3].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue7 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue4].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue4].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue4].y, vertexConstants[sumValue4].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue8 = mad(RD_UNIFORM_MODEL_MATRICES_ROW_3.z, vertexConstants[sumValue5].w, mad(RD_UNIFORM_MODEL_MATRICES_ROW_2.z, vertexConstants[sumValue5].z, mad(RD_UNIFORM_MODEL_MATRICES_ROW_1.z, vertexConstants[sumValue5].y, vertexConstants[sumValue5].x * RD_UNIFORM_MODEL_MATRICES_ROW_0.z)));
+    float multiplyAddValue20 = mad(vertexPosition0.z, vertexTexCoord7.z, mad(vertexPosition0.y, vertexTexCoord7.y, vertexPosition0.x * vertexTexCoord7.x)) + vertexTexCoord7.w;
+    float multiplyAddValue21 = mad(vertexPosition0.z, vertexTexCoord6.z, mad(vertexPosition0.y, vertexTexCoord6.y, vertexPosition0.x * vertexTexCoord6.x)) + vertexTexCoord6.w;
+    float multiplyAddValue22 = mad(vertexPosition0.z, vertexTexCoord5.z, mad(vertexPosition0.y, vertexTexCoord5.y, vertexPosition0.x * vertexTexCoord5.x)) + vertexTexCoord5.w;
+    float multiplyAddValue23 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.x, multiplyAddValue22, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.x, multiplyAddValue21, multiplyAddValue20 * RD_UNIFORM_VIEW_MATRIX_ROW_0.x)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.x;
+    float multiplyAddValue24 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.y, multiplyAddValue22, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.y, multiplyAddValue21, multiplyAddValue20 * RD_UNIFORM_VIEW_MATRIX_ROW_0.y)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.y;
+    float multiplyAddValue25 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.z, multiplyAddValue22, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.z, multiplyAddValue21, multiplyAddValue20 * RD_UNIFORM_VIEW_MATRIX_ROW_0.z)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.z;
+    float multiplyAddValue26 = mad(RD_UNIFORM_VIEW_MATRIX_ROW_2.w, multiplyAddValue22, mad(RD_UNIFORM_VIEW_MATRIX_ROW_1.w, multiplyAddValue21, multiplyAddValue20 * RD_UNIFORM_VIEW_MATRIX_ROW_0.w)) + RD_UNIFORM_VIEW_MATRIX_ROW_3.w;
+    float multiplyAddValue27 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.x, multiplyAddValue26, mad(RD_UNIFORM_SUB_PIXEL_OFFSET.x + RD_UNIFORM_PROJECTION_MATRIX_ROW_2.x, multiplyAddValue25, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.x, multiplyAddValue24, multiplyAddValue23 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.x)));
+    float multiplyAddValue28 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.y, multiplyAddValue26, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_2.y - RD_UNIFORM_SUB_PIXEL_OFFSET.y, multiplyAddValue25, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.y, multiplyAddValue24, multiplyAddValue23 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.y)));
+    float multiplyAddValue29 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.z, multiplyAddValue26, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_2.z, multiplyAddValue25, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.z, multiplyAddValue24, multiplyAddValue23 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.z)));
+    float multiplyAddValue30 = mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_3.w, multiplyAddValue26, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_2.w, multiplyAddValue25, mad(RD_UNIFORM_PROJECTION_MATRIX_ROW_1.w, multiplyAddValue24, multiplyAddValue23 * RD_UNIFORM_PROJECTION_MATRIX_ROW_0.w)));
+    uint sumValue7 = bitwiseValue + 57u;
+    uint sumValue8 = bitwiseValue + 58u;
+    uint sumValue9 = bitwiseValue + 59u;
+    uint sumValue10 = bitwiseValue + 60u;
+    float productValue = ((vertexNormal0.y * vertexTangent0.z) - (vertexNormal0.z * vertexTangent0.y)) * vertexTangent0.w;
+    float productValue1 = ((vertexNormal0.z * vertexTangent0.x) - (vertexNormal0.x * vertexTangent0.z)) * vertexTangent0.w;
+    float productValue2 = ((vertexNormal0.x * vertexTangent0.y) - (vertexNormal0.y * vertexTangent0.x)) * vertexTangent0.w;
+    clipSpacePosition.x = multiplyAddValue27;
+    clipSpacePosition.y = multiplyAddValue28;
+    clipSpacePosition.z = multiplyAddValue29;
+    clipSpacePosition.w = multiplyAddValue30;
+    varyingBitangent0.x = mad(multiplyAddValue2, productValue2, mad(multiplyAddValue1, productValue1, multiplyAddValue * productValue));
+    varyingBitangent0.y = mad(multiplyAddValue5, productValue2, mad(multiplyAddValue4, productValue1, multiplyAddValue3 * productValue));
+    varyingBitangent0.z = mad(multiplyAddValue8, productValue2, mad(multiplyAddValue7, productValue1, multiplyAddValue6 * productValue));
+    varyingColor1.x = multiplyAddValue27;
+    varyingColor1.y = multiplyAddValue28;
+    varyingColor1.z = multiplyAddValue29;
+    varyingColor1.w = multiplyAddValue30;
+    varyingColor0.x = vertexColor0.x;
+    varyingColor0.y = vertexColor0.y;
+    varyingColor0.z = vertexColor0.z;
+    varyingColor0.w = vertexColor0.w;
+    varyingTexCoord2.x = ((RD_UNIFORM_UV_ANIMATION.x + 0.5f) + mad(sumValue1, wavePhaseValue, wavePhaseValue1 * sumValue)) * RD_UNIFORM_UV_SCALE.x;
+    varyingTexCoord2.y = (mad(sumValue1, wavePhaseValue1, wavePhaseValue * sumValue2) + 0.5f) * RD_UNIFORM_UV_SCALE.y;
+    varyingTexCoord2.z = ((RD_UNIFORM_UV_ANIMATION.y + 0.5f) + mad(sumValue1, wavePhaseValue2, wavePhaseValue3 * sumValue)) * RD_UNIFORM_UV_SCALE.x;
+    varyingTexCoord2.w = (mad(sumValue1, wavePhaseValue3, wavePhaseValue2 * sumValue2) + 0.5f) * RD_UNIFORM_UV_SCALE.y;
+    varyingNormal0.x = mad(multiplyAddValue2, vertexNormal0.z, mad(multiplyAddValue1, vertexNormal0.y, multiplyAddValue * vertexNormal0.x));
+    varyingNormal0.y = mad(multiplyAddValue5, vertexNormal0.z, mad(multiplyAddValue4, vertexNormal0.y, multiplyAddValue3 * vertexNormal0.x));
+    varyingNormal0.z = mad(multiplyAddValue8, vertexNormal0.z, mad(multiplyAddValue7, vertexNormal0.y, multiplyAddValue6 * vertexNormal0.x));
+    varyingTexCoord4.x = mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue9].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue9].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue9].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue9].x))), vertexPosition0.z, mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue8].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue8].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue8].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue8].x))), vertexPosition0.y, mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue7].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue7].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue7].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue7].x))) * vertexPosition0.x)) + mad(RD_UNIFORM_PREV_WORLD_ROW_3.x, vertexConstants[sumValue10].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.x, vertexConstants[sumValue10].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.x, vertexConstants[sumValue10].y, RD_UNIFORM_PREV_WORLD_ROW_0.x * vertexConstants[sumValue10].x)));
+    varyingTexCoord4.y = mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue9].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue9].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue9].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue9].x))), vertexPosition0.z, mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue8].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue8].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue8].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue8].x))), vertexPosition0.y, mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue7].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue7].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue7].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue7].x))) * vertexPosition0.x)) + mad(RD_UNIFORM_PREV_WORLD_ROW_3.y, vertexConstants[sumValue10].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.y, vertexConstants[sumValue10].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.y, vertexConstants[sumValue10].y, RD_UNIFORM_PREV_WORLD_ROW_0.y * vertexConstants[sumValue10].x)));
+    varyingTexCoord4.z = mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue9].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue9].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue9].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue9].x))), vertexPosition0.z, mad(mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue8].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue8].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue8].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue8].x))), vertexPosition0.y, mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue7].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue7].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue7].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue7].x))) * vertexPosition0.x)) + mad(RD_UNIFORM_PREV_WORLD_ROW_3.z, vertexConstants[sumValue10].w, mad(RD_UNIFORM_PREV_WORLD_ROW_2.z, vertexConstants[sumValue10].z, mad(RD_UNIFORM_PREV_WORLD_ROW_1.z, vertexConstants[sumValue10].y, RD_UNIFORM_PREV_WORLD_ROW_0.z * vertexConstants[sumValue10].x)));
+    varyingTangent0.x = mad(multiplyAddValue2, vertexTangent0.z, mad(multiplyAddValue1, vertexTangent0.y, multiplyAddValue * vertexTangent0.x));
+    varyingTangent0.y = mad(multiplyAddValue5, vertexTangent0.z, mad(multiplyAddValue4, vertexTangent0.y, multiplyAddValue3 * vertexTangent0.x));
+    varyingTangent0.z = mad(multiplyAddValue8, vertexTangent0.z, mad(multiplyAddValue7, vertexTangent0.y, multiplyAddValue6 * vertexTangent0.x));
+    varyingTexCoord0.x = vertexTexCoord0.x;
+    varyingTexCoord0.y = vertexTexCoord0.y;
+    varyingTexCoord3.x = multiplyAddValue20;
+    varyingTexCoord3.y = multiplyAddValue21;
+    varyingTexCoord3.z = multiplyAddValue22;
+}
+VertexStageOutput main(VertexStageInput stage_input)
+{
+    vertexColor0 = stage_input.vertexColor0;
+    vertexBlendIndices0 = stage_input.vertexBlendIndices0;
+    vertexNormal0 = stage_input.vertexNormal0;
+    vertexPosition0 = stage_input.vertexPosition0;
+    vertexTangent0 = stage_input.vertexTangent0;
+    vertexTexCoord0 = stage_input.vertexTexCoord0;
+    vertexTexCoord7 = stage_input.vertexTexCoord7;
+    vertexTexCoord6 = stage_input.vertexTexCoord6;
+    vertexTexCoord5 = stage_input.vertexTexCoord5;
+    executeVertexStage();
+    VertexStageOutput stage_output;
+    stage_output.clipSpacePosition = clipSpacePosition;
+    stage_output.varyingBitangent0 = varyingBitangent0;
+    stage_output.varyingColor1 = varyingColor1;
+    stage_output.varyingColor0 = varyingColor0;
+    stage_output.varyingTexCoord2 = varyingTexCoord2;
+    stage_output.varyingNormal0 = varyingNormal0;
+    stage_output.varyingTexCoord4 = varyingTexCoord4;
+    stage_output.varyingTangent0 = varyingTangent0;
+    stage_output.varyingTexCoord0 = varyingTexCoord0;
+    stage_output.varyingTexCoord3 = varyingTexCoord3;
+    return stage_output;
+#endif
+}

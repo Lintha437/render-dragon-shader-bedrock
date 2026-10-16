@@ -1,0 +1,44 @@
+// Native resource and stage-interface layouts for LightClustering / compute.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(local_size_x = 4, local_size_y = 4, local_size_z = 4) in;
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+    float packedValues[16];
+} computeScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform ComputeVectorConstants0Buffer
+{
+    vec4 packedValues[4];
+} computeVectorConstants0;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform usamplerBuffer extends;
+layout(set = 0, binding = 1, r32ui) uniform writeonly uimageBuffer zLightLookupArray;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform usamplerBuffer intermediateValue;
+layout(set = 0, binding = 1, r32ui) uniform writeonly uimageBuffer intermediateValue1;
+uint intermediateValue4[129];
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 0) uniform usamplerBuffer extends;
+layout(set = 0, binding = 1, r32ui) uniform writeonly uimageBuffer zLightLookupArray;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0) uniform usamplerBuffer intermediateValue;
+layout(set = 0, binding = 1, r32ui) uniform writeonly uimageBuffer intermediateValue1;
+uint intermediateValue4[129];
+#endif

@@ -1,0 +1,171 @@
+{
+  "material": "MeshFallbackPrepass",
+  "parent": "",
+  "passes": {
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Fancy": "On",
+        "Instancing": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPrepass/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPrepass/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPrepass/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPrepass/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 4
+    },
+    "GeometryPrepass": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off",
+        "Fancy": "On",
+        "Instancing": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    },
+    "GeometryPrepassAlphaTest": {
+      "default_features": {
+        "AlphaTest": "Off",
+        "Lit": "Off",
+        "Fancy": "On",
+        "Instancing": "Off",
+        "UseTextures": "On"
+      },
+      "supported_features": {
+        "AlphaTest": [
+          "Off",
+          "On_DiscardValueBased",
+          "On_VertexTintMaskBased"
+        ],
+        "Fancy": [
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "Lit": [
+          "Off",
+          "On"
+        ],
+        "UseTextures": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/MeshFallbackPrepass/GeometryPrepass.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 24
+    }
+  }
+}

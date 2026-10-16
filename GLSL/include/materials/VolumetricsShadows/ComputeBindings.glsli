@@ -1,0 +1,50 @@
+// Native resource and stage-interface layouts for VolumetricsShadows / compute.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 4
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 2) in;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 5
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 8) in;
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+layout(local_size_x = 8, local_size_y = 8, local_size_z = 4) in;
+#endif
+layout(set = 0, binding = 0, scalar) uniform ComputeScalarConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5
+    float packedValues[312];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4
+    float packedValues[16384];
+#endif
+} computeScalarConstants0;
+layout(set = 0, binding = 0, std140) uniform ComputeVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5
+    vec4 packedValues[78];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4
+    vec4 packedValues[4096];
+#endif
+} computeVectorConstants0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 0) uniform texture2DArray previousCascadedShadowBufferTexture;
+layout(set = 0, binding = 1) uniform texture2DArray shadowCascadesTexture;
+layout(set = 0, binding = 2) uniform writeonly image2DArray cascadedShadowBufferOutTexture;
+layout(set = 0, binding = 0) uniform sampler previousCascadedShadowBufferSampler;
+layout(set = 0, binding = 1) uniform sampler shadowCascadesSampler;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4
+layout(set = 0, binding = 0) uniform texture2DArray materialTexture0;
+layout(set = 0, binding = 1) uniform texture2DArray materialTexture1;
+layout(set = 0, binding = 2) uniform writeonly image2DArray intermediateValue2;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+#endif
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

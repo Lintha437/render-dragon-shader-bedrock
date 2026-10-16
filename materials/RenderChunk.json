@@ -1,0 +1,281 @@
+{
+  "material": "RenderChunk",
+  "parent": "",
+  "passes": {
+    "DepthOnlyOpaque": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/DepthOnlyOpaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/DepthOnlyOpaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/DepthOnlyOpaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/DepthOnlyOpaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "AlphaTest": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/AlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/AlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/AlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/AlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "Opaque": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/Opaque.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/Opaque.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/Opaque.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/Opaque.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    },
+    "Transparent": {
+      "default_features": {
+        "Dithering": "Off",
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Dithering": [
+          "Off",
+          "On"
+        ],
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/Transparent.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/Transparent.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/RenderChunk/Transparent.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/RenderChunk/Transparent.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 12
+    }
+  }
+}

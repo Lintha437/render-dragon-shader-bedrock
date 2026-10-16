@@ -1,0 +1,28 @@
+// Native resource and stage-interface layouts for GamefacePath / vertex.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0, scalar) uniform VertexScalarConstants0Buffer
+{
+    float packedValues[16384];
+} vertexScalarConstants0;
+#endif
+layout(set = 0, binding = 0, std140) uniform VertexVectorConstants0Buffer
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[144];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[4096];
+#elif RD_BINDING_LAYOUT == 2
+    vec4 packedValues[128];
+#endif
+} vertexVectorConstants0;
+layout(location = 9) in vec4 vertexPosition0;
+#if RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+layout(location = 19) in vec4 vertexTexCoord8;
+#endif
+layout(location = 11) out vec4 varyingTexCoord0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 2
+layout(location = 14) flat out vec4 varyingTexCoord3;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 3
+layout(location = 14) out vec4 varyingTexCoord3;
+#endif
