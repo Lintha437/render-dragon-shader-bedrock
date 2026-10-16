@@ -1,0 +1,12 @@
+{
+  "independent_copy_rebuild_passed": true,
+  "compiled_source_configurations": 9910,
+  "native_pipeline_pairs": 7848,
+  "material_files": 154,
+  "material_files_byte_identical_to_game_validated_export": 154,
+  "repository_unit_tests": 8,
+  "original_game_files_committed": false,
+  "compiler_executables_committed": false,
+  "local_configuration_committed": false,
+  "scope": "Fresh local Windows rebuild after standalone input/toolchain configuration; all exported material files match the earlier game-validated export."
+}
