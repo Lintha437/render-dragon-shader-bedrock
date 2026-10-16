@@ -1,0 +1,31 @@
+{
+  "validated_at": "2026-10-16T23:27:55.874384+08:00",
+  "reported_issue": "Minecraft crashed when entering a world and loading Vibrant Visuals.",
+  "reproduced_native_pipeline_creation_regressions_before": 136,
+  "native_pipeline_creation_regressions_after": 0,
+  "compiled_source_configurations": 9910,
+  "native_programs": 4955,
+  "native_input_semantics_checked": 34576,
+  "native_output_semantics_checked": 15275,
+  "exact_native_signature_differences": 0,
+  "native_resource_declaration_mismatches": 0,
+  "graphics_stage_linkage_failures": 0,
+  "additional_native_capability_requirements": 0,
+  "d3d12_pipeline_pairs_checked": 7848,
+  "d3d12_original_successes": 7848,
+  "d3d12_rebuilt_successes": 7848,
+  "native_material_files": 154,
+  "shader_records": 52175,
+  "all_payloads_rebuilt_from_hlsl": true,
+  "original_container_metadata_restoration_verified": 154,
+  "original_encryption_counts": {
+    "NONE": 153,
+    "SIMPLE_PASSPHRASE": 1
+  },
+  "cmake_materials_target_passed": true,
+  "minecraft_runtime_loading_tested": false,
+  "runtime_pixel_equivalence_tested": false,
+  "maintainer_reported_game_loading_success": true,
+  "maintainer_reported_at": "2026-10-17",
+  "game_test_source": "Maintainer confirmation in the development conversation."
+}
