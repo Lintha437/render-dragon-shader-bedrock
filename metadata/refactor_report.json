@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "statistics": {
+    "glsl_before_bytes": 245711202,
+    "glsl_pipeline_bytes": 145045094,
+    "glsl_pipelines": 516,
+    "hlsl_before_bytes": 250944920,
+    "hlsl_pipeline_bytes": 73495019,
+    "hlsl_pipelines": 516,
+    "hlsl_bindings": 238,
+    "hlsl_shared_helpers": 26,
+    "hlsl_source_bytes": 79953712,
+    "glsl_bindings": 238,
+    "glsl_shared_helpers": 13,
+    "glsl_source_bytes": 148612502
+  },
+  "selected_source_sequences_verified": 9910,
+  "old_sources_retained_until_build_validation": false,
+  "old_layout_archived": true,
+  "maintained_source_files_before": 11890,
+  "maintained_source_files_after": 1515,
+  "maintained_source_bytes_before": 528513620,
+  "maintained_source_bytes_after": 228588463,
+  "source_file_reduction_percent": 87.3,
+  "source_size_reduction_percent": 56.7
+}
