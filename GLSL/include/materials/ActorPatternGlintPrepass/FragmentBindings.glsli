@@ -1,0 +1,150 @@
+// Native resource and stage-interface layouts for ActorPatternGlintPrepass / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+float intermediateValue18;
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 7
+float intermediateValue21;
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 4
+float intermediateValue22;
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 6
+float intermediateValue19;
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 9
+float intermediateValue25;
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 11
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[16384];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[36];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+    vec4 packedValues[4096];
+#elif RD_BINDING_LAYOUT == 3
+    vec4 packedValues[37];
+#elif RD_BINDING_LAYOUT == 5
+    vec4 packedValues[38];
+#elif RD_BINDING_LAYOUT == 8
+    vec4 packedValues[49];
+#elif RD_BINDING_LAYOUT == 10
+    vec4 packedValues[51];
+#elif RD_BINDING_LAYOUT == 12
+    vec4 packedValues[52];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 8
+layout(set = 0, binding = 0) uniform texture2D mersTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 2) uniform texture2D matTexture1Texture;
+layout(set = 0, binding = 3) uniform texture2D matTexture2Texture;
+layout(set = 0, binding = 4) uniform texture2D normalTextureTexture;
+layout(set = 0, binding = 0) uniform sampler mersTextureSampler;
+layout(set = 0, binding = 1) uniform sampler matTextureSampler;
+layout(set = 0, binding = 2) uniform sampler matTexture1Sampler;
+layout(set = 0, binding = 3) uniform sampler matTexture2Sampler;
+layout(set = 0, binding = 4) uniform sampler normalTextureSampler;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 6 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 2) uniform sampler textureSampler2;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+#endif
+layout(location = 0) in vec3 varyingBitangent0;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5 || RD_BINDING_LAYOUT == 8
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 6
+layout(location = 2) in vec3 varyingColor0;
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec3 varyingColor0;
+#endif
+layout(location = 13) in vec4 varyingTexCoord2;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) in vec3 varyingTexCoord4;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) centroid in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4 || RD_BINDING_LAYOUT == 6
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 11 || RD_BINDING_LAYOUT == 13 || RD_BINDING_LAYOUT == 7 || RD_BINDING_LAYOUT == 9
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+#elif RD_BINDING_LAYOUT == 10 || RD_BINDING_LAYOUT == 12 || RD_BINDING_LAYOUT == 8
+#include "../../FragmentControl.glsli"
+#endif
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);

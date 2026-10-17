@@ -1,0 +1,123 @@
+{
+  "material": "DeferredMixedResolutionLightingPrepass",
+  "parent": "DeferredShadingBase",
+  "passes": {
+    "DirectionalLightingPass": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.fragment.glsl",
+            "GLSL/pipelines/DeferredMixedResolutionLightingPrepass/DirectionalLightingPass.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.fragment.hlsl",
+            "HLSL/pipelines/DeferredMixedResolutionLightingPrepass/DirectionalLightingPass.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    },
+    "DiscreteIndirectCombinedLightingPass": {
+      "default_features": {
+        "GPUBlockLighting": "Off",
+        "PointLightShading": "Off"
+      },
+      "supported_features": {
+        "GPUBlockLighting": [
+          "Off",
+          "On"
+        ],
+        "PointLightShading": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.fragment.glsl",
+            "GLSL/pipelines/DeferredMixedResolutionLightingPrepass/DiscreteIndirectCombinedLightingPass.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.fragment.hlsl",
+            "HLSL/pipelines/DeferredMixedResolutionLightingPrepass/DiscreteIndirectCombinedLightingPass.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 4
+    },
+    "Fallback": {
+      "default_features": {},
+      "supported_features": {},
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.fragment.glsl",
+            "GLSL/pipelines/DeferredIndirectSpecular/Fallback.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.fragment.hlsl",
+            "HLSL/pipelines/DeferredIndirectSpecular/Fallback.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/DeferredIndirectSpecular/DoIndirectSpecularShading.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 1
+    }
+  }
+}

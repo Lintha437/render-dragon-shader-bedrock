@@ -1,0 +1,68 @@
+// Native resource and stage-interface layouts for EditorHighlight / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[36];
+} fragmentScalarConstants1;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[60];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+    vec4 packedValues[9];
+#elif RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 3
+    vec4 packedValues[15];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D highlightTextureColorTexture;
+layout(set = 0, binding = 1) uniform texture2D highlightTextureDepthTexture;
+layout(set = 0, binding = 2) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 3) uniform texture2D sceneTextureColorTexture;
+layout(set = 0, binding = 4) uniform texture2D sceneTextureDepthTexture;
+layout(set = 0, binding = 0) uniform sampler highlightTextureColorSampler;
+layout(set = 0, binding = 1) uniform sampler highlightTextureDepthSampler;
+layout(set = 0, binding = 3) uniform sampler sceneTextureColorSampler;
+layout(set = 0, binding = 4) uniform sampler sceneTextureDepthSampler;
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+#elif RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 0) uniform texture2D highlightTextureColorTexture;
+layout(set = 0, binding = 1) uniform texture2D highlightTextureDepthTexture;
+layout(set = 0, binding = 2) uniform texture2D previousFrameAverageLuminanceTexture;
+layout(set = 0, binding = 3) uniform texture2D sceneTextureColorTexture;
+layout(set = 0, binding = 4) uniform texture2D sceneTextureDepthTexture;
+layout(set = 0, binding = 5) uniform texture2D selectedBlocksOverlayTextureTexture;
+layout(set = 0, binding = 0) uniform sampler highlightTextureColorSampler;
+layout(set = 0, binding = 1) uniform sampler highlightTextureDepthSampler;
+layout(set = 0, binding = 3) uniform sampler sceneTextureColorSampler;
+layout(set = 0, binding = 4) uniform sampler sceneTextureDepthSampler;
+layout(set = 0, binding = 5) uniform sampler selectedBlocksOverlayTextureSampler;
+#elif RD_BINDING_LAYOUT == 3
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 2) uniform texture2D materialTexture2;
+layout(set = 0, binding = 3) uniform texture2D materialTexture3;
+layout(set = 0, binding = 4) uniform texture2D materialTexture4;
+layout(set = 0, binding = 5) uniform texture2D materialTexture5;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(set = 0, binding = 3) uniform sampler textureSampler3;
+layout(set = 0, binding = 4) uniform sampler textureSampler4;
+layout(set = 0, binding = 5) uniform sampler textureSampler5;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;

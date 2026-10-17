@@ -1,0 +1,384 @@
+// Native resource and stage-interface layouts for SingleBlockPrepass / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 0
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;
+#include "../../FragmentControl.glsli"
+#elif RD_BINDING_LAYOUT == 1
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out vec4 fragmentColor0;
+#include "../../FragmentControl.glsli"
+#elif RD_BINDING_LAYOUT == 2
+layout(location = 0) out vec4 fragmentColor0;
+#elif RD_BINDING_LAYOUT == 3
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out vec4 fragmentColor0;
+#elif RD_BINDING_LAYOUT == 4
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[12];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 2) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 5
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 2, std430) restrict readonly buffer SSBO
+{
+    uint packedValues[];
+} intermediateValue1;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue64
+{
+    uvec2 packedValues[];
+} intermediateValue2;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue65
+{
+    uvec4 packedValues[];
+} intermediateValue3;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[48];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[12];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 6
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 2, std430) restrict readonly buffer SSBO
+{
+    uint packedValues[];
+} intermediateValue2;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue62
+{
+    uvec2 packedValues[];
+} intermediateValue3;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue63
+{
+    uvec4 packedValues[];
+} intermediateValue4;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[44];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[11];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 7
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[11];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D seasonsTextureTexture;
+layout(set = 0, binding = 2) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(set = 0, binding = 1) uniform sampler seasonsTextureSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 8
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[25];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 2) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 9
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 2, std430) restrict readonly buffer SSBO
+{
+    uint packedValues[];
+} intermediateValue1;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue74
+{
+    uvec2 packedValues[];
+} intermediateValue2;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue75
+{
+    uvec4 packedValues[];
+} intermediateValue3;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[100];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[25];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 10
+struct PackedDataRecord
+{
+    uvec2 packedValues;
+    uint recordComponent1;
+};
+layout(set = 0, binding = 2, std430) restrict readonly buffer SSBO
+{
+    uint packedValues[];
+} intermediateValue2;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue72
+{
+    uvec2 packedValues[];
+} intermediateValue3;
+layout(set = 0, binding = 2, std430) restrict readonly buffer intermediateValue73
+{
+    uvec4 packedValues[];
+} intermediateValue4;
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[96];
+} fragmentScalarConstants1;
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[24];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D materialTexture0;
+layout(set = 0, binding = 1) uniform texture2D materialTexture1;
+layout(set = 0, binding = 0) uniform sampler textureSampler0;
+layout(set = 0, binding = 1) uniform sampler textureSampler1;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 11
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+    vec4 packedValues[24];
+} fragmentVectorConstants1;
+layout(set = 0, binding = 0) uniform texture2D matTextureTexture;
+layout(set = 0, binding = 1) uniform texture2D seasonsTextureTexture;
+layout(set = 0, binding = 2) uniform usamplerBuffer pbrData;
+layout(set = 0, binding = 0) uniform sampler matTextureSampler;
+layout(set = 0, binding = 1) uniform sampler seasonsTextureSampler;
+layout(location = 0) in vec3 varyingBitangent0;
+layout(location = 3) in vec4 varyingColor1;
+layout(location = 2) in vec4 varyingColor0;
+layout(location = 7) flat in int varyingFrontFacing0;
+layout(location = 8) in vec3 varyingNormal0;
+layout(location = 15) flat in int varyingTexCoord4;
+layout(location = 16) in vec3 varyingTexCoord5;
+layout(location = 10) in vec3 varyingTangent0;
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 14) in vec3 varyingTexCoord3;
+layout(location = 0) out uvec4 fragmentColor0;
+layout(location = 1) out vec4 fragmentColor1;
+layout(location = 2) out vec4 fragmentColor2;
+#include "../../FragmentControl.glsli"
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#endif

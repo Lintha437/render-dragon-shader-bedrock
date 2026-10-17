@@ -1,0 +1,23 @@
+// Native resource and stage-interface layouts for EditorSelectionCursor / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+#if RD_BINDING_LAYOUT == 2
+layout(set = 0, binding = 1, scalar) uniform FragmentScalarConstants1Buffer
+{
+    float packedValues[8];
+} fragmentScalarConstants1;
+#endif
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[1];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2
+    vec4 packedValues[2];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 0 || RD_BINDING_LAYOUT == 1
+layout(location = 11) in float varyingTexCoord0;
+#endif
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 0
+#include "../../FragmentControl.glsli"
+#endif

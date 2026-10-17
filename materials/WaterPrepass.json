@@ -1,0 +1,154 @@
+{
+  "material": "WaterPrepass",
+  "parent": "",
+  "passes": {
+    "DepthOnlyAlphaTest": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterPrepass/DepthOnlyAlphaTest.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterPrepass/DepthOnlyAlphaTest.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/WaterPrepass/DepthOnlyAlphaTest.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterPrepass/DepthOnlyAlphaTest.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "DepthAndNormal": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterPrepass/DepthAndNormal.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterPrepass/DepthAndNormal.fragment.hlsl"
+          ]
+        },
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/WaterPrepass/DepthAndNormal.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterPrepass/DepthAndNormal.vertex.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_4_0",
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_4_0",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    },
+    "DoWaterSurfaceBuffer": {
+      "default_features": {
+        "RenderAsBillboards": "Off",
+        "Instancing": "Off",
+        "Seasons": "Off"
+      },
+      "supported_features": {
+        "Instancing": [
+          "Off",
+          "On"
+        ],
+        "RenderAsBillboards": [
+          "Off",
+          "On"
+        ],
+        "Seasons": [
+          "Off",
+          "On"
+        ]
+      },
+      "sources": {
+        "vertex": {
+          "glsl": [
+            "GLSL/pipelines/WaterPrepass/DoWaterSurfaceBuffer.vertex.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterPrepass/DoWaterSurfaceBuffer.vertex.hlsl"
+          ]
+        },
+        "fragment": {
+          "glsl": [
+            "GLSL/pipelines/WaterPrepass/DoWaterSurfaceBuffer.fragment.glsl"
+          ],
+          "hlsl": [
+            "HLSL/pipelines/WaterPrepass/DoWaterSurfaceBuffer.fragment.hlsl"
+          ]
+        }
+      },
+      "native_profiles": [
+        "ps_5_0",
+        "ps_6_3",
+        "ps_6_5",
+        "vs_5_0",
+        "vs_6_3",
+        "vs_6_5"
+      ],
+      "original_variants": 6
+    }
+  }
+}

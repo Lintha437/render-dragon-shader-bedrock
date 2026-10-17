@@ -1,0 +1,67 @@
+// Native resource and stage-interface layouts for FSR1 / fragment.
+// RD_BINDING_LAYOUT is selected by the material build recipe.
+layout(set = 0, binding = 1, std140) uniform FragmentVectorConstants1Buffer
+{
+#if RD_BINDING_LAYOUT == 0
+    vec4 packedValues[1];
+#elif RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 4
+    vec4 packedValues[5];
+#elif RD_BINDING_LAYOUT == 2
+    vec4 packedValues[3];
+#elif RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5
+    vec4 packedValues[2];
+#endif
+} fragmentVectorConstants1;
+#if RD_BINDING_LAYOUT == 1 || RD_BINDING_LAYOUT == 2 || RD_BINDING_LAYOUT == 4
+layout(set = 0, binding = 0) uniform texture2D inputTexTexture;
+layout(set = 0, binding = 0) uniform sampler inputTexSampler;
+#elif RD_BINDING_LAYOUT == 3 || RD_BINDING_LAYOUT == 5
+layout(set = 0, binding = 0) uniform texture2D inputTexTexture;
+#endif
+layout(location = 11) in vec2 varyingTexCoord0;
+layout(location = 0) out vec4 fragmentColor0;
+#if RD_BINDING_LAYOUT == 1
+spirv_instruction(set = "GLSL.std.450", id = 79) float16_t spvNMin(float16_t, float16_t);
+spirv_instruction(set = "GLSL.std.450", id = 79) f16vec2 spvNMin(f16vec2, f16vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) f16vec3 spvNMin(f16vec3, f16vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) f16vec4 spvNMin(f16vec4, f16vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float16_t spvNMax(float16_t, float16_t);
+spirv_instruction(set = "GLSL.std.450", id = 80) f16vec2 spvNMax(f16vec2, f16vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) f16vec3 spvNMax(f16vec3, f16vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) f16vec4 spvNMax(f16vec4, f16vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float16_t spvNClamp(float16_t, float16_t, float16_t);
+spirv_instruction(set = "GLSL.std.450", id = 81) f16vec2 spvNClamp(f16vec2, f16vec2, f16vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) f16vec3 spvNClamp(f16vec3, f16vec3, f16vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) f16vec4 spvNClamp(f16vec4, f16vec4, f16vec4);
+#elif RD_BINDING_LAYOUT == 3
+spirv_instruction(set = "GLSL.std.450", id = 79) float16_t spvNMin(float16_t, float16_t);
+spirv_instruction(set = "GLSL.std.450", id = 79) f16vec2 spvNMin(f16vec2, f16vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) f16vec3 spvNMin(f16vec3, f16vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) f16vec4 spvNMin(f16vec4, f16vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float16_t spvNMax(float16_t, float16_t);
+spirv_instruction(set = "GLSL.std.450", id = 80) f16vec2 spvNMax(f16vec2, f16vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) f16vec3 spvNMax(f16vec3, f16vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) f16vec4 spvNMax(f16vec4, f16vec4);
+#elif RD_BINDING_LAYOUT == 4
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 81) float spvNClamp(float, float, float);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec2 spvNClamp(vec2, vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec3 spvNClamp(vec3, vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 81) vec4 spvNClamp(vec4, vec4, vec4);
+#elif RD_BINDING_LAYOUT == 5
+spirv_instruction(set = "GLSL.std.450", id = 79) float spvNMin(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec2 spvNMin(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec3 spvNMin(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 79) vec4 spvNMin(vec4, vec4);
+spirv_instruction(set = "GLSL.std.450", id = 80) float spvNMax(float, float);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec2 spvNMax(vec2, vec2);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec3 spvNMax(vec3, vec3);
+spirv_instruction(set = "GLSL.std.450", id = 80) vec4 spvNMax(vec4, vec4);
+#endif
